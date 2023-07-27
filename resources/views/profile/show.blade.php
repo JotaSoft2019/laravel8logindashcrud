@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Usuario')
 
 
 @section('content')
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
+            {{ __('Usuario') }}
         </h2>
     </x-slot>
 
@@ -47,4 +47,9 @@
         </div>
     </div>
 </x-app-layout>
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 @stop

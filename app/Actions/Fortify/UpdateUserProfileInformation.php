@@ -20,8 +20,13 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
+            'apellido' => ['required', 'string', 'max:255'],
+            'telefono' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'photo' => ['nullable', 'image', 'max:1024'],
+            'date' => ['required', 'string', 'max:255'],
+            'cargo' => ['required', 'string', 'max:255'],
+            'area' => ['required', 'string', 'max:255'],
+            
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {
@@ -34,7 +39,13 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         } else {
             $user->forceFill([
                 'name' => $input['name'],
+                'apellido' => $input['apellido'],
+                'telefono' => $input['telefono'],
                 'email' => $input['email'],
+                'date' => $input['date'],
+                'cargo' => $input['cargo'],
+                'area' => $input['area'],
+                
             ])->save();
         }
     }

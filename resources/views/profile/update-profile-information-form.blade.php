@@ -1,10 +1,10 @@
 <x-jet-form-section submit="updateProfileInformation">
     <x-slot name="title">
-        {{ __('Profile Information') }}
+        
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Update your account\'s profile information and email address.') }}
+       
     </x-slot>
 
     <x-slot name="form">
@@ -53,27 +53,69 @@
         @endif
 
         <!-- Name -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="name" value="{{ __('Name') }}" />
+        <div class="col-span-6 sm:col-span-4 ">
+            <x-jet-label for="name" value="{{ __('Nombre') }}" />
             <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
             <x-jet-input-error for="name" class="mt-2" />
         </div>
 
+       <!-- Apellido -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="apellido" value="{{ __('Apellido') }}" />
+            <x-jet-input id="apellido" type="text" class="mt-1 block w-full" wire:model.defer="state.apellido" autocomplete="apellido" />
+            <x-jet-input-error for="apellido" class="mt-2" />
+        </div>
+
+
+        <!-- Telefono-->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="telefono" value="{{ __('Telefono') }}" />
+            <x-jet-input id="telefono" type="text" class="mt-1 block w-full" wire:model.defer="state.telefono" autocomplete="telefono" />
+            <x-jet-input-error for="telefono" class="mt-2" />
+        </div>
+
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="email" value="{{ __('Email') }}" />
+            <x-jet-label for="email" value="{{ __('Correo') }}" />
             <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
             <x-jet-input-error for="email" class="mt-2" />
         </div>
+        <!--Fecha de nacimiento-->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="date" value="{{ __('Fecha-Nacimiento') }}" />
+            <x-jet-input id="date" type="date" class="mt-1 block w-full" wire:model.defer="state.date" />
+            <x-jet-input-error for="email" class="mt-2" />
+        </div>
+
+        <!-- Cargo -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="cargo" value="{{ __('Cargo') }}" />
+            <x-jet-input id="cargo" type="text" class="mt-1 block w-full" wire:model.defer="state.cargo" autocomplete="cargo" />
+            <x-jet-input-error for="cargo" class="mt-2" />
+        </div>
+
+        <!-- Area -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="area" value="{{ __('Area') }}" />
+            <x-jet-input id="area" type="text" class="mt-1 block w-full" wire:model.defer="state.area" autocomplete="area" />
+            <x-jet-input-error for="area" class="mt-2" />
+        </div>
+
+
     </x-slot>
 
     <x-slot name="actions">
         <x-jet-action-message class="mr-3" on="saved">
-            {{ __('Saved.') }}
+            {{ __('Actualizado.') }}
         </x-jet-action-message>
 
         <x-jet-button wire:loading.attr="disabled" wire:target="photo">
-            {{ __('Save') }}
+            {{ __('Actualizar') }}
         </x-jet-button>
     </x-slot>
 </x-jet-form-section>
+
+@section('css')
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+@stop

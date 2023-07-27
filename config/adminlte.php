@@ -9,12 +9,12 @@ return [
     |
     | Here you can change the default title of your admin panel.
     |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#61-title
+    | For detailed instructions you can look the title section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'JotaRed',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -25,8 +25,8 @@ return [
     |
     | Here you can activate the favicon.
     |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#62-favicon
+    | For detailed instructions you can look the favicon section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
     */
 
@@ -35,22 +35,88 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Logo
+    | Google Fonts
+    |--------------------------------------------------------------------------
+    |
+    | Here you can allow or not the use of external google fonts. Disabling the
+    | google fonts may be useful if your admin panel internet access is
+    | restricted somehow.
+    |
+    | For detailed instructions you can look the google fonts section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
+    |
+    */
+
+    'google_fonts' => [
+        'allowed' => true,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Admin Panel Logo
     |--------------------------------------------------------------------------
     |
     | Here you can change the logo of your admin panel.
     |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#63-logo
+    | For detailed instructions you can look the logo section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
     */
 
-    'logo' => '<b>Info</b>DP',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>JotaRed</b>',
+    'logo_img' => 'vendor/adminlte/dist/img/mrJota.webp',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => '',
+    
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Logo
+    |--------------------------------------------------------------------------
+    |
+    | Here you can setup an alternative logo to use on your login and register
+    | screens. When disabled, the admin panel logo will be used instead.
+    |
+    | For detailed instructions you can look the auth logo section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
+    |
+    */
+
+    'auth_logo' => [
+        'enabled' => false,
+        'img' => [
+            'path' => './imagenesJotaRed/logoJotaMundial.png',
+            'class' => '',
+            'width' => 70,
+            'height' => 50,
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Preloader Animation
+    |--------------------------------------------------------------------------
+    |
+    | Here you can change the preloader animation configuration.
+    |
+    | For detailed instructions you can look the preloader section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
+    |
+    */
+
+    'preloader' => [
+        'enabled' => true,
+        'img' => [
+            'path' => '',
+            'alt' => 'AdminLTE Preloader Image',
+            'effect' => 'animation__shake',
+            'width' => 60,
+            'height' => 60,
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -59,8 +125,8 @@ return [
     |
     | Here you can activate and change the user menu.
     |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#64-user-menu
+    | For detailed instructions you can look the user menu section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
     */
 
@@ -78,16 +144,17 @@ return [
     |
     | Here we change the layout of your admin panel.
     |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#71-layout
+    | For detailed instructions you can look the layout section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
     */
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_sidebar' => true,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
+    'layout_dark_mode' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -96,17 +163,17 @@ return [
     |
     | Here you can change the look and behavior of the authentication views.
     |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#721-authentication-views-classes
+    | For detailed instructions you can look the auth classes section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
     */
 
-    'classes_auth_card' => 'bg-gradient-dark',
+    'classes_auth_card' => 'card-outline card-primary',
     'classes_auth_header' => '',
-    'classes_auth_body' => 'bg-gradient-dark',
-    'classes_auth_footer' => 'text-center',
-    'classes_auth_icon' => 'text-light',
-    'classes_auth_btn' => 'btn-flat btn-light',
+    'classes_auth_body' => '',
+    'classes_auth_footer' => '',
+    'classes_auth_icon' => '',
+    'classes_auth_btn' => 'btn-flat btn-primary',
 
     /*
     |--------------------------------------------------------------------------
@@ -115,8 +182,8 @@ return [
     |
     | Here you can change the look and behavior of the admin panel.
     |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#722-admin-panel-classes
+    | For detailed instructions you can look the admin panel classes here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
     */
 
@@ -126,9 +193,9 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-light-primary elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-light navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -139,17 +206,17 @@ return [
     |
     | Here we can modify the sidebar of the admin panel.
     |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#73-sidebar
+    | For detailed instructions you can look the sidebar section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
     */
 
-    'sidebar_mini' => true,
+    'sidebar_mini' => 'lg',
     'sidebar_collapse' => false,
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
-    'sidebar_scrollbar_theme' => 'os-theme-light',
+    'sidebar_scrollbar_theme' => 'os-theme-dark',
     'sidebar_scrollbar_auto_hide' => 'l',
     'sidebar_nav_accordion' => true,
     'sidebar_nav_animation_speed' => 300,
@@ -161,14 +228,14 @@ return [
     |
     | Here we can modify the right sidebar aka control sidebar of the admin panel.
     |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#74-control-sidebar-right-sidebar
+    | For detailed instructions you can look the right sidebar section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
     */
 
     'right_sidebar' => false,
     'right_sidebar_icon' => 'fas fa-cogs',
-    'right_sidebar_theme' => 'dark',
+    'right_sidebar_theme' => 'light',
     'right_sidebar_slide' => true,
     'right_sidebar_push' => true,
     'right_sidebar_scrollbar_theme' => 'os-theme-light',
@@ -181,25 +248,18 @@ return [
     |
     | Here we can modify the url settings of the admin panel.
     |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#65-urls
+    | For detailed instructions you can look the urls section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
     */
 
     'use_route_url' => false,
-
     'dashboard_url' => 'home',
-
     'logout_url' => 'logout',
-
     'login_url' => 'login',
-
     'register_url' => 'register',
-
     'password_reset_url' => 'password/reset',
-
     'password_email_url' => 'password/email',
-
     'profile_url' => false,
 
     /*
@@ -209,8 +269,8 @@ return [
     |
     | Here we can enable the Laravel Mix option for the admin panel.
     |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#92-laravel-mix
+    | For detailed instructions you can look the laravel mix section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
     |
     */
 
@@ -225,16 +285,27 @@ return [
     |
     | Here we can modify the sidebar/top navigation of the admin panel.
     |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#8-menu-configuration
+    | For detailed instructions you can look here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
     |
     */
 
     'menu' => [
+        // Navbar items:
         [
+            'type'         => 'navbar-search',
+            'text'         => 'search',
+            'topnav_right' => false,
+        ],
+        [
+            'type'         => 'fullscreen-widget',
+            'topnav_right' => true,
+        ],
+
+        // Sidebar items:
+        [
+            'type' => 'sidebar-menu-search',
             'text' => 'search',
-            'search' => false,
-            'topnav' => true,
         ],
         [
             'text' => 'blog',
@@ -242,77 +313,122 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Artículos',
+            'text'        => 'Inicio',
             'url'         => 'articulos',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 'CRUD',
-            'label_color' => 'warning',
+            'icon'        => 'fas fa-fw fa-igloo',
+            'label'       => 4,
+            'label_color' => 'success',
         ],
-        ['header' => 'Configuración de la cuenta'],
+       
         [
-            'text' => 'Perfil de Usuario',
+            'text' => 'Usuario',
             'url'  => 'user/profile',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-thin fa-user',
         ],
         [
-            'text' => 'change_password',
+            'text' => 'Lideres',
+            'url'  => 'lideres',
+            'icon' => 'fas fa-fw fa-user', 
+
+
+            
+            
+        ],
+        [
+            'text'    => 'Grupos Areas',
+            'icon'    => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Area Compras Nacionales',
+                    'url'  => 'compras',
+                ],
+                
+
+                [
+                    'text' => 'Area Contabilidad',
+                    'url'  => 'contabilidads',
+                ],
+
+                [
+                    'text' => 'Area Comercial',
+                    'url'  => 'comercials',
+                ],
+
+                [
+                    'text' => 'Area Sistema E Inventario',
+                    'url'  => 'inventario',
+                ],
+
+                [
+                    'text' => 'Area Mercadeo Y Comunicaciones',
+                    'url'  => 'mercadeo',
+                ],
+                [
+                    'text' => 'Area Logistica',
+                    'url'  => 'logistica',
+                ],
+
+                [
+                    'text' => 'Area Talento Humano Y SIG',
+                    'url'  => 'talentoHumano',
+                ],
+
+                
+            ],
+        ],
+        
+        [
+            'text' => 'Recomendaciones Salud',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
+            'text'    => 'Politicas Y Reglamentos',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Seguridad y salud en el trabajo',
                     'url'  => '#',
                 ],
+                
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
+                    'text' => 'Talento humano y gerencia',
                     'url'  => '#',
                 ],
+
+                [
+                    'text' => 'Area Contabilidad',
+                    'url'  => '#',
+                ],
+                
             ],
         ],
-        ['header' => 'labels'],
+
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text' => 'Memes',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
         ],
+
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text' => 'Cumpleaños',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
         ],
+
         [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text' => 'Reconocimientos',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
         ],
+
+        [
+            'text' => 'Eventos',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+
+
     ],
 
     /*
@@ -322,8 +438,8 @@ return [
     |
     | Here we can modify the menu filters of the admin panel.
     |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#83-custom-menu-filters
+    | For detailed instructions you can look the menu filters section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
     |
     */
 
@@ -344,8 +460,8 @@ return [
     |
     | Here we can modify the plugins used inside the admin panel.
     |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#91-plugins
+    | For detailed instructions you can look the plugins section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Plugins-Configuration
     |
     */
 
@@ -424,13 +540,47 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | IFrame
+    |--------------------------------------------------------------------------
+    |
+    | Here we change the IFrame mode configuration. Note these changes will
+    | only apply to the view that extends and enable the IFrame mode.
+    |
+    | For detailed instructions you can look the iframe mode section here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/IFrame-Mode-Configuration
+    |
+    */
+
+    'iframe' => [
+        'default_tab' => [
+            'url' => null,
+            'title' => null,
+        ],
+        'buttons' => [
+            'close' => true,
+            'close_all' => true,
+            'close_all_other' => true,
+            'scroll_left' => true,
+            'scroll_right' => true,
+            'fullscreen' => true,
+        ],
+        'options' => [
+            'loading_screen' => 1000,
+            'auto_show_new_tab' => true,
+            'use_navbar_items' => true,
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Livewire
     |--------------------------------------------------------------------------
     |
     | Here we can enable the Livewire support.
     |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#93-livewire
+    | For detailed instructions you can look the livewire here:
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
+    |
     */
 
     'livewire' => false,

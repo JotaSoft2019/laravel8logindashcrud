@@ -15,6 +15,8 @@ return [
 
     'default' => env('FILESYSTEM_DRIVER', 'local'),
 
+
+    'imagen' => 'image|mimes:jpeg,png|max:2048',
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
@@ -34,6 +36,7 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
+        
 
         'public' => [
             'driver' => 'local',
