@@ -7,17 +7,17 @@
 @stop
 
 @section('content')
-   <a href="compras/create" class="btn btn-primary mb-3">CREAR</a>
+   <a href="compras/create" class="btn btn-outline-success">CREAR</a>
    
    <div class="row">
        @foreach ($compras as $compra) 
-           <div class="card w-75">
+           <div class="card w-75 card-compras">
                <div class="text-center">
                <div class="card text-center compra-area">
                        <h5 class="title-compra">{{ $compra->area }}</h5> 
                    </div>
                    @if ($compra->imagen)
-                       <img src="{{ asset('/imagenesJotaRed/zyro-image.png') }}" class="card-img-top" alt="Imagen" style="width: 60%; height: 60%; margin-left:115px; margin-top:20px; border-radius:20px 20px 20px 20px;">
+                       <img src="{{ asset('/imagenesJotaRed/zyro-image.png') }}" class="card-img-top" alt="Imagen" style="width: 60%; height: 60%; margin-left:160px; margin-top:20px; border-radius:20px 20px 20px 20px;">
                    @else
                        <div class="text-center" style="height: 400px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
                            <span class="align-middle">Sin imagen</span>
@@ -29,12 +29,11 @@
                    </div>
                    <div class="card-body compras-footer">
                        <form action="{{ route('compras.destroy', $compra->id) }}" method="POST">
-                           <a href="/compras/{{ $compra->id }}/edit" class="btn btn-info">Editar</a>
+                           <a href="/compras/{{ $compra->id }}/edit" class="btn btn-outline-warning">Editar</a>
                            
                            @csrf
                            @method('DELETE')
-                           <button type="submit" class="btn btn-danger ml-4">Borrar</button>
-                       </form>
+                           
                    </div>
                </div>
            </div>

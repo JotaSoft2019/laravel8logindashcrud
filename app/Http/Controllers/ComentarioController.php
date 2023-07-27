@@ -64,8 +64,12 @@ class ComentarioController extends Controller
 
     public function destroy($id)
     {
+
+        
+         
         $comentario = Comentario::findOrFail($id);
         $comentario->delete();
+        return redirect()->back()->with('success', 'Comentario eliminado correctamente.');
 
         return redirect()->route('comercials.index');
     }

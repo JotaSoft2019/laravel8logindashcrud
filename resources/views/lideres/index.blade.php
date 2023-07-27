@@ -7,29 +7,29 @@
 @stop
 
 @section('content')
-   <a href="lideres/create" class="btn btn-primary mb-3">CREAR</a>
+   <a href="lideres/create" class="btn btn-outline-success">CREAR</a>
 
    <div class="row">
        @foreach ($lideres as $lider)
-           <div class="col-md-4">
-               <div class="card mb-4">
+           <div class="card text-center card-lideres">
+               <div class="card-header">
                    @if ($lider->imagen)
-                       <img src="{{ asset('/imagenesJotaRed/mrJota.webp') }}" class="card-img-top" alt="Imagen del líder">
+                       <img src="{{ asset('/imagenesJotaRed/avatar1.png') }}" class="card-img-top" alt="Imagen del líder" style="width: 200px;  margin-top:20px; border-radius:20px 20px 20px 20px;">
                    @else
                        <div class="text-center" style="height: 200px; background-color: #eee;">
                            <span class="align-middle">Sin imagen</span>
                        </div>
                    @endif
-                   <div class="card-body">
+                   <div class="card text-center">
                        <h5 class="card-title">{{ $lider->nombre }} {{ $lider->apellido }}</h5>
                        <p class="card-text">{{ $lider->area }}</p>
                    </div>
                    <div class="card-footer">
                        <form action="{{ route('lideres.destroy', $lider->id) }}" method="POST">
-                           <a href="/lideres/{{ $lider->id }}/edit" class="btn btn-info">Editar</a>
+                           <a href="/lideres/{{ $lider->id }}/edit" class="btn btn-outline-warning">Editar</a>
                            @csrf
                            @method('DELETE')
-                           <button type="submit" class="btn btn-danger">Borrar</button>
+                           <button type="submit" class="btn btn-outline-danger">Borrar</button>
                        </form>
                    </div>
                </div>

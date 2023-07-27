@@ -10,14 +10,15 @@
 
    <!-- Display existing comments -->
    @foreach ($comentarios as $comentario)
+   <div class="cuadro-comentario">
+      <p>{{$comentario->contenido}}</p>
+      @endforeach
+   </div>
    
-    <p>Comentario: {{$comentario->contenido}}</p>
-  @endforeach
 
    <!-- Add a form for users to add new comments -->
    <form  action="{{ route('comentario.store') }} " method="POST">
-       @csrf
-    
+       <!--@csrf
        <div class="form-group">
            <label for="contenido">Agregar comentario:</label>
            <textarea name="contenido" id="contenido" class="form-control" rows="3"></textarea>
@@ -25,15 +26,17 @@
                <div class="text-danger">{{ $message }}</div>
            @enderror
        </div>
-       <button type="submit" class="btn btn-primary">Enviar comentario</button>
+       <button type="submit" class="btn btn-outline-warning">Enviar comentario</button>-->
+       <a href="{{ route('comercials.index') }}" class="btn btn-outline-success">Volver</a>
    </form>
 
-   <a href="{{ route('comercials.index') }}" class="btn btn-secondary">Volver</a>
+   
 @stop
 
 @section('css')
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <!-- Add specific styles for comments here if necessary -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
 @stop
 
 @section('js')

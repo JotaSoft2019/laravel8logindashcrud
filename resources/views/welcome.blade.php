@@ -53,7 +53,7 @@
             }
 
             .container-register{
-            width: 178vh;
+            width: 179vh;
             height: 360px;
             background-image: url("./ImagenesJotaRed/imagen2.jpg");
             background-size:110%;
