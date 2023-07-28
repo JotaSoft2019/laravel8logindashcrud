@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Mercadeo Y comunicaciones')
+@section('title', 'Gerencia')
 
 @section('content_header')
-   <h1>Mercadeo Y comunicaciones</h1>
+   <h1>Area Gerencia</h1>
 @stop
 
 @section('content')
-<form action="{{ route('mercadeo.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('gerencia.store') }}" method="POST" enctype="multipart/form-data">
   @csrf
 
   <div class="form-group">
@@ -25,7 +25,7 @@
     <input id="lema" name="lema" type="text" class="form-control" tabindex="2">
   </div>
   
-  <a href="/mercadeo" class="btn btn-secondary" tabindex="3">Cancelar</a>
+  <a href="/gerencia" class="btn btn-secondary" tabindex="3">Cancelar</a>
   <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
 </form>
 @stop

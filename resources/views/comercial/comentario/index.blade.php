@@ -15,6 +15,7 @@
       @endforeach
    </div>
    
+   <br>
 
    <!-- Add a form for users to add new comments -->
    <form  action="{{ route('comentario.store') }} " method="POST">

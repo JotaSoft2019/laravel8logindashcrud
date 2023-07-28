@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SeguridadController;
 
 
 /*
@@ -22,6 +23,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
+Route::get('/seguridadYSalud/create', [SeguridadTrabajoController::class, 'create'])->name('seguridadYSalud.create');
+Route::resource('comex','App\Http\Controllers\ComexController');
+Route::resource('gerencia','App\Http\Controllers\GerenciaController');
+Route::resource('seguridadYSalud','App\Http\Controllers\SeguridadTrabajoController');
 Route::resource('talentoHumano','App\Http\Controllers\TalentoHumanoController');
 Route::resource('logistica','App\Http\Controllers\LogisticaController');
 Route::resource('mercadeo','App\Http\Controllers\MercadeoController');

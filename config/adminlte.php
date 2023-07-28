@@ -373,6 +373,16 @@ return [
                     'url'  => 'talentoHumano',
                 ],
 
+                [
+                    'text' => 'Gerencia',
+                    'url'  => 'gerencia',
+                ],
+
+                [
+                    'text' => 'Comex',
+                    'url'  => 'comex',
+                ],
+
                 
             ],
         ],
@@ -388,7 +398,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Seguridad y salud en el trabajo',
-                    'url'  => '#',
+                    'url'  => 'seguridadYSalud',
                 ],
                 
                 [
@@ -397,7 +407,7 @@ return [
                 ],
 
                 [
-                    'text' => 'Area Contabilidad',
+                    'text' => 'Cultura y Adn Jota Mundial',
                     'url'  => '#',
                 ],
                 

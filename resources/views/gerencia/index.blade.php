@@ -1,39 +1,40 @@
 @extends('adminlte::page')
 
-@section('title', 'Contabilidad')
+@section('title', 'Gerencia')
 
 @section('content_header')
-    <h1>Contabilidad</h1>
+    <h1>Area Gerencia</h1>
 @stop
 
 @section('content')
-   <a href="{{ route('contabilidads.create') }}" class="btn btn-outline-success">CREAR</a>
+   <a href="gerencia/create" class="btn btn-outline-success">CREAR</a>
    
    <div class="row">
-       @foreach ($contabilidads as $contabilidad) 
+       @foreach ($gerencias as $gerencia) 
            <div class="card w-75 card-compras">
                <div class="text-center">
                <div class="card text-center compra-area">
-                       <h5 class="title-compra">{{ $contabilidad->area }}</h5>  
+                       <h5 class="title-compra">{{ $gerencia->area }}</h5> 
                    </div>
-                   @if ($contabilidad->imagen)
-                       <img src="{{ asset('/imagenesJotaRed/Equipo contable.jpg') }}" class="card-img-top" alt="Imagen" style="width: 60%; height: 60%; margin-left:160px; margin-top:20px; border-radius:20px 20px 20px 20px;">
+                   @if ($gerencia->imagen)
+                       <img src="{{ asset('/imagenesJotaRed/imagen2.jpg') }}" class="card-img-top" alt="Imagen" style="width: 60%; height: 60%; margin-left:160px; margin-top:20px; border-radius:20px 20px 20px 20px;">
                    @else
                        <div class="text-center" style="height: 400px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
                            <span class="align-middle">Sin imagen</span>
                        </div>
                    @endif
-                   <div class="card text-center compra-area">
-                       <p class="card-text">{{ $contabilidad->lema }}</p> 
+                   
+                   <div class="card text-center compra-area"> 
+                       <p class="card-text">{{ $gerencia->lema }}</p> 
                    </div>
                    <div class="card-body compras-footer">
-                       <form action="{{ route('contabilidads.destroy', $contabilidad->id) }}" method="POST">
-                           <a href="{{ route('contabilidads.edit', $contabilidad->id) }}" class="btn btn-outline-warning">Editar</a>
+                       <form action="{{ route('gerencia.destroy', $gerencia->id) }}" method="POST">
+                           <a href="/gerencia/{{ $gerencia->id }}/edit" class="btn btn-outline-warning">Editar</a>
                            
                            @csrf
                            @method('DELETE')
                            <button type="submit" class="btn btn-outline-danger">Borrar</button>
-                       </form>
+                           
                    </div>
                </div>
            </div>
@@ -43,7 +44,8 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 @stop
