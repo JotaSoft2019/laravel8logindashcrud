@@ -1,48 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Comex')
+@section('title', 'Seguridad y Salud')
 
 @section('content_header')
-    <h1>Comex</h1>
+    <h1>Seguridad y Salud</h1>
 @stop
 
 @section('content')
-    <a href="{{ route('seguridads.create') }}" class="btn btn-outline-success">CREAR</a>
-
-    <div class="row">
-        @foreach ($seguridad_trabajos as $seguridad)
-        <div class="card w-75 card-compras">
-                <div class="text-center">
-                    <div class="card text-center compra-area">
-                        <h5 class="title-compra">{{ $seguridad->area }}</h5>
-                    </div>
-                    @if ($seguridad->imagen)
-                        <img src="{{ asset($seguridad->imagen) }}" class="card-img-top" alt="Imagen" style="width: 60%; height: 60%; margin-left:120px; margin-top:20px; border-radius:20px 20px 20px 20px;">
-                    @else
-                        <div class="text-center" style="height: 400px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
-                            <span class="align-middle">Sin imagen</span>
-                        </div>
-                    @endif
-
-
-                    <div class="card-body compras-footer">
-                        <h5 class="card-title">{{ $seguridad->titulo }}</h5>
-                        <p class="card-text">{{ $seguridad->parrafo }}</p>
-                        @if ($seguridad->pdf)
-                            <a href="{{ asset($seguridad->pdf) }}" class="btn btn-outline-primary" target="_blank">Descargar PDF</a>
-                        @endif
-                        <a href="{{ route('seguridad.edit', $comex->id) }}" class="btn btn-outline-warning">Editar</a>
-
-                        <form action="{{ route('seguridad.destroy', $comex->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-outline-danger">Borrar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
+    
 @stop
 
 @section('css')

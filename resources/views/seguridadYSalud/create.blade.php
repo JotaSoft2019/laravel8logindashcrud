@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Comex')
+@section('title', 'Seguridad y Salud')
 
 @section('content_header')
-   <h1>Comex</h1>
+   <h1>Seguridad y Salud</h1>
 @stop
 
 @section('content')
-<form action="{{ route('seguridads.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('seguridadYSalud.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <input type="text" name="area" placeholder="Area">
     <input type="file" name="imagen" accept="image/*">

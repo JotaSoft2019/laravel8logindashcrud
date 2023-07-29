@@ -26,7 +26,6 @@ Route::get('/', function () {
 
 
 
-Route::get('/seguridadYSalud/create', [SeguridadTrabajoController::class, 'create'])->name('seguridadYSalud.create');
 Route::resource('comex','App\Http\Controllers\ComexController');
 Route::resource('gerencia','App\Http\Controllers\GerenciaController');
 Route::resource('seguridadYSalud','App\Http\Controllers\SeguridadTrabajoController');
@@ -43,3 +42,4 @@ Route::resource('comercials', 'App\Http\Controllers\ComercialController');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+

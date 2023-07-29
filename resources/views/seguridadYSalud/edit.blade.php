@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Comex')
+@section('title', 'Seguridad y Salud')
 
 @section('content_header')
-    <h1>Comex</h1>
+    <h1>Seguridad y Salud</h1>
 @stop
 
 @section('content')
-<form action="{{ route('seguridads.update', $seguridad->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('seguridad.update', $seguridad->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <input type="text" name="area" value="{{ $seguridad->area }}">

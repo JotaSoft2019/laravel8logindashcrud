@@ -1,21 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\SeguridadTrabajo;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class SeguridadTrabajoController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-        $seguridads = SeguridadTrabajo::all();
-        return view('seguridadYSalud.index')->with('seguridads', $seguridads);
+        return view('seguridadYSalud.index');
     }
 
     public function create()
@@ -25,97 +20,46 @@ class SeguridadTrabajoController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'titulo' => 'required',
-            'parrafo' => 'required',
-            'pdf' => 'nullable|mimes:pdf|max:2048', // Allow optional PDF upload
-        ]);
 
-        $seguridads = new SeguridadTrabajo();
-        $seguridads->titulo = $request->input('titulo');
-        $seguridads->parrafo = $request->input('parrafo');
+          
+        if ($request->hasFile('urlpdf') && $request->file('urlpdf')->getClientOriginalExtension() === 'pdf') {
+            $file = $request->file('urlpdf');
+            $nombre = "pdf_" . time() . "." . $file->getClientOriginalExtension();
 
-        if ($request->hasFile('imagen')) {
-            $imagen = $request->file('imagen');
-            $rutaImagen = $imagen->store('private/imagen'); // Asegura que las imágenes no sean accesibles públicamente
-            $seguridads->imagen = $rutaImagen;
+            // Store the file in the 'pdf' directory inside the 'public' disk
+            $ruta = $file->storeAs('pdf', $nombre, 'public');
+
+            // Save the file path in the database
+            SeguridadTrabajo::create([
+                'urlpdf' => $ruta,
+            ]);
+
+            return "Archivo PDF subido exitosamente.";
+        } else {
+            return "Por favor, sube un archivo PDF válido.";
         }
-
-        if ($request->hasFile('pdf')) {
-            $pdf = $request->file('pdf');
-            $rutaPDF = $pdf->store('private/pdf'); // Asegura que los archivos PDF no sean accesibles públicamente
-            $seguridads->pdf = $rutaPDF;
-        }
-
-        $seguridads->save();
-
-        return redirect('/seguridads')->with('success', 'Registro creado exitosamente!');
     }
 
-    public function update(Request $request, $id)
+    public function show($id)
     {
-        $request->validate([
-            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'titulo' => 'required',
-            'parrafo' => 'required',
-            'pdf' => 'nullable|mimes:pdf|max:2048', // Allow optional PDF upload
-        ]);
+    
+        $archivo = SeguridadTrabajo::find($id);
 
-        $seguridadtrabajos = SeguridadTrabajo::find($id);
-        $seguridadtrabajos->titulo = $request->input('titulo');
-        $seguridadtrabajos->parrafo = $request->input('parrafo');
+        if ($archivo) {
+            
+            $rutaArchivo = public_path('pdf/' . $archivo->urlpdf);
 
-        if ($request->hasFile('imagen')) {
-            $imagen = $request->file('imagen');
-            $rutaImagen = $imagen->store('private/imagen'); // Asegura que las imágenes no sean accesibles públicamente
-
-            // Eliminar la imagen anterior si existe
-            if ($seguridads->imagen) {
-                Storage::delete($seguridads->imagen);
+            
+            if (file_exists($rutaArchivo)) {
+               
+                return response()->file($rutaArchivo);
+            } else {
+                return "El archivo PDF no se encontró.";
             }
-
-            $seguridads->imagen = $rutaImagen;
+        } else {
+            return "No se encontró ningún archivo asociado a ese ID.";
         }
-
-        if ($request->hasFile('pdf')) {
-            $pdf = $request->file('pdf');
-            $rutaPDF = $pdf->store('private/pdf'); // Asegura que los archivos PDF no sean accesibles públicamente
-
-            // Eliminar el PDF anterior si existe
-            if ($seguridads->pdf) {
-                Storage::delete($seguridads->pdf);
-            }
-
-            $seguridads->pdf = $rutaPDF;
-        }
-
-        $seguridads->save();
-
-        return redirect('/seguridads')->with('success', 'Registro actualizado exitosamente!');
     }
 
-    public function edit($id)
-    {
-        $seguridads = SeguridadTrabajo::find($id);
-        return view('seguridadYSalud.edit')->with('seguridads', $seguridads);
-    }
-
-    public function destroy($id)
-    {
-        $seguridads = SeguridadTrabajo::find($id);
-
-        // Eliminar la imagen si existe
-        if ($seguridads->imagen) {
-            Storage::delete($seguridads->imagen);
-        }
-
-        // Eliminar el PDF si existe
-        if ($seguridads->pdf) {
-            Storage::delete($seguridads->pdf);
-        }
-
-        $seguridads->delete();
-        return redirect('/seguridads');
-    }
-} 
+   
+}

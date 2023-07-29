@@ -15,10 +15,7 @@ class CreateSeguridadTrabajosTable extends Migration
     {
         Schema::create('seguridad_trabajos', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
-            $table->string('imagen');
-            $table->string('pdf_path')->nullable();
-            $table->string('parrafo');
+            $table->string('urlpdf')->nullable();
             $table->timestamps();
         });
     }
