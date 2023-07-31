@@ -7,21 +7,46 @@
 @stop
 
 @section('content')
-<form action="{{ route('seguridad.update', $seguridad->id) }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
-    <input type="text" name="area" value="{{ $seguridad->area }}">
-    <input type="file" name="imagen" accept="image/*">
-    <input type="text" name="titulo" value="{{ $seguridad->titulo }}">
-    <textarea name="parrafo">{{ $seguridad->parrafo }}</textarea>
-    <input type="file" name="pdf" accept=".pdf">
-    <button type="submit">Actualizar</button>
-</form>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Subir archivo PDF</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('seguridadYSalud.update', $archivo->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="form-group">
+                            <label for="urlpdf">Selecciona un archivo PDF</label>
+                            <input type="file" class="form-control-file" name="urlpdf" id="urlpdf" accept=".pdf">
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Subir PDF</button>
+                            <button type="submit" class="btn btn-secondary">Ver PDF</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
+    <style>
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-@section('js')  
+        .card-header h4 {
+            margin: 0;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
 @stop

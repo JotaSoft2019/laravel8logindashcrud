@@ -10,35 +10,34 @@ class SeguridadTrabajoController extends Controller
     public function index()
     {
 
-        $archivo = SeguridadTrabajo::latest()->first();
-        return view('seguridadYSalud.index', compact('archivo'));
+        $archivos = SeguridadTrabajo::all();
+        return view('seguridadYSalud.index', compact('archivos'));
     }
 
     public function create()
     {
-        $archivo = SeguridadTrabajo::latest()->first();
-        return view('seguridadYSalud.create', compact('archivo'));
+        $archivos = SeguridadTrabajo::all();
+        return view('seguridadYSalud.create', compact('archivos'));
         
     }
-
     public function store(Request $request)
-{
-    if ($request->hasFile('urlpdf') && $request->file('urlpdf')->getClientOriginalExtension() === 'pdf') {
-        $file = $request->file('urlpdf');
-
-        $nombreArchivo = "pdf_" . time() . "." . $file->getClientOriginalExtension();
-
-        $rutaArchivo = $file->storeAs('pdf', $nombreArchivo, 'public');
-
-        $archivo = new SeguridadTrabajo();
-        $archivo->urlpdf = $rutaArchivo;
-        $archivo->save();
-
-        return redirect()->route('seguridadYSalud.index', $archivo->id);
-    } else {
-        return redirect()->back()->with('error', 'Por favor, sube un archivo PDF válido.');
+    {
+        if ($request->hasFile('urlpdf') && $request->file('urlpdf')->getClientOriginalExtension() === 'pdf') {
+            $file = $request->file('urlpdf');
+    
+            $nombreArchivo = "pdf_" . time() . "." . $file->getClientOriginalExtension();
+    
+            $rutaArchivo = $file->storeAs('pdf', $nombreArchivo, 'public');
+    
+            $archivo = new SeguridadTrabajo();
+            $archivo->urlpdf = 'pdf/' . $nombreArchivo; 
+            $archivo->save();
+    
+            return redirect()->route('seguridadYSalud.index');
+        } else {
+            return redirect()->back()->with('error', 'Por favor, sube un archivo PDF válido.');
+        }
     }
-}
     public function show($id)
     {
         
@@ -80,4 +79,56 @@ class SeguridadTrabajoController extends Controller
         return "No hay archivos disponibles para descargar.";
     }
 }
+
+public function destroy($id)
+{
+    $archivo = SeguridadTrabajo::find($id);
+    if ($archivo) {
+        Storage::delete('public/' . $archivo->urlpdf);
+        $archivo->delete();
+        return redirect()->route('seguridadYSalud.index')->with('success', 'Archivo PDF eliminado exitosamente.');
+    } else {
+        return redirect()->route('seguridadYSalud.index')->with('error', 'No se encontró el archivo PDF.');
+    }
+}
+
+public function update(Request $request, $id)
+{
+    $archivo = SeguridadTrabajo::find($id);
+
+    if (!$archivo) {
+        return redirect()->back()->with('error', 'El archivo no existe.');
+    }
+
+    if ($request->hasFile('urlpdf') && $request->file('urlpdf')->getClientOriginalExtension() === 'pdf') {
+        $file = $request->file('urlpdf');
+
+        $nombreArchivo = "pdf_" . time() . "." . $file->getClientOriginalExtension();
+
+        $rutaArchivo = $file->storeAs('pdf', $nombreArchivo, 'public');
+
+        // Actualizar la URL del archivo en la base de datos
+        $archivo->urlpdf = $rutaArchivo;
+        $archivo->save();
+
+        return redirect()->route('seguridadYSalud.index');
+    } else {
+        return redirect()->back()->with('error', 'Por favor, sube un archivo PDF válido.');
+    }
+}
+
+public function edit($id)
+{
+    // Obtén el registro de la base de datos según el ID proporcionado
+    $archivo = SeguridadTrabajo::find($id);
+
+    if ($archivo) {
+        // Muestra el formulario de edición, pasando el registro a la vista
+        return view('seguridadYSalud.edit', compact('archivo'));
+    } else {
+        // Redirige de vuelta con un mensaje de error si el registro no se encuentra
+        return redirect()->route('seguridadYSalud.index')->with('error', 'El archivo no existe.');
+    }
+}
+
 }
