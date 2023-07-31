@@ -25,21 +25,22 @@ Route::get('/', function () {
 
 
 
-
-Route::resource('comex','App\Http\Controllers\ComexController');
-Route::resource('gerencia','App\Http\Controllers\GerenciaController');
-Route::resource('seguridadYSalud','App\Http\Controllers\SeguridadTrabajoController');
-Route::resource('talentoHumano','App\Http\Controllers\TalentoHumanoController');
-Route::resource('logistica','App\Http\Controllers\LogisticaController');
-Route::resource('mercadeo','App\Http\Controllers\MercadeoController');
-Route::resource('inventario','App\Http\Controllers\InventarioController');
-Route::resource('contabilidads','App\Http\Controllers\ContabilidadController');
-Route::resource('compras','App\Http\Controllers\ComprasNacionalesController');
-Route::resource('comentario','App\Http\Controllers\ComentarioController');
-Route::resource('articulos','App\Http\Controllers\ArticuloController');
-Route::resource('lideres','App\Http\Controllers\LideresController');
+Route::get('/seguridadYSalud/download', 'App\Http\Controllers\SeguridadTrabajoController@download')->name('seguridadYSalud.download');
+Route::resource('comex', 'App\Http\Controllers\ComexController');
+Route::resource('gerencia', 'App\Http\Controllers\GerenciaController');
+Route::resource('seguridadYSalud', 'App\Http\Controllers\SeguridadTrabajoController');
+Route::resource('talentoHumano', 'App\Http\Controllers\TalentoHumanoController');
+Route::resource('logistica', 'App\Http\Controllers\LogisticaController');
+Route::resource('mercadeo', 'App\Http\Controllers\MercadeoController');
+Route::resource('inventario', 'App\Http\Controllers\InventarioController');
+Route::resource('contabilidads', 'App\Http\Controllers\ContabilidadController');
+Route::resource('compras', 'App\Http\Controllers\ComprasNacionalesController');
+Route::resource('comentario', 'App\Http\Controllers\ComentarioController');
+Route::resource('articulos', 'App\Http\Controllers\ArticuloController');
+Route::resource('lideres', 'App\Http\Controllers\LideresController');
 Route::resource('comercials', 'App\Http\Controllers\ComercialController');
+
+// Ruta del dashboard (protegida con autenticación)
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-

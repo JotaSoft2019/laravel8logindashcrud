@@ -7,30 +7,47 @@
 @stop
 
 @section('content')
-    
-@stop
+<a href="{{ route('seguridadYSalud.create') }}" class="btn btn-outline-success">CREAR</a>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Subir archivo PDF</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('seguridadYSalud.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label for="urlpdf">Selecciona un archivo PDF</label>
+                            <input type="file" class="form-control-file" name="urlpdf" id="urlpdf" accept=".pdf">
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Subir PDF</button>
+                            <a href="{{ route('seguridadYSalud.download') }}" class="btn btn-primary">Descargar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-@stop
-
-@section('js')
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            // Aquí debes asegurarte de que el ID 'comprasNacionales' coincida con la tabla real que deseas aplicar DataTables.
-            $('#comprasNacionales').DataTable({
-                "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "All"]]
-            });
-        });
-    </script>
+    {{-- Mostrar el PDF si ya se ha creado --}}
+    @if ($archivo)
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>PDF existente</h4>
+                    </div>
+                    <div class="card-body">
+                        <embed src="{{ asset('pdf/' . $archivo->urlpdf) }}" width="100%" height="200" type="application/pdf">
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+</div>
 @stop
 
 

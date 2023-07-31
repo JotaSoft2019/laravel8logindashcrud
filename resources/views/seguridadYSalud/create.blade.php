@@ -3,24 +3,65 @@
 @section('title', 'Seguridad y Salud')
 
 @section('content_header')
-   <h1>Seguridad y Salud</h1>
+    <h1>Seguridad y Salud</h1>
 @stop
 
 @section('content')
-<form action="{{ route('seguridadYSalud.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    <input type="text" name="area" placeholder="Area">
-    <input type="file" name="imagen" accept="image/*">
-    <input type="text" name="titulo" placeholder="Titulo">
-    <textarea name="parrafo" placeholder="Parrafo"></textarea>
-    <input type="file" name="pdf" accept=".pdf">
-    <button type="submit">Guardar</button>
-</form>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Subir archivo PDF</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('seguridadYSalud.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label for="urlpdf">Selecciona un archivo PDF</label>
+                            <input type="file" class="form-control-file" name="urlpdf" id="urlpdf" accept=".pdf">
+                            <br>
+                            <a href="{{ route('seguridadYSalud.download') }}" class="btn btn-primary">Descargar</a>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Subir PDF</button>
+                            <button type="submit" class="btn btn-secondary">Ver PDF</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if ($archivo)
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4>PDF existente</h4>
+                </div>
+                <div class="card-body">
+                    <embed src="{{ asset('pdf/' . $archivo->urlpdf) }}" width="100%" height="600" type="application/pdf">
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+</div>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/adminlte.css">
-@endsection
+    <style>
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-@section('js')  
-@endsection
+        .card-header h4 {
+            margin: 0;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+@stop

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\SeguridadTrabajo;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -10,29 +9,34 @@ class SeguridadTrabajoController extends Controller
 {
     public function index()
     {
-        return view('seguridadYSalud.index');
+
+        $archivo = SeguridadTrabajo::latest()->first();
+        return view('seguridadYSalud.index', compact('archivo'));
     }
 
     public function create()
     {
-        return view('seguridadYSalud.create');
+        $archivo = SeguridadTrabajo::latest()->first();
+        return view('seguridadYSalud.create', compact('archivo'));
+        
     }
 
     public function store(Request $request)
     {
-
-          
+        
         if ($request->hasFile('urlpdf') && $request->file('urlpdf')->getClientOriginalExtension() === 'pdf') {
             $file = $request->file('urlpdf');
-            $nombre = "pdf_" . time() . "." . $file->getClientOriginalExtension();
 
-            // Store the file in the 'pdf' directory inside the 'public' disk
-            $ruta = $file->storeAs('pdf', $nombre, 'public');
+           
+            $nombreArchivo = "pdf_" . time() . "." . $file->getClientOriginalExtension();
 
-            // Save the file path in the database
-            SeguridadTrabajo::create([
-                'urlpdf' => $ruta,
-            ]);
+            
+            $rutaArchivo = $file->storeAs('pdf', $nombreArchivo, 'public');
+
+        
+            $archivo = new SeguridadTrabajo();
+            $archivo->urlpdf = $rutaArchivo;
+            $archivo->save();
 
             return "Archivo PDF subido exitosamente.";
         } else {
@@ -42,16 +46,16 @@ class SeguridadTrabajoController extends Controller
 
     public function show($id)
     {
-    
+        
         $archivo = SeguridadTrabajo::find($id);
-
+    
         if ($archivo) {
-            
+           
             $rutaArchivo = public_path('pdf/' . $archivo->urlpdf);
-
-            
+    
+           
             if (file_exists($rutaArchivo)) {
-               
+                
                 return response()->file($rutaArchivo);
             } else {
                 return "El archivo PDF no se encontró.";
@@ -61,5 +65,24 @@ class SeguridadTrabajoController extends Controller
         }
     }
 
-   
+    public function download()
+{
+    
+    $archivo = SeguridadTrabajo::latest()->first();
+
+    if ($archivo) {
+        
+        $rutaArchivo = public_path('pdf/' . $archivo->urlpdf);
+
+        
+        if (file_exists($rutaArchivo)) {
+            
+            return response()->download($rutaArchivo);
+        } else {
+            return "El archivo PDF no se encontró.";
+        }
+    } else {
+        return "No hay archivos disponibles para descargar.";
+    }
+}
 }
