@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 
 
-Route::get('/seguridadYSalud/download', 'App\Http\Controllers\SeguridadTrabajoController@download')->name('seguridadYSalud.download');
+Route::resource('talento', 'App\Http\Controllers\TalentoController');
 Route::resource('comex', 'App\Http\Controllers\ComexController');
 Route::resource('gerencia', 'App\Http\Controllers\GerenciaController');
 Route::resource('seguridadYSalud', 'App\Http\Controllers\SeguridadTrabajoController');

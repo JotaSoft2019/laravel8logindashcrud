@@ -403,7 +403,7 @@ return [
                 
                 [
                     'text' => 'Talento humano y gerencia',
-                    'url'  => '#',
+                    'url'  => 'talento',
                 ],
 
                 [

@@ -16,7 +16,7 @@
                     <h4>Subir archivo PDF</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('seguridadYSalud.update', $archivo->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('talento.update', $archivo->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">Subir PDF</button>
-                            <a href="/seguridadYSalud" class="btn btn-secondary">Cancelar</a>
+                            <a href="/talento" class="btn btn-secondary">Cancelar</a>
                         </div>
                     </form>
                 </div>

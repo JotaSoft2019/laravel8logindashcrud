@@ -1,23 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\SeguridadTrabajo;
+use App\Models\Talento;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
-class SeguridadTrabajoController extends Controller
+class TalentoController extends Controller
 {
     public function index()
     {
 
-        $archivos = SeguridadTrabajo::all();
-        return view('seguridadYSalud.index', compact('archivos'));
+        $archivos = Talento::all();
+        return view('talentoG.index', compact('archivos'));
     }
 
     public function create()
     {
-        $archivos = SeguridadTrabajo::all();
-        return view('seguridadYSalud.create', compact('archivos'));
+        $archivos = Talento::all();
+        return view('talentoG.create', compact('archivos'));
         
     }
     public function store(Request $request)
@@ -32,14 +32,14 @@ class SeguridadTrabajoController extends Controller
         $rutaArchivo = $file->storeAs('pdf', $nombreArchivo, 'public');
 
         
-        $archivo = new SeguridadTrabajo();
+        $archivo = new Talento();
         $archivo->titulo = $request->input('titulo'); 
         $archivo->urlpdf = $rutaArchivo;
         $archivo->text = $request->input('text');
 
         $archivo->save();
 
-        return redirect()->route('seguridadYSalud.index');
+        return redirect()->route('talento.index');
     } else {
         return redirect()->back()->with('error', 'Por favor, sube un archivo PDF válido.');
     }
@@ -47,7 +47,7 @@ class SeguridadTrabajoController extends Controller
     public function show($id)
     {
         
-        $archivo = SeguridadTrabajo::find($id);
+        $archivo = Talento::find($id);
     
         if ($archivo) {
            
@@ -68,7 +68,7 @@ class SeguridadTrabajoController extends Controller
     public function download()
 {
     
-    $archivo = SeguridadTrabajo::latest()->first();
+    $archivo = Talento::latest()->first();
 
     if ($archivo) {
         
@@ -88,7 +88,7 @@ class SeguridadTrabajoController extends Controller
 
 public function destroy($id)
 {
-    $archivo = SeguridadTrabajo::find($id);
+    $archivo = Talento::find($id);
     if ($archivo) {
         Storage::delete('public/' . $archivo->urlpdf);
         $archivo->delete();
@@ -100,7 +100,7 @@ public function destroy($id)
 
 public function update(Request $request, $id)
 {
-    $archivo = SeguridadTrabajo::find($id);
+    $archivo = Talento::find($id);
 
     if (!$archivo) {
         return redirect()->back()->with('error', 'El archivo no existe.');
@@ -122,7 +122,7 @@ public function update(Request $request, $id)
 
         $archivo->save();
 
-        return redirect()->route('seguridadYSalud.index');
+        return redirect()->route('talento.index');
     } else {
         return redirect()->back()->with('error', 'Por favor, sube un archivo PDF válido.');
     }
@@ -131,15 +131,14 @@ public function update(Request $request, $id)
 public function edit($id)
 {
     // Obtén el registro de la base de datos según el ID proporcionado
-    $archivo = SeguridadTrabajo::find($id);
+    $archivo = Talento::find($id);
 
     if ($archivo) {
         // Muestra el formulario de edición, pasando el registro a la vista
-        return view('seguridadYSalud.edit', compact('archivo'));
+        return view('talentoG.edit', compact('archivo'));
     } else {
         // Redirige de vuelta con un mensaje de error si el registro no se encuentra
-        return redirect()->route('seguridadYSalud.index')->with('error', 'El archivo no existe.');
+        return redirect()->route('talento.index')->with('error', 'El archivo no existe.');
     }
 }
-
 }
