@@ -38,9 +38,7 @@ class SeguridadTrabajoController extends Controller
             $archivo->urlpdf = $rutaArchivo;
             $archivo->save();
 
-            return "Archivo PDF subido exitosamente.";
-        } else {
-            return "Por favor, sube un archivo PDF válido.";
+            return view('seguridadYSalud.index', compact('archivo'));
         }
     }
 
