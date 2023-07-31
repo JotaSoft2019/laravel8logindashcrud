@@ -22,26 +22,23 @@ class SeguridadTrabajoController extends Controller
     }
 
     public function store(Request $request)
-    {
-        
-        if ($request->hasFile('urlpdf') && $request->file('urlpdf')->getClientOriginalExtension() === 'pdf') {
-            $file = $request->file('urlpdf');
+{
+    if ($request->hasFile('urlpdf') && $request->file('urlpdf')->getClientOriginalExtension() === 'pdf') {
+        $file = $request->file('urlpdf');
 
-           
-            $nombreArchivo = "pdf_" . time() . "." . $file->getClientOriginalExtension();
+        $nombreArchivo = "pdf_" . time() . "." . $file->getClientOriginalExtension();
 
-            
-            $rutaArchivo = $file->storeAs('pdf', $nombreArchivo, 'public');
+        $rutaArchivo = $file->storeAs('pdf', $nombreArchivo, 'public');
 
-        
-            $archivo = new SeguridadTrabajo();
-            $archivo->urlpdf = $rutaArchivo;
-            $archivo->save();
+        $archivo = new SeguridadTrabajo();
+        $archivo->urlpdf = $rutaArchivo;
+        $archivo->save();
 
-            return view('seguridadYSalud.index', compact('archivo'));
-        }
+        return redirect()->route('seguridadYSalud.index', $archivo->id);
+    } else {
+        return redirect()->back()->with('error', 'Por favor, sube un archivo PDF válido.');
     }
-
+}
     public function show($id)
     {
         

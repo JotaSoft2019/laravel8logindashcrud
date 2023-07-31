@@ -36,12 +36,18 @@
                         <h4>PDF existente</h4>
                     </div>
                     <div class="card-body">
-                    <embed src="{{ asset('/' . $archivo->urlpdf) }}" width="100%" height="200" type="application/pdf">
+                    <embed src="{{ asset('pdf/' . $archivo->urlpdf) }}" width="100%" height="200" type="application/pdf">
                     </div>
                 </div>
             </div>
         </div>
     @endif
+
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 </div>
 @stop
 
