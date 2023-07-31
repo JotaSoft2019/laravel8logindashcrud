@@ -17,11 +17,15 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        <h4>PDF existente</h4>
+                    <h5 class="card-title">{{ $archivo->titulo }}</h5>
                     </div>
+                    
                     <div class="card-body">
                         <embed src="{{ asset('storage/' . $archivo->urlpdf) }}" width="100%" height="200" type="application/pdf">
                     </div>
+                    <div class="card text-center">
+                       <p class="card-text">{{ $archivo-> text}}</p>
+                   </div>
                     <div class="card-footer">
                         <form action="{{ route('seguridadYSalud.destroy', $archivo->id) }}" method="post">
                             @csrf

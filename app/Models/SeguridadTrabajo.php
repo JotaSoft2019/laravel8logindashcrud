@@ -9,5 +9,5 @@ class SeguridadTrabajo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['titulo', 'imagen', 'pdf_path', 'parrafo'];
+    protected $fillable = ['titulo', 'pdf_path', 'text'];
 }

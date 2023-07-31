@@ -21,23 +21,30 @@ class SeguridadTrabajoController extends Controller
         
     }
     public function store(Request $request)
-    {
-        if ($request->hasFile('urlpdf') && $request->file('urlpdf')->getClientOriginalExtension() === 'pdf') {
-            $file = $request->file('urlpdf');
-    
-            $nombreArchivo = "pdf_" . time() . "." . $file->getClientOriginalExtension();
-    
-            $rutaArchivo = $file->storeAs('pdf', $nombreArchivo, 'public');
-    
-            $archivo = new SeguridadTrabajo();
-            $archivo->urlpdf = 'pdf/' . $nombreArchivo; 
-            $archivo->save();
-    
-            return redirect()->route('seguridadYSalud.index');
-        } else {
-            return redirect()->back()->with('error', 'Por favor, sube un archivo PDF válido.');
-        }
+{
+    // Verifica si el campo 'urlpdf' tiene un archivo PDF válido
+    if ($request->hasFile('urlpdf') && $request->file('urlpdf')->getClientOriginalExtension() === 'pdf') {
+        $file = $request->file('urlpdf');
+
+        // Genera un nombre único para el archivo
+        $nombreArchivo = "pdf_" . time() . "." . $file->getClientOriginalExtension();
+
+        // Guarda el archivo en la carpeta 'pdf' dentro del disco público
+        $rutaArchivo = $file->storeAs('pdf', $nombreArchivo, 'public');
+
+        // Crea un nuevo registro en la base de datos con el título y la ruta del archivo
+        $archivo = new SeguridadTrabajo();
+        $archivo->titulo = $request->input('titulo'); 
+        $archivo->urlpdf = $rutaArchivo;
+        $archivo->text = $request->input('text');
+
+        $archivo->save();
+
+        return redirect()->route('seguridadYSalud.index');
+    } else {
+        return redirect()->back()->with('error', 'Por favor, sube un archivo PDF válido.');
     }
+}
     public function show($id)
     {
         
@@ -103,12 +110,17 @@ public function update(Request $request, $id)
     if ($request->hasFile('urlpdf') && $request->file('urlpdf')->getClientOriginalExtension() === 'pdf') {
         $file = $request->file('urlpdf');
 
+        // Genera un nombre único para el archivo
         $nombreArchivo = "pdf_" . time() . "." . $file->getClientOriginalExtension();
 
+        // Guarda el archivo en la carpeta 'pdf' dentro del disco público
         $rutaArchivo = $file->storeAs('pdf', $nombreArchivo, 'public');
 
-        // Actualizar la URL del archivo en la base de datos
+        // Actualiza los datos del archivo en la base de datos
+        $archivo->titulo = $request->input('titulo'); 
         $archivo->urlpdf = $rutaArchivo;
+        $archivo->text = $request->input('text');
+
         $archivo->save();
 
         return redirect()->route('seguridadYSalud.index');
