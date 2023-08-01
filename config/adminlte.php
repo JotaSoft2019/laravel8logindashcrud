@@ -434,7 +434,7 @@ return [
 
         [
             'text' => 'Eventos',
-            'url'  => 'admin/settings',
+            'url'  => 'mycalendar',
             'icon' => 'fas fa-fw fa-user',
         ],
 

@@ -28,7 +28,7 @@ class MercadeoController extends Controller
     {
         $request->validate([
             'area' => 'required',
-            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:30720',
             'lema' => 'required',
         ]);
 
@@ -69,7 +69,7 @@ class MercadeoController extends Controller
     {
         $request->validate([
             'area' => 'required',
-            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:30720',
             'lema' => 'required',
         ]);
 
