@@ -92,7 +92,7 @@ class ComexController extends Controller
 
         // Eliminar la imagen si existe
         if ($comexs->imagen) {
-            Storage::delete($compras->imagen);
+            Storage::delete($comexs->imagen);
         }
 
         $comexs->delete();

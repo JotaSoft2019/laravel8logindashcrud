@@ -15,23 +15,23 @@
     <input type="file" name="imagen" id="imagen" class="form-control">
   </div>
   
-  <div class="mb-3">
-    <label for="area" class="form-label">Area</label>
-    <input id="area" name="area" type="text" class="form-control" tabindex="1">    
+  <div class="form-group">
+    <label for="area">Area</label>
+    <input id="area" name="area" type="text" class="form-control">
   </div>
   
-  <div class="mb-3">
-    <label for="lema" class="form-label">Lema</label>
-    <input id="lema" name="lema" type="text" class="form-control" tabindex="2">
+  <div class="form-group">
+    <label for="lema">Lema</label>
+    <input id="lema" name="lema" type="text" class="form-control">
   </div>
   
-  <a href="/mercadeo" class="btn btn-secondary" tabindex="3">Cancelar</a>
-  <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
+  <a href="{{ url('/mercadeo') }}" class="btn btn-secondary">Cancelar</a>
+  <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/adminlte.css">
+    <link rel="stylesheet" href="{{ asset('css/adminlte.css') }}">
 @stop
 
 @section('js')  

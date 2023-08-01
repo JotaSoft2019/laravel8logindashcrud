@@ -1,5 +1,3 @@
-@extends('adminlte::page')
-
 @section('title', 'Mercadeo Y comunicaciones')
 
 @section('content_header')
@@ -14,12 +12,12 @@
 
   <div class="mb-3">
     <label for="area" class="form-label">Area</label>
-    <input id="area" name="area" type="text" class="form-control" value="{{ $mercadeos->area }}">    
+    <input id="area" name="area" type="text" class="form-control" value="{{ old('area', $mercadeos->area) }}">    
   </div>
   
   <div class="mb-3">
     <label for="lema" class="form-label">Lema</label>
-    <input id="lema" name="lema" type="text" class="form-control" value="{{ $mercadeos->lema }}">
+    <input id="lema" name="lema" type="text" class="form-control" value="{{ old('lema', $mercadeos->lema) }}">
   </div>
 
   <div class="mb-3">
@@ -32,13 +30,13 @@
     <input id="imagen" name="imagen" type="file" class="form-control">
   </div>
 
-  <a href="/estrategias" class="btn btn-secondary">Cancelar</a>
+  <a href="{{ url('/estrategias') }}" class="btn btn-secondary">Cancelar</a>
   <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{ asset('css/admin_custom.css') }}">
 @stop
 
 @section('js')  

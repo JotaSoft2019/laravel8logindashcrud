@@ -13,13 +13,13 @@
        @foreach ($mercadeos as $mercadeo) 
            <div class="card w-75 card-compras">
                <div class="text-center">
-               <div class="card text-center compra-area">
+                   <div class="card text-center compra-area">
                        <h5 class="title-compra">{{ $mercadeo->area }}</h5> 
                    </div>
                    @if ($mercadeo->imagen)
-                       <img src="{{ asset('/imagenesJotaRed/mercadeo.png') }}" class="card-img-top" alt="Imagen" style="width: 60%; height: 60%; margin-left:160px; margin-top:20px; border-radius:20px 20px 20px 20px;">
+                       <img src="{{ asset('storage/' . $mercadeo->imagen) }}" class="card-img-top" alt="Imagen" style="width: 60%; height: 60%; margin-left: 160px; margin-top: 20px; border-radius: 20px;">
                    @else
-                       <div class="text-center" style="height: 400px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
+                       <div class="text-center" style="height: 400px; background-color: #eee; display: flex; align-items: center; justify-content: center; border-radius: 20px;">
                            <span class="align-middle">Sin imagen</span>
                        </div>
                    @endif
@@ -33,7 +33,6 @@
                            @csrf
                            @method('DELETE')
                            <button type="submit" class="btn btn-outline-danger">Borrar</button>
-                           
                        </form>
                    </div>
                </div>
@@ -44,8 +43,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 @stop
 

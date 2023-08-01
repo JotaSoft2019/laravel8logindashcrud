@@ -17,7 +17,7 @@
                        <h5 class="title-compra">{{ $talentoHumano->area }}</h5> 
                    </div>
                    @if ($talentoHumano->imagen)
-                       <img src="{{ asset('/imagenesJotaRed/talentoHumano.jpg') }}" class="card-img-top" alt="Imagen" style="width: 60%; height: 55%; margin-left:160px; margin-top:20px; border-radius:20px 20px 20px 20px;">
+                       <img src="{{ asset('storage/' . $talentoHumano->imagen) }}" class="card-img-top" alt="Imagen" style="width: 60%; height: 55%; margin-left:160px; margin-top:20px; border-radius:20px 20px 20px 20px;">
                    @else
                        <div class="text-center" style="height: 400px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
                            <span class="align-middle">Sin imagen</span>

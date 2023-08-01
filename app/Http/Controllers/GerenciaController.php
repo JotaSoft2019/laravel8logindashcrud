@@ -88,14 +88,14 @@ class GerenciaController extends Controller
 
     public function destroy($id)
     {
-        $gerencias = Gerencia::find($id);
+        $gerencia = Gerencia::find($id);
 
         // Eliminar la imagen si existe
-        if ($gerencias->imagen) {
-            Storage::delete($gerencias->imagen);
+        if ($gerencia->imagen) {
+            Storage::delete($gerencia->imagen);
         }
 
-        $gerencias->delete();
-        return redirect('/gerencias');
+        $gerencia->delete();
+        return redirect('/gerencia');
     }
 }

@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Mercadeo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+
 class MercadeoController extends Controller
 {
     public function __construct()
@@ -13,8 +15,8 @@ class MercadeoController extends Controller
 
     public function index()
     {
-        $mercadeos = Mercadeo::all(); 
-        return view('mercadeo.index')->with('mercadeos', $mercadeos); 
+        $mercadeos = Mercadeo::all();
+        return view('mercadeo.index', compact('mercadeos'));
     }
 
     public function create()
@@ -31,47 +33,8 @@ class MercadeoController extends Controller
         ]);
 
         $mercadeos = new Mercadeo();
-        $mercadeos->area = $request->get('area');
-        $mercadeos->lema = $request->get('lema');
-
-        if ($request->hasFile('imagen')) {
-            $imagen = $request->file('imagen');
-            $rutaImagen = $imagen->store('public/imagen');
-
-            if ($mercadeos->imagen) {
-                Storage::delete($mercadeos->imagen);
-            }
-        }
-
-
-
-        $mercadeos->save();
-
-        return redirect('/mercadeo');
-    }
-
-    public function show($id)
-    {
-        // Aquí puedes implementar la lógica para mostrar detalles específicos si lo deseas
-    }
-
-    public function edit($id)
-    {
-        $mercadeos = Mercadeo::find($id);
-        return view('mercadeo.edit')->with('mercadeos', $mercadeos);
-    }
-
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'area' => 'required',
-            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'lema' => 'required',
-        ]);
-
-        $mercadeos = Mercadeo::find($id);
-        $mercadeos->area = $request->get('area');
-        $mercadeos->lema = $request->get('lema');
+        $mercadeos->area = $request->input('area');
+        $mercadeos->lema = $request->input('lema');
 
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');
@@ -87,7 +50,48 @@ class MercadeoController extends Controller
 
         $mercadeos->save();
 
-        return redirect('/mercadeo');
+        return redirect('/mercadeo')->with('success', 'Registro creado exitosamente.');
+    }
+
+    public function show($id)
+    {
+        $mercadeo = Mercadeo::find($id);
+        return view('mercadeo.show', compact('mercadeo'));
+    }
+
+    public function edit($id)
+    {
+        $mercadeo = Mercadeo::find($id);
+        return view('mercadeo.edit', compact('mercadeo'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'area' => 'required',
+            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'lema' => 'required',
+        ]);
+
+        $mercadeo = Mercadeo::find($id);
+        $mercadeo->area = $request->input('area');
+        $mercadeo->lema = $request->input('lema');
+
+        if ($request->hasFile('imagen')) {
+            $imagen = $request->file('imagen');
+            $rutaImagen = $imagen->store('public/imagen');
+
+            // Eliminar la imagen anterior si existe
+            if ($mercadeo->imagen) {
+                Storage::delete($mercadeo->imagen);
+            }
+
+            $mercadeo->imagen = $rutaImagen;
+        }
+
+        $mercadeo->save();
+
+        return redirect('/mercadeo')->with('success', 'Registro actualizado exitosamente.');
     }
 
     public function destroy($id)
@@ -100,6 +104,7 @@ class MercadeoController extends Controller
         }
 
         $mercadeo->delete();
-        return redirect('/mercadeo');
+
+        return redirect('/mercadeo')->with('success', 'Registro eliminado exitosamente.');
     }
 }
