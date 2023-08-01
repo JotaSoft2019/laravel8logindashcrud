@@ -78,7 +78,7 @@ class LideresController extends Controller
             $imagen = $request->file('imagen');
             $rutaImagen = $imagen->store('public/imagen');
 
-            // Eliminar la imagen anterior si existe
+           
             if ($lideres->imagen) {
                 Storage::delete($lideres->imagen);
             }

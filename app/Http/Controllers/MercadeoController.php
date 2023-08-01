@@ -37,8 +37,13 @@ class MercadeoController extends Controller
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');
             $rutaImagen = $imagen->store('public/imagen');
-            $mercadeos->imagen = $rutaImagen;
+
+            if ($mercadeos->imagen) {
+                Storage::delete($mercadeos->imagen);
+            }
         }
+
+
 
         $mercadeos->save();
 
