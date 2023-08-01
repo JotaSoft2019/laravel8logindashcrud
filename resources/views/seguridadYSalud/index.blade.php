@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Seguridad y Salud')
+@section('title', 'Seguridad y Salud En El Trabajo')
 
 @section('content_header')
-    <h1>Seguridad y Salud</h1>
+    <h1>Seguridad y Salud En El Trabajo</h1>
 @stop
 
 @section('content')

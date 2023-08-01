@@ -4,21 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Lideres extends Migration
-{ 
-   /**
+class CreateAdnsTable extends Migration
+{
+    /**
      * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('lideres', function (Blueprint $table) {
+        Schema::create('adns', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre',10);
-            $table->string('apellido',50);
-            $table->string('area',100);
-            $table->binary('imagen', 65535);
+            $table->string('titulo');
+            $table->string('urlpdf');
+            $table->string('text', 1000);
             $table->timestamps();
         });
     }
@@ -30,8 +29,6 @@ class Lideres extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lideres');
+        Schema::dropIfExists('adns');
     }
-
-    
 }

@@ -24,27 +24,30 @@ class LogisticaController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'area' => 'required',
-            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'lema' => 'required',
-        ]);
+{
+    $request->validate([
+        'nombre' => 'required',
+        'apellido' => 'required',
+        'area' => 'required',
+        'imagen' => 'image|mimes:jpeg,png,jpg,gif,nef|max:15000',
+    ]);
 
-        $logisticas = new Logistica();
-        $logisticas->area = $request->get('area');
-        $logisticas->lema = $request->get('lema');
+    $lideres = new Lideres();
+    $lideres->nombre = $request->input('nombre');
+    $lideres->apellido = $request->input('apellido');
+    $lideres->area = $request->input('area');
 
-        if ($request->hasFile('imagen')) {
-            $imagen = $request->file('imagen');
-            $rutaImagen = $imagen->store('public/imagen');
-            $logisticas->imagen = $rutaImagen;
-        }
-
-        $logisticas->save();
-
-        return redirect('/logistica');
+    if ($request->hasFile('imagen') && $request->file('imagen')->isValid()) {
+        $imagen = $request->file('imagen');
+        $nombreArchivo = "imagen_" . time() . "." . $imagen->getClientOriginalExtension();
+        $rutaImagen = $imagen->storeAs('public/pdf', $nombreArchivo);
+        $lideres->imagen = str_replace('public/', '', $rutaImagen);
     }
+
+    $lideres->save();
+
+    return redirect('/lideres')->with('success', 'El líder ha sido creado exitosamente.');
+}
 
     public function show($id)
     {

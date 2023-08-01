@@ -26,7 +26,7 @@
     <label for="imagen" class="form-label">Imagen</label>
     @if ($lideres->imagen)
         <div>
-            <img src="{{($lideres->imagen_url)}}" alt="Imagen del líder" style="width: 200px;">
+            <img src="{{ asset('storage/'.$lideres->imagen) }}" alt="Imagen del líder" style="width: 200px;">
         </div>
     @endif
     <input id="imagen" name="imagen" type="file" class="form-control">

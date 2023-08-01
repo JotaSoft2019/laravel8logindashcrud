@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Talento Humano Y Gerencia')
+@section('title', 'Cultura y Adn Jota Mundial')
 
 @section('content_header')
-    <h1>Talento Humano Y Gerencia</h1>
+    <h1>Cultura y Adn Jota Mundial</h1>
 @stop
 
 @section('content')
-<a href="{{ route('talento.create') }}" class="btn btn-outline-success">CREAR</a>
+<a href="{{ route('adn.create') }}" class="btn btn-outline-success">CREAR</a>
 <div class="container">
     {{-- Mostrar el PDF si ya se ha creado --}}
     @if ($archivos && $archivos->count() > 0)
@@ -27,11 +27,11 @@
                        <p class="card-text">{{ $archivo-> text}}</p>
                    </div>
                     <div class="card-footer">
-                        <form action="{{ route('talento.destroy', $archivo->id) }}" method="post">
+                        <form action="{{ route('adn.destroy', $archivo->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-outline-danger">Borrar</button>
-                            <a href="{{ route('talento.edit', $archivo->id) }}" class="btn btn-outline-warning">Editar</a>
+                            <a href="{{ route('adn.edit', $archivo->id) }}" class="btn btn-outline-warning">Editar</a>
                         </form>
                     </div>
                 </div>

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Seguridad y Salud En El Trabajo')
+@section('title', 'Cultura y Adn Jota Mundial')
 
 @section('content_header')
-    <h1>Seguridad y Salud En El Trabajo</h1>
+    <h1>Cultura y Adn Jota Mundial</h1>
 @stop
 
 @section('content')
@@ -16,7 +16,7 @@
                     <h4>Subir archivo PDF</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('seguridadYSalud.update', $archivo->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('adn.update', $archivo->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">Subir PDF</button>
-                            <a href="/seguridadYSalud" class="btn btn-secondary">Cancelar</a>
+                            <a href="/adn" class="btn btn-secondary">Cancelar</a>
                         </div>
                     </form>
                 </div>

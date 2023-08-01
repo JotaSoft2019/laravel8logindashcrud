@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Seguridad y Salud')
+@section('title', 'Talento Humano Y Gerencia')
 
 @section('content_header')
-    <h1>Seguridad y Salud</h1>
+    <h1>Talento Humano Y Gerencia</h1>
 @stop
 
 @section('content')

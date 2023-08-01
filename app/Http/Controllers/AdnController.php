@@ -1,23 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Talento;
+use App\Models\Adn;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
-class TalentoController extends Controller
+class AdnController extends Controller
 {
     public function index()
     {
 
-        $archivos = Talento::all();
-        return view('talentoG.index', compact('archivos'));
+        $archivos = Adn::all();
+        return view('adn.index', compact('archivos'));
     }
 
     public function create()
     {
-        $archivos = Talento::all();
-        return view('talentoG.create', compact('archivos'));
+        $archivos = Adn::all();
+        return view('adn.create', compact('archivos'));
         
     }
     public function store(Request $request)
@@ -32,14 +32,14 @@ class TalentoController extends Controller
         $rutaArchivo = $file->storeAs('pdf', $nombreArchivo, 'public');
 
         
-        $archivo = new Talento();
+        $archivo = new Adn();
         $archivo->titulo = $request->input('titulo'); 
         $archivo->urlpdf = $rutaArchivo;
         $archivo->text = $request->input('text');
 
         $archivo->save();
 
-        return redirect()->route('talento.index');
+        return redirect()->route('adn.index');
     } else {
         return redirect()->back()->with('error', 'Por favor, sube un archivo PDF válido.');
     }
@@ -47,7 +47,7 @@ class TalentoController extends Controller
     public function show($id)
     {
         
-        $archivo = Talento::find($id);
+        $archivo = Adn::find($id);
     
         if ($archivo) {
            
@@ -68,7 +68,7 @@ class TalentoController extends Controller
     public function download()
 {
     
-    $archivo = Talento::latest()->first();
+    $archivo = Adn::latest()->first();
 
     if ($archivo) {
         
@@ -88,19 +88,19 @@ class TalentoController extends Controller
 
 public function destroy($id)
 {
-    $archivo = Talento::find($id);
+    $archivo = Adn::find($id);
     if ($archivo) {
         Storage::delete('public/' . $archivo->urlpdf);
         $archivo->delete();
-        return redirect()->route('talento.index')->with('success', 'Archivo PDF eliminado exitosamente.');
+        return redirect()->route('adn.index')->with('success', 'Archivo PDF eliminado exitosamente.');
     } else {
-        return redirect()->route('talento.index')->with('error', 'No se encontró el archivo PDF.');
+        return redirect()->route('adn.index')->with('error', 'No se encontró el archivo PDF.');
     }
 }
 
 public function update(Request $request, $id)
 {
-    $archivo = Talento::find($id);
+    $archivo = Adn::find($id);
 
     if (!$archivo) {
         return redirect()->back()->with('error', 'El archivo no existe.');
@@ -131,14 +131,14 @@ public function update(Request $request, $id)
 public function edit($id)
 {
     // Obtén el registro de la base de datos según el ID proporcionado
-    $archivo = Talento::find($id);
+    $archivo = Adn::find($id);
 
     if ($archivo) {
         // Muestra el formulario de edición, pasando el registro a la vista
-        return view('talentoG.edit', compact('archivo'));
+        return view('adn.edit', compact('archivo'));
     } else {
         // Redirige de vuelta con un mensaje de error si el registro no se encuentra
-        return redirect()->route('talento.index')->with('error', 'El archivo no existe.');
+        return redirect()->route('adn.index')->with('error', 'El archivo no existe.');
     }
 }
 }

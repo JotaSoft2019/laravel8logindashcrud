@@ -66,7 +66,7 @@ class LideresController extends Controller
             'nombre' => 'required',
             'apellido' => 'required',
             'area' => 'required',
-            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:5000',
         ]);
 
         $lideres = Lideres::find($id);
