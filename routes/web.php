@@ -25,13 +25,7 @@ Route::get('/', function () {
 
 
 
-Route::get('fullcalendar', [EventController::class, 'index']);
-Route::post('fullcalendarAjax', [EventController::class, 'ajax']);
 
-
-
-
-Route::resource('mycalendar', 'App\Http\Controllers\EventController');
 Route::resource('adn', 'App\Http\Controllers\AdnController');
 Route::resource('talento', 'App\Http\Controllers\TalentoController');
 Route::resource('comex', 'App\Http\Controllers\ComexController');

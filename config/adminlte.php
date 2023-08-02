@@ -434,7 +434,7 @@ return [
 
         [
             'text' => 'Eventos',
-            'url'  => 'mycalendar',
+            'url'  => 'evento',
             'icon' => 'fas fa-fw fa-user',
         ],
 
