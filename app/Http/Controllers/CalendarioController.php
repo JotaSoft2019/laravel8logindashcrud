@@ -13,26 +13,32 @@ class CalendarioController extends Controller
     }
 
     public function index()
-    {
-        
-        $calendario = Calendario::all(); // Corregido: Cambiar "$comercial" a "$comerciales"
-        return view('calendario.index')->with('calendario', $calendario); // Corregido: Cambiar "$comercial" a "$comerciales"
-    }
+{
+    $calendarios = Calendario::all();
+
+    $meses = array(1 => "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+        "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+
+    return view('calendario.index')->with('calendarios', $calendarios)->with('meses', $meses);
+}
 
   
+public function store(Request $request)
+{
+    $request->validate([
+        'campo1' => 'required',
+        'campo2' => 'required',
+        // Agregar otras reglas de validación para otros campos si es necesario
+    ]);
 
-    public function store(Request $request)
-    {
-
-        $calendario = new Calendario(); 
-   
-    $calendario->campo1 = $request->input('campo1');
-    $calendario->campo2 = $request->input('campo2');
-   
-    $calendario->save();
+    $calendarios = new Calendario();
+    $calendarios->campo1 = $request->input('campo1');
+    $calendarios->campo2 = $request->input('campo2');
+    
+    $calendarios->save();
 
     return redirect('/calendario');
-    }
+}
 
     public function show($id)
     {

@@ -16,7 +16,7 @@
       @endforeach
    </div>
    <br>
-   <form  action="{{ route('event.store') }} " method="POST">
+   <form  action="{{ route('eventos.store') }} " method="POST">
        <a href="{{ route('calendario.index') }}" class="btn btn-outline-success">Volver</a>
    </form>
 

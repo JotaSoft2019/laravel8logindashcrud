@@ -15,7 +15,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::all();
-        return view('calendario.eventos.index', compact('events'));
+        return view('calendario.eventos.index' , compact('events'));
     }
 
     public function create()
@@ -24,25 +24,23 @@ class EventController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'titulo' => 'required',
-            'descripcion' => 'required',
-            'fecha_inicio' => 'required',
-            'fecha_fin' => 'required',
-        ]);
+{
+    $request->validate([
+        'titulo' => 'required',
+        'descripcion' => 'required',
+        'fecha_inicio' => 'required',
+        'fecha_fin' => 'required',
+    ]);
 
-        
-        Event::create([
-            'titulo' => $request->input('titulo'),
-            'descripcion' => $request->input('descripcion'),
-            'fecha_inicio' => $request->input('fecha_inicio'),
-            'fecha_fin' => $request->input('fecha_fin'),
-            
-        ]);
+    Event::create([
+        'titulo' => $request->input('titulo'),
+        'descripcion' => $request->input('descripcion'),
+        'fecha_inicio' => $request->input('fecha_inicio'),
+        'fecha_fin' => $request->input('fecha_fin'),
+    ]);
 
-        return redirect()->route('calendario.index')->with('success', 'Evento creado correctamente');
-    }
+    return redirect()->route('calendario.index')->with('success', 'Evento creado correctamente');
+}
 
     public function show($id)
     {

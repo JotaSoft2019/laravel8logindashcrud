@@ -12,7 +12,5 @@ class Calendario extends Model
     {
         return $this->hasMany(Event::class);
     }
-    protected $fillable = [
-        'campo1','campo2',
-    ];
+   
 }
