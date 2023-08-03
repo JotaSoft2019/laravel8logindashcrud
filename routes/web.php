@@ -24,8 +24,8 @@ Route::get('/', function () {
 });
 
 
-
-
+Route::resource('eventos', 'App\Http\Controllers\EventController');
+Route::resource('calendario', 'App\Http\Controllers\CalendarioController');
 Route::resource('adn', 'App\Http\Controllers\AdnController');
 Route::resource('talento', 'App\Http\Controllers\TalentoController');
 Route::resource('comex', 'App\Http\Controllers\ComexController');

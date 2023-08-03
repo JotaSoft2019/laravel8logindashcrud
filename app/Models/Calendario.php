@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Calendario extends Model
 {
     use HasFactory;
-    public function calendar()
+    public function events()
     {
-        return $this->belongsTo(Calendar::class);
+        return $this->hasMany(Event::class);
     }
     protected $fillable = [
-        'titulo','descripcion','fecha_inicio','fecha_fin',
+        'campo1','campo2',
     ];
 }

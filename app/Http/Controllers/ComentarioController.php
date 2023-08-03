@@ -39,7 +39,7 @@ class ComentarioController extends Controller
 
     public function show($id)
     {
-        // Implement logic to show specific details if needed
+        
     }
 
     public function edit($id)
