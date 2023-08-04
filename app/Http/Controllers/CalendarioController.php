@@ -14,12 +14,19 @@ class CalendarioController extends Controller
 
     public function index()
 {
+    $events = array();
     $calendarios = Calendario::all();
 
-    $meses = array(1 => "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
-        "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+    foreach ($calendarios as $calendario) {
+        $events[] = [
+        'titulo' => $calendario->titulo,
+        'descripcion' => $calendario->descripcion,
+        'fecha_inicio' =>$calendario->fecha_inicio,
+        'fecha_fin' => $calendario->fecha_fin,
+        ];
+    }
 
-    return view('calendario.index')->with('calendarios', $calendarios)->with('meses', $meses);
+    return view('calendario.index',['event'=>$events]);
 }
 
   

@@ -34,7 +34,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function() { 
    var calendar = $('#calendar').fullCalendar({
     editable:true,
     header:{
@@ -42,7 +42,7 @@
      center:'title',
      right:'month,agendaWeek,agendaDay'
     },
-    events: 'load.php',
+    events: 'calendarios',
     selectable:true,
     selectHelper:true,
     select: function(start, end, allDay)

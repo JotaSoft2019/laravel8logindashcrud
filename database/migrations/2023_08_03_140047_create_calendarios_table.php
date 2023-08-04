@@ -15,8 +15,10 @@ class CreateCalendariosTable extends Migration
     {
         Schema::create('calendarios', function (Blueprint $table) {
             $table->id();
-            $table->string('campo1');
-            $table->string('campo2');
+            $table->string('titulo');
+            $table->text('descripcion')->nullable();
+            $table->dateTime('fecha_inicio');
+            $table->dateTime('fecha_fin');
             $table->timestamps();
         });
     }
