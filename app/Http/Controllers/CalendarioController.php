@@ -56,15 +56,6 @@ public function store(Request $request)
 
     public function destroy($id)
     {
-        $comercial = Comercial::find($id);
-
-        // Eliminar la imagen si existe
-        if ($comercial->imagen) {
-            Storage::delete($comercial->imagen);
-        }
-
-        $comercial->delete();
-
-        return redirect('/comercials');
+        return $id;
     }
 }

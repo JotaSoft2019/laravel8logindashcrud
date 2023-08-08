@@ -86,7 +86,8 @@
                         dataType:"json",
                         data:{ title, start_date, end_date },
                         success:function(response)
-                        {   
+                        {  
+                            $('#calendarioModal').modal('hide');
                             $('#calendar').fullCalendar('renderEvents',{
                                 'title': response.title,
                                 'start': response.start_date,
@@ -105,6 +106,29 @@
                 });
             },
     editable:true,
+    eventDrop:function(event)
+    {
+        var id = event.id;
+        var title = event.title;
+        var start_date = moment(event.start).format('YYYY-MM-DD');
+        var end_date = moment(event.end).format('YYYY-MM-DD');
+     
+        $.ajax({
+                        url:"{{ route('calendario.destroy', '') }}" + '/'+ id,
+                        type:"DELETE",
+                        dataType:"json",
+                        data:{ start_date, end_date },
+                        success:function(response)
+                        {  
+                            console.log(response);
+                        },
+                        error:function(error)
+                        {    
+                            console.log(error)
+                        }
+                    });
+    },
+
     eventResize:function(event)
     {
      var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
@@ -120,24 +144,6 @@
        alert('Event Update');
       }
      })
-    },
-
-    eventDrop:function(event)
-    {
-     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-     var title = event.title;
-     var id = event.id;
-     $.ajax({
-      url:"update.php",
-      type:"POST",
-      data:{title:title, start:start, end:end, id:id},
-      success:function()
-      {
-       calendar.fullCalendar('refetchEvents');
-       alert("Event Updated");
-      }
-     });
     },
 
     eventClick:function(event)
