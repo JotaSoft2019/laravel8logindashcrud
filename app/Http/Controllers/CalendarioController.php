@@ -21,7 +21,6 @@ class CalendarioController extends Controller
     foreach ($calendarios as $calendario) {
         $events[] = [
         'title' => $calendario->title,
-        'descripcion' => $calendario->descripcion,
         'start' =>$calendario->start_date,
         'end' => $calendario->end_date,
         ];
@@ -34,18 +33,17 @@ class CalendarioController extends Controller
 public function store(Request $request)
 {
     $request->validate([
-        'campo1' => 'required',
-        'campo2' => 'required',
-        // Agregar otras reglas de validación para otros campos si es necesario
+        'title' => 'required|string'
     ]);
 
-    $calendarios = new Calendario();
-    $calendarios->campo1 = $request->input('campo1');
-    $calendarios->campo2 = $request->input('campo2');
-    
-    $calendarios->save();
+    $calendario = Calendario::create([
+        'title' => $request->title,
+        'start_date' => $request->start_date,
+        'end_date' => $request->end_date,
+    ]);
 
-    return redirect('/calendario');
+    return response()->json($calendario);
+    
 }
 
     public function show($id)

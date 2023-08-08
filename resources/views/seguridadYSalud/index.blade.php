@@ -12,30 +12,6 @@
     {{-- Mostrar el PDF si ya se ha creado --}}
     @if ($archivos && $archivos->count() > 0)
     <div class="row justify-content-center mt-4">
-        <!-- Mostrar el nuevo archivo PDF primero -->
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">{{ $nuevoArchivo->titulo }}</h5>
-                </div>
-                <div class="card-body">
-                    <embed src="{{ asset('storage/' . $nuevoArchivo->urlpdf) }}" width="100%" height="200" type="application/pdf">
-                </div>
-                <div class="card text-center">
-                    <p class="card-text">{{ $nuevoArchivo->text }}</p>
-                </div>
-                <div class="card-footer">
-                    <form action="{{ route('seguridadYSalud.destroy', $nuevoArchivo->id) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-outline-danger">Borrar</button>
-                        <a href="{{ route('seguridadYSalud.edit', $nuevoArchivo->id) }}" class="btn btn-outline-warning">Editar</a>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mostrar los archivos existentes -->
         @foreach ($archivos as $archivo)
             <div class="col-md-4">
                 <div class="card">

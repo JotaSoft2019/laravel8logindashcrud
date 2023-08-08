@@ -10,11 +10,10 @@ class SeguridadTrabajoController extends Controller
    
     public function index()
     {
-        $archivos = SeguridadTrabajo::whereNotIn('id', [SeguridadTrabajo::latest()->first()->id])->get();
-        $nuevoArchivo = SeguridadTrabajo::latest()->first();
-    
-        return view('seguridadYSalud.index', compact('archivos', 'nuevoArchivo'));
+        $archivos = SeguridadTrabajo::all();
+        return view('seguridadYSalud.index', compact('archivos'));
     }
+    
     
 
     public function create()
