@@ -16,17 +16,18 @@ class CalendarioController extends Controller
 {
     $events = array();
     $calendarios = Calendario::all();
+    
 
     foreach ($calendarios as $calendario) {
         $events[] = [
-        'titulo' => $calendario->titulo,
+        'title' => $calendario->title,
         'descripcion' => $calendario->descripcion,
-        'fecha_inicio' =>$calendario->fecha_inicio,
-        'fecha_fin' => $calendario->fecha_fin,
+        'start' =>$calendario->start_date,
+        'end' => $calendario->end_date,
         ];
     }
 
-    return view('calendario.index',['event'=>$events]);
+    return view('calendario.index',['events'=>$events]);
 }
 
   

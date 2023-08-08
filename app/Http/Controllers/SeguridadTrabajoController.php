@@ -7,12 +7,15 @@ use Illuminate\Http\Request;
 
 class SeguridadTrabajoController extends Controller
 {
+   
     public function index()
     {
-
-        $archivos = SeguridadTrabajo::all();
-        return view('seguridadYSalud.index', compact('archivos'));
+        $archivos = SeguridadTrabajo::whereNotIn('id', [SeguridadTrabajo::latest()->first()->id])->get();
+        $nuevoArchivo = SeguridadTrabajo::latest()->first();
+    
+        return view('seguridadYSalud.index', compact('archivos', 'nuevoArchivo'));
     }
+    
 
     public function create()
     {
