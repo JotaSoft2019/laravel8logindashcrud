@@ -46,6 +46,7 @@
 @stop
 
 @section('js')
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -60,10 +61,9 @@
                 headers:{
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
-            })
+            });
             var calendario = @json($events);
         $('#calendar').fullCalendar({
-            editable:true,
             header:{
                right:'prev,next today',
                center:'title',
@@ -93,7 +93,7 @@
                                 'start': response.start_date,
                                 'end': response.end_date
 
-                          })
+                          });
                         },
                         error:function(error)
                         {    
@@ -101,7 +101,7 @@
                                 $('#titleError').html(error.responseJSON.errors.title);
                             }
 
-                        }
+                        },
                     });
                 });
             },
@@ -114,57 +114,53 @@
         var end_date = moment(event.end).format('YYYY-MM-DD');
      
         $.ajax({
-                        url:"{{ route('calendario.destroy', '') }}" + '/'+ id,
-                        type:"DELETE",
+                        url:"{{ route('calendario.update', '') }}" + '/'+ id,
+                        type:"PATCH",
                         dataType:"json",
                         data:{ start_date, end_date },
                         success:function(response)
                         {  
-                            console.log(response);
+                            swal("Evento Actualizado!", "Correctamente", "success");
                         },
                         error:function(error)
                         {    
                             console.log(error)
-                        }
+                        },
                     });
     },
 
-    eventResize:function(event)
-    {
-     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-     var title = event.title;
-     var id = event.id;
-     $.ajax({
-      url:"update.php",
-      type:"POST",
-      data:{title:title, start:start, end:end, id:id},
-      success:function(){
-       calendar.fullCalendar('refetchEvents');
-       alert('Event Update');
-      }
-     })
-    },
 
-    eventClick:function(event)
-    {
-     if(confirm("Are you sure you want to remove it?"))
-     {
-      var id = event.id;
-      $.ajax({
-       url:"delete.php",
-       type:"POST",
-       data:{id:id},
-       success:function()
-       {
-        calendar.fullCalendar('refetchEvents');
-        alert("Event Removed");
-       }
-      })
-     }
-    },
+    eventClick: function(event){
+                    var id = event.id;
+
+                    if(confirm('¿Quieres Eliminar Este Evento?')){
+                        $.ajax({
+                            url:"{{ route('calendario.destroy', '') }}" +'/'+ id,
+                            type:"DELETE",
+                            dataType:'json',
+                            success:function(response)
+                            {
+                                $('#calendar').fullCalendar('removeEvents', response);
+                                
+                            },
+                            error:function(error)
+                            {
+                                console.log(error)
+                            },
+                        });
+                    }
+
+                },
+                selectAllow: function(event)
+                {
+                    return moment(event.start).utcOffset(false).isSame(moment(event.end).subtract(1, 'second').utcOffset(false), 'day');
+                },
 
    });
+
+     $("#calendarioModal").on("hidden.bs.modal", function () {
+        $('#saveBtn').unbind();
+     });
   });
     </script>
 @stop

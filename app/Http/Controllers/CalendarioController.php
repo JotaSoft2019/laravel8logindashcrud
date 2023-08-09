@@ -19,10 +19,17 @@ class CalendarioController extends Controller
     
 
     foreach ($calendarios as $calendario) {
+        $color = null;
+        if ($calendario->title == 'Test'){
+            $color = '#FB1CEF';
+           
+        }
         $events[] = [
+        'id' => $calendario->id,  
         'title' => $calendario->title,
         'start' =>$calendario->start_date,
         'end' => $calendario->end_date,
+        'color' => $color
         ];
     }
 
@@ -54,8 +61,32 @@ public function store(Request $request)
  
 
 
+    public function update(Request $request, $id)
+    {
+        $calendario = Calendario::find($id);
+        if (! $calendario) {
+            return response()->json([
+                'error' => 'No se puede localizar el evento'
+            ],404);
+        }
+
+        $calendario->update([
+            'start_date' => $request->start_date,
+            'end_date'=>$request->end_date,
+        ]);
+
+        return response()->json('Evento Actualizado');
+    }
+
     public function destroy($id)
     {
+        $calendario = Calendario::find($id);
+        if(! $calendario) {
+            return response()->json([
+                'error' => 'Unable to locate the event'
+            ], 404);
+        }
+        $calendario->delete();
         return $id;
     }
 }

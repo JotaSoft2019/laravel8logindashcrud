@@ -24,6 +24,7 @@ Route::get('/', function () {
 });
 
 Route::post('calendario', [CalendarioController::class, 'store'])->name('calendario.calendario.store');
+Route::patch('calendario/update/{id}', [CalendarioController::class, 'update'])->name('calendario.calendario.update');
 Route::delete('calendario/destroy/{id}', [CalendarioController::class, 'destroy'])->name('calendario.calendario.destroy');
 Route::resource('eventos', 'App\Http\Controllers\EventController');
 Route::resource('calendario', 'App\Http\Controllers\CalendarioController');
