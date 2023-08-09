@@ -73,6 +73,7 @@
             select: function(start, end, allDay)
             {
                 $('#calendarioModal').modal('toggle');
+
                 $('#saveBtn').click(function(){
                     var title = $('#title').val();
                     var start_date = moment(start).format('YYYY-MM-DD');
@@ -86,7 +87,7 @@
                         success:function(response)
                         {  
                             $('#calendarioModal').modal('hide');
-                            $('#calendar').fullCalendar('renderEvents',{
+                            $('#calendar').fullCalendar('renderEvent',{
                                 'title': response.title,
                                 'start': response.start,
                                 'end': response.end,
@@ -108,7 +109,6 @@
     eventDrop:function(event)
     {
         var id = event.id;
-        var title = event.title;
         var start_date = moment(event.start).format('YYYY-MM-DD');
         var end_date = moment(event.end).format('YYYY-MM-DD');
      
@@ -129,31 +129,25 @@
     },
 
 
-    eventClick: function(event){
-                    var id = event.id;
+    eventClick: function(event) {
+    if (confirm('¿Quieres Eliminar Este Evento?')) {
+        $.ajax({
+            url: "{{ route('calendario.destroy', '') }}" + '/' + event.id,
+            type: "DELETE",
+            dataType: 'json',
+            success: function(response) {
+                $('#calendar').fullCalendar('removeEvents', function(existingEvent) {
+                    return existingEvent.id === event.id;
+                });
+                swal("Evento eliminado", "Correctamente", "success");
+            },
+            error: function(error) {
+                console.log("Error:", error);
+            },
+        });
+    }
 
-                    if(confirm('¿Quieres Eliminar Este Evento?')){
-                        $.ajax({
-                            url:"{{ route('calendario.destroy', '') }}" +'/'+ id,
-                            type:"DELETE",
-                            dataType:'json',
-                            success:function(response)
-                            {
-                                $('#calendar').fullCalendar('removeEvents', response);
-                                
-                            },
-                            error:function(error)
-                            {
-                                console.log(error)
-                            },
-                        });
-                    }
-
-                },
-                selectAllow: function(event)
-                {
-                    return moment(event.start).utcOffset(false).isSame(moment(event.end).subtract(1, 'second').utcOffset(false), 'day');
-                },
+},           
 
    });
 

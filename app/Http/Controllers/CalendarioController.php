@@ -97,7 +97,7 @@ public function store(Request $request)
         $calendario = Calendario::find($id);
         if(! $calendario) {
             return response()->json([
-                'error' => 'Unable to locate the event'
+                'error' => 'No se pudo eliminar el evento'
             ], 404);
         }
         $calendario->delete();
