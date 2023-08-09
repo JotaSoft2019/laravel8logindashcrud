@@ -49,7 +49,21 @@ public function store(Request $request)
         'end_date' => $request->end_date,
     ]);
 
-    return response()->json($calendario);
+    $color = null;
+
+    if ($calendario->title == 'Test'){
+        $color = '#FB1CEF';
+       
+    }
+
+    return response()->json([
+        'id' => $calendario->id,  
+        'title' => $calendario->title,
+        'start' =>$calendario->start_date,
+        'end' => $calendario->end_date,
+        'color' => $color ? $color: '',
+
+    ]);
     
 }
 

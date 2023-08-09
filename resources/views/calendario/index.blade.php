@@ -6,9 +6,7 @@
 @stop
 
 @section('content')
-    <a href="{{ route('eventos.create') }}" class="btn btn-outline-success mt-5"data-bs-toggle="modal">CREAR EVENTO</a>
 
-<!-- Modal -->
 <div class="modal fade" id="calendarioModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -90,8 +88,9 @@
                             $('#calendarioModal').modal('hide');
                             $('#calendar').fullCalendar('renderEvents',{
                                 'title': response.title,
-                                'start': response.start_date,
-                                'end': response.end_date
+                                'start': response.start,
+                                'end': response.end,
+                                'color':response.color
 
                           });
                         },
@@ -161,6 +160,8 @@
      $("#calendarioModal").on("hidden.bs.modal", function () {
         $('#saveBtn').unbind();
      });
+
+     
   });
     </script>
 @stop
