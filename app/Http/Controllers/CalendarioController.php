@@ -21,7 +21,7 @@ class CalendarioController extends Controller
     foreach ($calendarios as $calendario) {
         $color = null;
         if ($calendario->title == 'Test'){
-            $color = '#FB1CEF';
+            $color = '##AED6F1';
            
         }
         $events[] = [
@@ -71,9 +71,6 @@ public function store(Request $request)
     {
         // Aquí puedes implementar la lógica para mostrar detalles específicos si lo deseas
     }
-
- 
-
 
     public function update(Request $request, $id)
     {

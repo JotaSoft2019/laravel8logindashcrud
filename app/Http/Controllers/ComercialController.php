@@ -49,7 +49,7 @@ class ComercialController extends Controller
 
     public function show($id)
     {
-        // Aquí puedes implementar la lógica para mostrar detalles específicos si lo deseas
+        
     }
 
     public function edit($id)

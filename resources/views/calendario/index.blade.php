@@ -26,9 +26,12 @@
   </div>
 </div>
     <div class="container mt-5 calendario">
+    <div class="modal-footer">
+    </div>
         <div class="row">
             <div class="col-10">
-                <h3 class="text-center mt-1"><b>Calendario de Eventos Jota Mundial</b></h3>
+            <a href="calendario" class="btn btn-outline-success mt-3">ACTUALIZAR</a>
+                <h3 class="text-center mt-1 ml-5"><b>Calendario Jota Mundial</b></h3>
                 <div class="col-md-11 offset-1 mt-3 mb-5">
                     <div id="calendar"></div>
                 </div>
@@ -44,9 +47,12 @@
 @stop
 
 @section('js')
+
+    
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/locale/es.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -55,18 +61,23 @@
 
     <script>
         $(document).ready(function() { 
+            
             $.ajaxSetup({
                 headers:{
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
             var calendario = @json($events);
+
+            
         $('#calendar').fullCalendar({
             header:{
                right:'prev,next today',
                center:'title',
                left:'month,agendaWeek,agendaDay'
-        },
+            },
+            eventColor: '#5DADE2 ',
+            defaultView: 'month',
             events: calendario,
             selectable:true,
             selectHelper:true,
