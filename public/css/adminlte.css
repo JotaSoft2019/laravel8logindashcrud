@@ -1,0 +1,27 @@
+.compra-area{
+    height: 20px;
+    width: 500px;
+}
+
+.card{
+    margin-left: 120px;
+}
+
+.compra-area .title-compra{
+    border-bottom: none;
+    box-shadow: none;
+    margin-right: 50px;
+}
+.text-center{
+    margin-left: 20px;
+}
+
+.imagen-area img{
+    width: 250px;
+    height: 250px;
+}
+@media (max-width: 720px) {
+    .compras-footer button{
+        margin-left: 100px;
+    }
+}
