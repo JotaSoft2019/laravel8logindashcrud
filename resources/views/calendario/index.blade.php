@@ -47,11 +47,10 @@
 @stop
 
 @section('js')
-
-    
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/locale/es.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -71,30 +70,17 @@
             var calendario = @json($events);
         $('#calendar').fullCalendar({
             header:{
-               right:'prev,next',
+               right:'prev,next,today',
                center:'title',
                left:'month,agendaWeek,agendaDay'
             },
 
-            locale: 'es',
-            buttonIcons: true,
-            weekNumbers: false,
-            editable: true,
-             eventLimit: true,
             eventColor: '#5DADE2 ',
             defaultView: 'month',
             events: calendario,
             selectable:true,
             selectHelper:true,
-            events: [
-            {
-                title: 'All Day Event',
-                description: 'Lorem ipsum 1...',
-                start: '2019-07-01',
-                color: '#3A87AD',
-                textColor: '#ffffff',
-            }
-        ],
+            
             select: function(start, end, allDay)
             {
                 $('#calendarioModal').modal('toggle');

@@ -9,25 +9,31 @@
 @section('content')
    <a href="gerencia/create" class="btn btn-outline-success">CREAR</a>
    
-   <div class="row">
+   <div class="row container">
        @foreach ($gerencias as $gerencia) 
-           <div class="card w-75 card-compras">
-               <div class="text-center">
-               <div class="card text-center compra-area">
-                       <h5 class="title-compra">{{ $gerencia->area }}</h5> 
-                   </div>
+           <div class="card card-principal">
+               <div class="text-center card-2">
                    @if ($gerencia->imagen)
-                       <img src="{{ asset('storage/' . $gerencia->imagen) }}" class="card-img-top" alt="Imagen" style="width: 60%; height: 60%; margin-left:160px; margin-top:20px; border-radius:20px 20px 20px 20px;">
+                   <div class="card imagen-area">
+                   <img src="{{ asset('storage/' . $gerencia->imagen) }}" class="card-img-top" alt="Imagen">
+                   </div>
+                       
                    @else
-                       <div class="text-center" style="height: 400px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
+                       <div class="text-center">
                            <span class="align-middle">Sin imagen</span>
                        </div>
                    @endif
-                   
-                   <div class="card text-center compra-area"> 
+                   <div class="informacion">
+                   <div class="text-center compra-area">
+                       <h5 class="title-compra">{{ $gerencia->area }}</h5> 
+                   </div>
+                   <div class="text-center compra-area"> 
                        <p class="card-text">{{ $gerencia->lema }}</p> 
                    </div>
-                   <div class="card-body compras-footer">
+
+                   </div>
+                  
+                   <div class="compras-footer">
                        <form action="{{ route('gerencia.destroy', $gerencia->id) }}" method="POST">
                            <a href="/gerencia/{{ $gerencia->id }}/edit" class="btn btn-outline-warning">Editar</a>
                            
@@ -43,7 +49,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/gerencia.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">

@@ -9,28 +9,29 @@
 @section('content')
    <a href="compras/create" class="btn btn-outline-success">CREAR</a>
    
-   <div class="row">
+   <div class="row container">
        @foreach ($compras as $compra) 
-           <div class="card">
-               <div class="text-center">
-               <div class="card text-center compra-area">
-                       <h5 class="title-compra">{{ $compra->area }}</h5> 
-                   </div>
+           <div class="card card-principal">
+               <div class="text-center card-2">
                    @if ($compra->imagen)
-                   <div class="imagen-area">
+                   <div class="card imagen-area">
                    <img src="{{ asset('storage/' . $compra->imagen) }}" class="card-img-top" alt="Imagen">
-
                    </div>
                    @else
                        <div class="text-center"> 
                            <span class="align-middle">Sin imagen</span>
                        </div>
                    @endif
-                   
-                   <div class="card text-center compra-area"> 
+                   <div class="informacion">
+                     <div class="text-center compra-area">
+                       <h5 class="title-compra">{{ $compra->area }}</h5> <br>
+                     </div>
+                     <div class=" text-center compra-area "> 
                        <p class="card-text">{{ $compra->lema }}</p> 
+                     </div>
                    </div>
-                   <div class="card-body compras-footer">
+                   
+                   <div class="compras-footer">
                        <form action="{{ route('compras.destroy', $compra->id) }}" method="POST">
                            <a href="/compras/{{ $compra->id }}/edit" class="btn btn-outline-warning">Editar</a>
                            

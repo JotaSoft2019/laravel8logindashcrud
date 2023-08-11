@@ -6,7 +6,7 @@
 
 .container{
     margin-left: 50px;
-    height: 550px;
+    height: 600px;
 }
 
 .card{
@@ -86,7 +86,7 @@ h1{
 
     
     .compras-footer button{
-        margin-left: 10px;
+        margin-left:20px;
 
     }
 
@@ -142,4 +142,3 @@ h1{
 
     
 }
-
