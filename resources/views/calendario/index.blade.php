@@ -6,6 +6,17 @@
 @stop
 
 @section('content')
+<div class="tablaNota">
+    <div class="tablaColor">
+        <input type="color">
+    </div>
+    <div class="nota">
+        <label for="nota">Escribir Nota</label>
+        <input type="text">
+    </div>
+    <button>Guardar</button>
+</div>
+<!--Notas NO TOCAR ESTE CODIGO-->
 <div class="modal fade" id="calendarioModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -28,11 +39,10 @@
         </div>
     </div>
 </div>
-
-<!-- Contenedor del calendario -->
 <div class="container mt-5">
     <div class="row">
         <div class="col-10">
+        <a href="{{ route('nota.create') }}" class="btn btn-outline-primary mt-3">CREAR NOTAS</a>
             <a href="{{ route('calendario.index') }}" class="btn btn-outline-success mt-3">ACTUALIZAR</a>
             <h3 class="text-center mt-1 ml-5"><b>Calendario Jota Mundial</b></h3>
             <div class="col-md-11 offset-1 mt-3 mb-5">
@@ -223,4 +233,5 @@
      
   });
     </script>
+
 @stop

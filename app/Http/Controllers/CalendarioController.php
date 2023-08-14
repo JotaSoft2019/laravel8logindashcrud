@@ -14,6 +14,7 @@ class CalendarioController extends Controller
 
     public function index()
 {
+    $notas = Calendario::all();
     $events = array();
     $calendarios = Calendario::all();
 
