@@ -18,6 +18,7 @@ class CreateCalendariosTable extends Migration
             $table->string('title');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
+            $table->string('color');
             $table->timestamps();
         });
     }

@@ -9,6 +9,6 @@ class Calendario extends Model
 {
     use HasFactory; 
     protected $fillable = [
-        'title', 'start_date','end_date',
+        'title', 'start_date','end_date','color',
     ];
 }
