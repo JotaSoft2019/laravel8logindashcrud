@@ -6,44 +6,41 @@
 @stop
 
 @section('content')
-<div class="botones-comentarios">
-   <a href="{{ route('calendario.nota.create') }}" class="btn btn-outline-success">CREAR NOTA</a>
-</div>
-
-@foreach ($notas as $nota)
-<div class="cuadro-comentario">
-   <p>{{ $nota->title }}</p>
-   <table style="background-color: {{ $nota->color }}"></table>
-   <p>{{ $nota->contenido }}</p>
-</div>
-@endforeach
-
-<div class="container mt-5">
-   <div class="row">
-      <div class="col-10">
-         <a href="{{ route('calendario.index') }}" class="btn btn-outline-success mt-3">ACTUALIZAR</a>
-         <h3 class="text-center mt-1 ml-5"><b>Calendario Jota Mundial</b></h3>
-         <div class="col-md-11 offset-1 mt-3 mb-5">
-            <div id="calendar"></div>
-         </div>
-      </div>
-   </div>
-</div>
-
-</div>
-    <div class="container mt-5">
-    <div class="modal-footer">
-    </div>
-        <div class="row">
-            <div class="col-10">
-            <a href="calendario" class="btn btn-outline-success mt-3">ACTUALIZAR</a>
-                <h3 class="text-center mt-1 ml-5"><b>Calendario Jota Mundial</b></h3>
-                <div class="col-md-11 offset-1 mt-3 mb-5">
-                    <div id="calendar"></div>
+<div class="modal fade" id="calendarioModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear Evento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control" id="title">
+                <span id="titleError" class="text-danger"></span>
+                <div class="mt-3">
+                    <label for="colorPicker">Color del Evento:</label>
+                    <input type="color" id="colorPicker" class="form-control">
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" id="saveBtn" class="btn btn-primary">Guardar Evento</button>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Contenedor del calendario -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-10">
+            <a href="{{ route('calendario.index') }}" class="btn btn-outline-success mt-3">ACTUALIZAR</a>
+            <h3 class="text-center mt-1 ml-5"><b>Calendario Jota Mundial</b></h3>
+            <div class="col-md-11 offset-1 mt-3 mb-5">
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+</div>
 @stop
 
 @section('css')

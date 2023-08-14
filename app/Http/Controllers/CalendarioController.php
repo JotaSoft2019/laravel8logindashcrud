@@ -38,7 +38,6 @@ public function store(Request $request)
         'start_date' => 'required|date',
         'end_date' => 'required|date|after_or_equal:start_date',
         'color' => 'required|string' ,
-        'notes' => 'required|string' 
     ]);
     
     $calendario = Calendario::create([
@@ -46,7 +45,6 @@ public function store(Request $request)
         'start_date' => $request->start_date,
         'end_date' => $request->end_date,
         'color' => $request->color, 
-        'notes' => $request->notes
     ]);
     
     return response()->json([
@@ -55,7 +53,7 @@ public function store(Request $request)
         'start' => $calendario->start_date,
         'end' => $calendario->end_date,
         'color' => $calendario->color,
-        'notes' => $calendario->notes
+
     ]);
 }
 
