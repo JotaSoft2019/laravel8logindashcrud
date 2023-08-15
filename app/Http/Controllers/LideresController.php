@@ -95,7 +95,6 @@ class LideresController extends Controller
     {
         $lideres = Lideres::find($id);
 
-        // Eliminar la imagen si existe
         if ($lideres->imagen) {
             Storage::delete($lideres->imagen);
         }

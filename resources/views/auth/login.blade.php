@@ -18,7 +18,7 @@
         <form method="POST" action="{{ route('login') }}" class="formulario-estilo">
             @csrf
 
-            <div class="mt-4 input-label">
+            <div class="mt-4 ml-1 input-label">
                 <x-jet-label for="email" value="{{ __('Introduzca Correo') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
@@ -29,18 +29,13 @@
             </div>
 
             <div class="registro-iniciar">
-
             <x-jet-button class="ml-4">
                     {{ __('Iniciar') }}
                 </x-jet-button>
             
-                <a class="volver underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                <a class="volver underline text-sm text-gray-600 hover:text-gray-900 mt-10" href="{{ route('register') }}">
                     {{ __('Volver a Registro') }}
                 </a>
-
-                
-
-               
             </div>
         </form>
 

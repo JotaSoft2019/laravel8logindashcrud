@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Nota;
 use Illuminate\Http\Request;
 
@@ -113,12 +112,12 @@ class NotaController extends Controller
     public function destroy($id)
     {
         $nota = Nota::find($id);
-        if(! $nota) {
+        if (! $nota) {
             return response()->json([
-                'error' => 'No se pudo eliminar la nota'
+                'error' => 'Ya se elimino la nota'
             ], 404);
         }
         $nota->delete();
-        return $id;
+        return redirect('/calendario')->with('success', 'Nota eliminada exitosamente');
     }
 }

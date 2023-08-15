@@ -30,6 +30,9 @@
                        <p class="card-text">{{ $compra->lema }}</p> 
                      </div>
                    </div>
+                   <br>
+
+                   <br>
                    
                    <div class="compras-footer">
                        <form action="{{ route('compras.destroy', $compra->id) }}" method="POST">

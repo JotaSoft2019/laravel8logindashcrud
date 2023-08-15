@@ -41,27 +41,25 @@
         </div>
     </div>
 </div>
-
-<div class="nota-container">
-    @if ($notas)
-        <h4>Notas:</h4>
-        @foreach ($notas as $nota)
-            <div class="nota nota-item">
-                <div class="informacion">
-                   <div class="color-box" style="background-color: {{ $nota->color }}"></div>
-                   <h5>{{ $nota->title }}</h5>
-                   <p>{{ $nota->descripcion }}</p>
-                   <form action="{{ route('nota.destroy', $nota->id) }}" method="POST" class="delete-form">
-                   @csrf
-                   @method('DELETE')
-                   <button type="submit" class="btn btn-outline-danger">Eliminar</button>
-                   </form>
-
+@if (count($notas) > 0)
+                <div class="nota-container">
+                    <h4>Notas:</h4>
+                    @foreach ($notas as $nota)
+                        <div class="nota nota-item">
+                            <div class="informacion">
+                                <div class="color-box" style="background-color: {{ $nota['color'] }}"></div>
+                                <h5>{{ $nota['title'] }}</h5>
+                                <p>{{ $nota['descripcion'] }}</p>
+                                <form action="{{ route('nota.destroy', $nota['id']) }}" method="POST" class="delete-form">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                                </form>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-            </div>
-        @endforeach
-    @endif
-</div>
+            @endif
 @stop
 
 @section('css')
