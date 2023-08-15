@@ -313,11 +313,9 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Inicio',
-            'url'         => 'articulos',
-            'icon'        => 'fas fa-fw fa-igloo',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text' => 'Inicio',
+            'url'  => 'articulos',
+            'icon' => 'fas fa-fw fa-igloo',
         ],
        
         [
@@ -428,7 +426,7 @@ return [
 
         [
             'text' => 'Reconocimientos',
-            'url'  => 'admin/settings',
+            'url'  => 'reconocimientos',
             'icon' => 'fas fa-fw fa-user',
         ],
 

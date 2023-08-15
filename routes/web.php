@@ -23,6 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('reconocimientos', 'App\Http\Controllers\ReconocimientosController');
 Route::resource('nota', 'App\Http\Controllers\NotaController');
 Route::post('calendario', [CalendarioController::class, 'store'])->name('calendario.calendario.store');
 Route::patch('calendario/update/{id}', [CalendarioController::class, 'update'])->name('calendario.calendario.update');
