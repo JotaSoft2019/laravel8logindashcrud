@@ -27,12 +27,12 @@
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-jet-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                     <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
-                        {{ __('API Tokens') }}
+                        {{ __('Fichas de API') }}
                     </x-jet-responsive-nav-link>
                 @endif
 
@@ -43,7 +43,7 @@
                     <x-jet-responsive-nav-link href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                        {{ __('Logout') }}
+                        {{ __('Cerrar sesión') }}
                     </x-jet-responsive-nav-link>
                 </form>
 
@@ -52,23 +52,23 @@
                     <div class="border-t border-gray-200"></div>
 
                     <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Manage Team') }}
+                        {{ __('Administrar equipo') }}
                     </div>
 
                     <!-- Team Settings -->
                     <x-jet-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" :active="request()->routeIs('teams.show')">
-                        {{ __('Team Settings') }}
+                        {{ __('Configuración del equipo') }}
                     </x-jet-responsive-nav-link>
 
                     <x-jet-responsive-nav-link href="{{ route('teams.create') }}" :active="request()->routeIs('teams.create')">
-                        {{ __('Create New Team') }}
+                        {{ __('Crear nuevo equipo') }}
                     </x-jet-responsive-nav-link>
 
                     <div class="border-t border-gray-200"></div>
 
                     <!-- Team Switcher -->
                     <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Switch Teams') }}
+                        {{ __('cambiar de equipo') }}
                     </div>
 
                     @foreach (Auth::user()->allTeams() as $team)

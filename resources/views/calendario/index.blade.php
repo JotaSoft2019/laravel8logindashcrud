@@ -32,7 +32,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-10">
-        <a href="{{ route('nota.create') }}" class="btn btn-outline-primary mt-3">CREAR NOTAS</a>
+        <!--<a href="{{ route('nota.create') }}" class="btn btn-outline-primary mt-3">CREAR NOTAS</a>-->
             <a href="{{ route('calendario.index') }}" class="btn btn-outline-success mt-3">ACTUALIZAR</a>
             <h3 class="text-center mt-1 ml-5"><b>Calendario Jota Mundial</b></h3>
             <div class="col-md-11 offset-1 mt-3 mb-5 calendario">

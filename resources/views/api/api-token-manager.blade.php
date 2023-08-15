@@ -6,7 +6,7 @@
         </x-slot>
 
         <x-slot name="description">
-            {{ __('API tokens allow third-party services to authenticate with our application on your behalf.') }}
+            {{ __('Los tokens API permiten que los servicios de terceros se autentiquen con nuestra aplicación en su nombre.') }}
         </x-slot>
 
         <x-slot name="form">
@@ -36,11 +36,11 @@
 
         <x-slot name="actions">
             <x-jet-action-message class="mr-3" on="created">
-                {{ __('Created.') }}
+                {{ __('Crear.') }}
             </x-jet-action-message>
 
             <x-jet-button>
-                {{ __('Create') }}
+                {{ __('Crear') }}
             </x-jet-button>
         </x-slot>
     </x-jet-form-section>
@@ -56,7 +56,7 @@
                 </x-slot>
 
                 <x-slot name="description">
-                    {{ __('You may delete any of your existing tokens if they are no longer needed.') }}
+                    {{ __('Puede eliminar cualquiera de sus tokens existentes si ya no los necesita.') }}
                 </x-slot>
 
                 <!-- API Token List -->
@@ -101,7 +101,7 @@
 
         <x-slot name="content">
             <div>
-                {{ __('Please copy your new API token. For your security, it won\'t be shown again.') }}
+                {{ __('Copie su nuevo token API. Por su seguridad, no se volverá a mostrar.') }}
             </div>
 
             <div class="mt-4 bg-gray-100 px-4 py-2 rounded font-mono text-sm text-gray-500">
@@ -147,20 +147,20 @@
     <!-- Delete Token Confirmation Modal -->
     <x-jet-confirmation-modal wire:model="confirmingApiTokenDeletion">
         <x-slot name="title">
-            {{ __('Delete API Token') }}
+            {{ __('Eliminar Token') }}
         </x-slot>
 
         <x-slot name="content">
-            {{ __('Are you sure you would like to delete this API token?') }}
+            {{ __('¿Está seguro de que desea eliminar este token de API?') }}
         </x-slot>
 
         <x-slot name="footer">
             <x-jet-secondary-button wire:click="$toggle('confirmingApiTokenDeletion')" wire:loading.attr="disabled">
-                {{ __('Nevermind') }}
+                {{ __('No importa') }}
             </x-jet-secondary-button>
 
             <x-jet-danger-button class="ml-2" wire:click="deleteApiToken" wire:loading.attr="disabled">
-                {{ __('Delete') }}
+                {{ __('Eliminar') }}
             </x-jet-danger-button>
         </x-slot>
     </x-jet-confirmation-modal>
