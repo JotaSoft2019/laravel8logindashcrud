@@ -6,7 +6,6 @@
 @stop
 
 @section('content')
-
 <!--Notas NO TOCAR ESTE CODIGO-->
 <div class="modal fade" id="calendarioModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -42,6 +41,27 @@
         </div>
     </div>
 </div>
+
+<div class="nota-container">
+    @if ($notas)
+        <h4>Notas:</h4>
+        @foreach ($notas as $nota)
+            <div class="nota nota-item">
+                <div class="informacion">
+                   <div class="color-box" style="background-color: {{ $nota->color }}"></div>
+                   <h5>{{ $nota->title }}</h5>
+                   <p>{{ $nota->descripcion }}</p>
+                   <form action="{{ route('nota.destroy', $nota->id) }}" method="POST" class="delete-form">
+                   @csrf
+                   @method('DELETE')
+                   <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                   </form>
+
+                </div>
+            </div>
+        @endforeach
+    @endif
+</div>
 @stop
 
 @section('css')
@@ -61,9 +81,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/locale/es.js'></script>
     <script>
-        $(document).ready(function() { 
-
-            $('#addNoteBtn').click(function() {
+        $(document).ready(function() {
+        $('#addNoteBtn').click(function() {
         var noteTitle = $('#noteTitle').val();
         var noteColor = $('#noteColor').val();
         var noteContent = $('#noteContent').val();
@@ -116,13 +135,13 @@
 
 
         month: {
-            titleFormat: 'MMMM YYYY'  // Cambiar formato del título del mes
+            titleFormat: 'MMMM YYYY'  
         },
         agendaWeek: {
-            titleFormat: 'D MMM YYYY'  // Cambiar formato del título de la semana
+            titleFormat: 'D MMM YYYY'  
         },
         agendaDay: {
-            titleFormat: 'D MMM YYYY'  // Cambiar formato del título del día
+            titleFormat: 'D MMM YYYY'  
         }
        },
 

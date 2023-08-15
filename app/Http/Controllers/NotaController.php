@@ -12,11 +12,13 @@ class NotaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $notas = Nota::all();
-        return view('calendario.index', compact('notas'));
-    }
+    public function index(Request $request)
+{
+    $events = array();
+    $notas = Nota::all();
+    $notas = $request->session()->get('notas', []);
+    return view('calendario.index', compact('notas'));
+}
 
     /**
      * Show the form for creating a new resource.
@@ -35,21 +37,24 @@ class NotaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required',
-            'descripcion' => 'required',
-            'color' => 'required',
-        ]);
+{
+    $request->validate([
+        'title' => 'required',
+        'descripcion' => 'required',
+        'color' => 'required',
+    ]);
 
-        Nota::create([
-            'title' => $request->input('title'),
-            'descripcion' => $request->input('descripcion'),
-            'color' => $request->input('color'),
-        ]);
+    $nota = Nota::create([
+        'title' => $request->input('title'),
+        'descripcion' => $request->input('descripcion'),
+        'color' => $request->input('color'),
+    ]);
 
-        return redirect()->route('calendario.index');
-    }
+    $notas = $request->session()->get('notas', []);
+    $notas[] = $nota; 
+    $request->session()->put('notas', $notas);
+    return redirect()->route('calendario.index');
+}
 
     /**
      * Display the specified resource.
@@ -105,10 +110,15 @@ class NotaController extends Controller
      * @param  \App\Models\Nota  $nota
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Nota $nota)
+    public function destroy($id)
     {
-        $nota = Nota::findOrFail($id);
+        $nota = Nota::find($id);
+        if(! $nota) {
+            return response()->json([
+                'error' => 'No se pudo eliminar la nota'
+            ], 404);
+        }
         $nota->delete();
-        return redirect()->route('calendario.index')->with('success', 'Nota Eliminada');
+        return $id;
     }
 }

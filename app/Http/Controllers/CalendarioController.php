@@ -12,24 +12,32 @@ class CalendarioController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-{
-    $notas = Calendario::all();
-    $events = array();
-    $calendarios = Calendario::all();
+    public function index(Request $request)
+    {
+        $events = array();
+        $calendarios = Calendario::all();
+    
+        foreach ($calendarios as $calendario) {
+            $events[] = [
+                'id' => $calendario->id,
+                'title' => $calendario->title,
+                'start' => $calendario->start_date,
+                'end' => $calendario->end_date,
+                'color' => $calendario->color 
+            ];
+        }
+    
+      
+        if ($request->session()->has('nota')) {
+            $nota = $request->session()->get('nota');
+        } else {
+            $nota = null;
+        }
 
-foreach ($calendarios as $calendario) {
-    $events[] = [
-        'id' => $calendario->id,
-        'title' => $calendario->title,
-        'start' => $calendario->start_date,
-        'end' => $calendario->end_date,
-        'color' => $calendario->color 
-    ];
-}
-
-return view('calendario.index', ['events' => $events]);
-}
+        $notas = $request->session()->get('notas', []);
+    
+        return view('calendario.index', compact('events', 'notas'));
+    }
 
   
 public function store(Request $request)

@@ -22,7 +22,7 @@
     <label for="color" class="form-label">Color</label>
     <input id="color" name="color" type="color" class="form-control" value="{{$nota->color}}">    
   </div>
-  <a href="/comercials" class="btn btn-secondary">Cancelar</a>
+  <a href="/calendario" class="btn btn-secondary">Cancelar</a>
   <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
 @stop
