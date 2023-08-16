@@ -100,7 +100,7 @@ class NotaController extends Controller
             'color' => $request->input('color'),
         ]);
 
-        return redirect()->route('calendario.index');
+        return redirect('/calendario');
     }
 
     /**

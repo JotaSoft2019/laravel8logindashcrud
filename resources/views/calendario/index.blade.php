@@ -33,7 +33,7 @@
     <div class="row">
         <div class="col-10">
         <!--<a href="{{ route('nota.create') }}" class="btn btn-outline-primary mt-3">CREAR NOTAS</a>-->
-            <a href="{{ route('calendario.index') }}" class="btn btn-outline-success mt-3">ACTUALIZAR</a>
+            <a href="{{ route('calendario.index') }}" class="btn btn-outline-info mt-3">ACTUALIZAR</a>
             <h3 class="text-center mt-1 ml-5"><b>Calendario Jota Mundial</b></h3>
             <div class="col-md-11 offset-1 mt-3 mb-5 calendario">
                 <div id="calendar"></div>
@@ -41,7 +41,7 @@
         </div>
     </div>
 </div>
-@if (count($notas) > 0)
+            @if (count($notas) > 0)
                 <div class="nota-container">
                     <h4>Notas:</h4>
                     @foreach ($notas as $nota)
@@ -51,6 +51,7 @@
                                 <h5>{{ $nota['title'] }}</h5>
                                 <p>{{ $nota['descripcion'] }}</p>
                                 <form action="{{ route('nota.destroy', $nota['id']) }}" method="POST" class="delete-form">
+                                <a href="/nota/{{ $nota->id }}/edit" class="btn btn-outline-warning">Editar</a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger">Eliminar</button>
@@ -79,6 +80,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/locale/es.js'></script>
     <script>
+
         $(document).ready(function() {
         $('#addNoteBtn').click(function() {
         var noteTitle = $('#noteTitle').val();
@@ -105,8 +107,10 @@
                             }
 
             }
+         });
         });
-    });
+
+        
             
             $.ajaxSetup({
                 headers:{

@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-   <form action="{{ route('calendario/nota.update', $nota->id) }}" method="POST" enctype="multipart/form-data">    
+   <form action="{{ route('nota.update', $nota->id) }}" method="POST" enctype="multipart/form-data">    
    @csrf
    @method('PUT')
   <div class="mb-3">

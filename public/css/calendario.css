@@ -32,3 +32,53 @@
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
 }
+
+.fc-widget-header{
+    background-color: #3498db;
+    color: white;
+}
+
+.fc-unthemed td.fc-today {
+    background-color: #e5f5ff !important;
+}
+
+.fc-header-toolbar .fc-button {
+    background-color: #3498db;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Estilo para los botones de cambio de vista cuando se les da clic */
+
+.fc-view-container{
+    border:1px solid #ddd;
+}
+
+.fc-bg{
+    border:1px solid #ddd;
+}
+
+
+
+
+.fc-toolbar button {
+    color: white; /* Cambiar el color del texto de los botones */
+}
+
+.fc-button {
+    background-color: white; /* Cambiar el color de fondo de los botones de cambio de vista */
+    color: black; /* Cambiar el color del texto de los botones de cambio de vista */
+}
+
+.fc-event {
+    background-color: #e74c3c; /* Cambiar el color de fondo de los eventos */
+    color: white; /* Cambiar el color del texto de los eventos */
+}
+
+.fc-day-grid-event {
+    background-color: #e74c3c; /* Cambiar el color de fondo de las celdas del calendario */
+}
