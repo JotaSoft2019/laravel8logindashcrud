@@ -296,37 +296,44 @@ return [
             'type'         => 'navbar-search',
             'text'         => 'search',
             'topnav_right' => false,
+            
         ],
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
+            
         ],
 
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
+            'font-size' => '8px',
         ],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
+            'font-size' => '8px',
         ],
         [
             'text' => 'Inicio',
             'url'  => 'articulos',
-            'icon' => 'fas fa-fw fa-igloo',
+            'icon' => 'fas fa fa-home',
+            'font-size' => '8px',
         ],
        
         [
             'text' => 'Usuario',
             'url'  => 'user/profile',
             'icon' => 'fas fa-thin fa-user',
+            'font-size' => '8px',
         ],
         [
             'text' => 'Lideres',
             'url'  => 'lideres',
-            'icon' => 'fas fa-fw fa-user', 
+            'icon' => 'fas fa fa-bolt', 
+            'font-size' => '8px',
 
 
             
@@ -334,51 +341,61 @@ return [
         ],
         [
             'text'    => 'Grupos Areas',
-            'icon'    => 'fas fa-fw fa-user',
+            'icon'    => 'fas fa fa-users',
+            'font-size' => '8px',
             'submenu' => [
                 [
                     'text' => 'Area Compras Nacionales',
                     'url'  => 'compras',
+                    'font-size' => '8px',
                 ],
                 
 
                 [
                     'text' => 'Area Contabilidad',
                     'url'  => 'contabilidads',
+                    'font-size' => '8px',
                 ],
 
                 [
                     'text' => 'Area Comercial',
                     'url'  => 'comercials',
+                    'font-size' => '8px',
                 ],
 
                 [
                     'text' => 'Area Sistema E Inventario',
                     'url'  => 'inventario',
+                    'font-size' => '8px',
                 ],
 
                 [
                     'text' => 'Area Mercadeo Y Comunicaciones',
                     'url'  => 'mercadeo',
+                    'font-size' => '8px',
                 ],
                 [
                     'text' => 'Area Logistica',
                     'url'  => 'logistica',
+                    'font-size' => '8px',
                 ],
 
                 [
                     'text' => 'Area Talento Humano Y SIG',
                     'url'  => 'talentoHumano',
+                    'font-size' => '8px',
                 ],
 
                 [
                     'text' => 'Gerencia',
                     'url'  => 'gerencia',
+                    'font-size' => '8px',
                 ],
 
                 [
                     'text' => 'Comex',
                     'url'  => 'comex',
+                    'font-size' => '8px',
                 ],
 
                 
@@ -388,25 +405,30 @@ return [
         [
             'text' => 'Recomendaciones Salud',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-thin fa-book-medical',
+            'font-size' => '8px',
         ],
         [
             'text'    => 'Politicas Y Reglamentos',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fas fa-thin fa-ruler',
+            'font-size' => '8px',
             'submenu' => [
                 [
                     'text' => 'Seguridad y salud en el trabajo',
                     'url'  => 'seguridadYSalud',
+                    'font-size' => '8px',
                 ],
                 
                 [
                     'text' => 'Talento humano y gerencia',
                     'url'  => 'talento',
+                    'font-size' => '8px',
                 ],
 
                 [
                     'text' => 'Cultura y Adn Jota Mundial',
                     'url'  => 'adn',
+                    'font-size' => '8px',
                 ],
                 
             ],
@@ -415,25 +437,29 @@ return [
         [
             'text' => 'Memes',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa fa-tree',
+            'font-size' => '8px',
         ],
 
         [
             'text' => 'Cumpleaños',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa fa-birthday-cake',
+            'font-size' => '8px',
         ],
 
         [
             'text' => 'Reconocimientos',
             'url'  => 'reconocimientos',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-thin fa-award',
+            'font-size' => '8px',
         ],
 
         [
             'text' => 'Eventos',
             'url'  => 'calendario',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fa fa-calendar',
+            'font-size' => '8px',
         ],
 
 
