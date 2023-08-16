@@ -82,3 +82,17 @@
 .fc-day-grid-event {
     background-color: #e74c3c; /* Cambiar el color de fondo de las celdas del calendario */
 }
+
+
+@media (max-width: 390px) {
+    .fc-toolbar .fc-left {
+        float: left;
+        margin-left: 30px;
+    }
+
+    .fc-toolbar .fc-right {
+        float: right;
+        margin-right: 35px;
+    }
+    
+    }

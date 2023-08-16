@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::delete('nota/destroy/{id}', [NotaController::class, 'destroy'])->name('calendario.nota.destroy');
-Route::resource('reconocimientos', 'App\Http\Controllers\ReconocimientosController');
+Route::resource('reconocimientos', 'App\Http\Controllers\ReconocimientoController');
 Route::resource('nota', 'App\Http\Controllers\NotaController');
 Route::post('calendario', [CalendarioController::class, 'store'])->name('calendario.calendario.store');
 Route::patch('calendario/update/{id}', [CalendarioController::class, 'update'])->name('calendario.calendario.update');

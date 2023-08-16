@@ -37,4 +37,12 @@
         @endif
     </ul>
 
+    <ul class="navbar-nav ml-10">
+      <li class="nav-item">
+            <a href="#">🔔</a>
+      </li>
+      
+     </ul>
+
+
 </nav>
