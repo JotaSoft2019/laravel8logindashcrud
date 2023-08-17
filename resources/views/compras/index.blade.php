@@ -9,44 +9,33 @@
 @section('content')
    <a href="compras/create" class="btn btn-outline-success">CREAR</a>
    
-   <div class="row container">
-       @foreach ($compras as $compra) 
-           <div class="card card-principal">
-               <div class="text-center card-2">
-                   @if ($compra->imagen)
-                   <div class="card imagen-area">
-                   <img src="{{ asset('storage/' . $compra->imagen) }}" class="card-img-top" alt="Imagen">
-                   </div>
-                   @else
-                       <div class="text-center"> 
-                           <span class="align-middle">Sin imagen</span>
-                       </div>
-                   @endif
-                   <div class="informacion">
-                     <div class="text-center compra-area">
-                       <h5 class="title-compra">{{ $compra->area }}</h5> <br>
-                     </div>
-                     <div class=" text-center compra-area "> 
-                       <p class="card-text">{{ $compra->lema }}</p> 
-                     </div>
-                   </div>
-                   <br>
+   <div id="container">
+    @foreach ($compras as $compra)
+        <div class="product-details">
+            <h1>{{ $compra->area }}</h1>
+            <p class="information">{{ $compra->lema }}</p>
+        </div>
 
-                   <br>
-                   
-                   <div class="compras-footer">
-                       <form action="{{ route('compras.destroy', $compra->id) }}" method="POST">
-                           <a href="/compras/{{ $compra->id }}/edit" class="btn btn-outline-warning">Editar</a>
-                           
-                           @csrf
-                           @method('DELETE')
-                           <button type="submit" class="btn btn-outline-danger">Borrar</button>
-                           
-                   </div>
-               </div>
-           </div>
-       @endforeach
-   </div>
+        <div class="product-image">
+            @if ($compra->imagen)
+                <img src="{{ asset('storage/' . $compra->imagen) }}" alt="Product Image">
+            @else
+                <div class="text-center">
+                    <span class="align-middle">Sin imagen</span>
+                </div>
+            @endif
+        </div>
+
+        <div class="compras-footer">
+            <form class="form-boton" action="{{ route('compras.destroy', $compra->id) }}" method="POST">
+                <a href="/compras/{{ $compra->id }}/edit" class="btn btn-outline-warning">Editar</a>
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-outline-primary">Borrar</button>
+            </form>
+        </div>
+    @endforeach
+</div>
 @stop
 
 @section('css')

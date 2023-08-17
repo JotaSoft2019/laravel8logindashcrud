@@ -35,7 +35,7 @@
                            
                            @csrf
                            @method('DELETE')
-                           <button type="submit" class="btn btn-outline-danger">Borrar</button>
+                           <button type="submit" class="btn btn-outline-primary">Borrar</button>
                        </form>
                         </div>
                     </div>
