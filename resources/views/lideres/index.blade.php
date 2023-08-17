@@ -14,9 +14,6 @@
             @foreach ($lideres as $lider)
                 <div class="col-md-4">
                     <div class="card" data-effect="zoom">
-                        <button class="card__save js-save" type="button">
-                            <i class="fa fa-bookmark"></i>
-                        </button>
                         <figure class="card__image">
                             @if ($lider->imagen)
                                 <img src="{{ asset('storage/' . $lider->imagen) }}" alt="Imagen del líder">
@@ -32,7 +29,7 @@
                             <p class="card__job">{{ $lider->area }}</p>
                         </div>
 
-                        <div class="card__body botones">
+                        <div class="botones">
                         <form action="{{ route('lideres.destroy', $lider->id) }}" method="POST">
                            <a href="{{ route('lideres.edit', $lider->id) }}" class="btn btn-outline-warning">Editar</a>
                            
@@ -40,8 +37,6 @@
                            @method('DELETE')
                            <button type="submit" class="btn btn-outline-danger">Borrar</button>
                        </form>
-
-
                         </div>
                     </div>
                 </div>
@@ -50,6 +45,46 @@
         <!-- END: card -->
     </section>
 @stop
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/lideres.css') }}">
