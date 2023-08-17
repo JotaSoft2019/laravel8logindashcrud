@@ -7,52 +7,58 @@
 @stop
 
 @section('content')
-   <a href="{{ route('lideres.create') }}" class="btn btn-outline-success">CREAR</a>
+<a href="{{ route('lideres.create') }}" class="btn btn-outline-success">CREAR</a>
+    <section class="wrapper">
+        <!-- BEGIN: card -->
+        <div class="row" id="lideres-container">
+            @foreach ($lideres as $lider)
+                <div class="col-md-4">
+                    <div class="card" data-effect="zoom">
+                        <button class="card__save js-save" type="button">
+                            <i class="fa fa-bookmark"></i>
+                        </button>
+                        <figure class="card__image">
+                            @if ($lider->imagen)
+                                <img src="{{ asset('storage/' . $lider->imagen) }}" alt="Imagen del líder">
+                            @else
+                                <div class="text-center" style="background-color: #eee;">
+                                    <span class="align-middle">Sin imagen</span>
+                                </div>
+                            @endif
+                        </figure>
+                        
+                        <div class="card__body">
+                            <h3 class="card__name">{{ $lider->nombre }} {{ $lider->apellido }}</h3>
+                            <p class="card__job">{{ $lider->area }}</p>
+                        </div>
 
-   <div class="row">
-       @foreach ($lideres as $lider)
-           <div class="card text-center card-lideres">
-               <div class="card-header">
-                   @if ($lider->imagen)
-                       <img src="{{ asset('storage/' . $lider->imagen) }}" class="card-img-top" alt="Imagen del líder" style="width: 200px; margin-top: 20px; border-radius: 20px;">
-                   @else
-                       <div class="text-center" style="height: 200px; background-color: #eee;">
-                           <span class="align-middle">Sin imagen</span>
-                       </div>
-                   @endif
-                   <div class="card text-center">
-                       <h5 class="card-title">{{ $lider->nombre }} {{ $lider->apellido }}</h5>
-                       <p class="card-text">{{ $lider->area }}</p>
-                   </div>
-                   <div class="card-footer">
-                       <form action="{{ route('lideres.destroy', $lider->id) }}" method="POST">
+                        <div class="card__body botones">
+                        <form action="{{ route('lideres.destroy', $lider->id) }}" method="POST">
                            <a href="{{ route('lideres.edit', $lider->id) }}" class="btn btn-outline-warning">Editar</a>
+                           
                            @csrf
                            @method('DELETE')
                            <button type="submit" class="btn btn-outline-danger">Borrar</button>
                        </form>
-                   </div>
-               </div>
-           </div>
-       @endforeach
-   </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <!-- END: card -->
+    </section>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+<link rel="stylesheet" href="{{ asset('css/lideres.css') }}">
     <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 @stop
 
 @section('js')
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="{{ asset('js/lideres.js') }}"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
-
-<script>
-$(document).ready(function() {
-    $('#lideres').DataTable({
-        "lengthMenu": [[5,10, 50, -1], [5, 10, 50, "All"]]
-    });
-});
-</script>
 @stop

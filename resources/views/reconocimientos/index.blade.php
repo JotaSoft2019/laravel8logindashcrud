@@ -7,6 +7,8 @@
 @stop
 
 @section('content')
+
+<div class="contenedor-reco">
    <a href="reconocimientos/create" class="btn btn-outline-success">CREAR</a>
    
    <div class="row container">
@@ -14,7 +16,7 @@
            <div class="card card-principal">
                <div class="text-center card-2">
                    @if ($reconocimiento->imagen)
-                   <div class="card imagen-area">
+                   <div class="imagen-area">
                        <img src="{{ asset('storage/' . $reconocimiento->imagen) }}" class="card-img-top" alt="Imagen">
                    </div>
                    @else
@@ -24,21 +26,26 @@
                    @endif
                    <div class="informacion">
                        <div class="text-center compra-area">
-                           <p class="title-compra">{{ $reconocimiento->nombre }}</p> 
+                           <span class="title-compra">{{ $reconocimiento->nombre }}</span> 
                        </div>
                        <div class="text-center compra-area">
-                           <p class="title-compra">{{ $reconocimiento->fecha }}</p> 
+                           <span class="title-compra">{{ $reconocimiento->fecha }}</span> 
                        </div>
                        <div class="text-center compra-area">
-                           <p class="title-compra">{{ $reconocimiento->descripcion }}</p> 
+                           <span class="title-compra">{{ $reconocimiento->descripcion }}</span> 
                        </div>
                        <div class="text-center compra-area">
-                           <p class="title-compra">{{ $reconocimiento->area }}</p> 
+                           <span class="title-compra">{{ $reconocimiento->area }}</span> 
                        </div>
                        <div class="text-center compra-area"> 
-                           <p class="card-text">{{ $reconocimiento->estrella }}</p> 
-                       </div>
-                   </div>
+                    <span class="card-text">
+                       @if($reconocimiento->estrella)
+                     <i class="fas fa-star fa-lg" style="color: gold;"></i>
+                     <i class="fas fa-star fa-lg" style="color: gold;"></i>
+                     <i class="fas fa-star fa-lg" style="color: gold;"></i>
+                      @endif
+                    </span> 
+                     </div>
                   
                    <div class="compras-footer">
                        <form action="{{ route('reconocimientos.destroy', $reconocimiento->id) }}" method="POST">
@@ -50,17 +57,23 @@
                        </form>
                    </div>
                </div>
+
+               <br>
            </div>
+           <br>
        @endforeach
    </div>
+
+</div>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/gerencia.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/reconocimientos.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    
 @stop
 
 @section('js')

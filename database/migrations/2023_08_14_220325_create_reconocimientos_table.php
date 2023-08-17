@@ -16,7 +16,7 @@ class CreateReconocimientosTable extends Migration
         Schema::create('reconocimientos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->dateTime('fecha');
+            $table->date('fecha');
             $table->string('descripcion');
             $table->string('area');
             $table->string('imagen');

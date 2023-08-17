@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url('https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css');
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+.imagen-area img{
+    width: 100px;
+    height: 100px;
+    
+}
+
+.imagen-area{
+    border: none;
+    height: 100px;
+    margin-top: 25px;
+    margin-left: -50px;
+}
+
+.container{
+    margin-top: 10px;
+    height: 100%;
+}
+
+.card-principal{
+    width: 600px;
+    height: 180px;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+
+
+.card-2{
+    display:flex;
+    gap: 50px;
+    justify-content: center;
+}
+.informacion{
+    display: block;
+    gap: 30px;
+}
