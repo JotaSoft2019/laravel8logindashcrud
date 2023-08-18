@@ -1,17 +1,18 @@
-@section('title', 'Mercadeo Y comunicaciones')
+@extends('adminlte::page')
+
+@section('title', 'Editar Mercadeo y Comunicaciones')
 
 @section('content_header')
-    <h1>Mercadeo Y comunicaciones</h1>
+    <h1>Editar Mercadeo y Comunicaciones</h1>
 @stop
 
 @section('content')
-
 <form action="{{ route('mercadeo.update', $mercadeos->id) }}" method="POST" enctype="multipart/form-data">    
    @csrf
    @method('PUT')
 
   <div class="mb-3">
-    <label for="area" class="form-label">Area</label>
+    <label for="area" class="form-label">Área</label>
     <input id="area" name="area" type="text" class="form-control" value="{{ old('area', $mercadeos->area) }}">    
   </div>
   
@@ -30,7 +31,7 @@
     <input id="imagen" name="imagen" type="file" class="form-control">
   </div>
 
-  <a href="{{ url('/estrategias') }}" class="btn btn-secondary">Cancelar</a>
+  <a href="{{ url('/mercadeo') }}" class="btn btn-secondary">Cancelar</a>
   <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
 @stop

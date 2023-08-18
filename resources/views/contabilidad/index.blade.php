@@ -9,41 +9,32 @@
 @section('content')
    <a href="{{ route('contabilidads.create') }}" class="btn btn-outline-success">CREAR</a>
    
-   <div class="row container">
+   <div id="container">
        @foreach ($contabilidads as $contabilidad) 
-           <div class="card card-principal">
-               <div class="text-center card-2">
+           <div class="product-details">
+           <h1>{{ $contabilidad->area }}</h1> 
+           <p class="card-text">{{ $contabilidad->lema }}</p> 
+           </div>
+
+               <div class="product-image">
                    @if ($contabilidad->imagen)
-                   <div class="card imagen-area">
-                   <img src="{{ asset('storage/' . $contabilidad->imagen) }}" class="card-img-top" alt="Imagen">
-                   </div>
-                       
+                   <img src="{{ asset('storage/' . $contabilidad->imagen) }}" class="card-img-top" alt="Imagen">  
                    @else
                        <div class="text-center">
                            <span class="align-middle">Sin imagen</span>
                        </div>
                    @endif
-                   <div class="informacion">
-                   <div class="text-center compra-area">
-                       <h5 class="title-compra">{{ $contabilidad->area }}</h5>  
-                   </div>
-                   <div class="text-center compra-area">
-                       <p class="card-text">{{ $contabilidad->lema }}</p> 
-                   </div>
+               </div>
 
-                   </div>
-                   
+
                    <div class="compras-footer">
                        <form action="{{ route('contabilidads.destroy', $contabilidad->id) }}" method="POST">
                            <a href="{{ route('contabilidads.edit', $contabilidad->id) }}" class="btn btn-outline-warning">Editar</a>
-                           
                            @csrf
                            @method('DELETE')
                            <button type="submit" class="btn btn-outline-danger">Borrar</button>
                        </form>
-                   </div>
-               </div>
-           </div>
+                  </div>
        @endforeach
    </div>
 @stop

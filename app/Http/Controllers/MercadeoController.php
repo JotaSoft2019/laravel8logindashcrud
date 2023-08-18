@@ -16,7 +16,7 @@ class MercadeoController extends Controller
     public function index()
     {
         $mercadeos = Mercadeo::all();
-        return view('mercadeo.index', compact('mercadeos'));
+        return view('mercadeo.index')->with('mercadeos', $mercadeos);
     }
 
     public function create()
@@ -39,30 +39,23 @@ class MercadeoController extends Controller
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');
             $rutaImagen = $imagen->store('public/imagen');
-
-            // Eliminar la imagen anterior si existe
-            if ($mercadeos->imagen) {
-                Storage::delete($mercadeos->imagen);
-            }
-
             $mercadeos->imagen = $rutaImagen;
         }
 
         $mercadeos->save();
 
-        return redirect('/mercadeo')->with('success', 'Registro creado exitosamente.');
+        return redirect('/mercadeo');
     }
 
     public function show($id)
     {
-        $mercadeo = Mercadeo::find($id);
-        return view('mercadeo.show', compact('mercadeo'));
+        
     }
 
     public function edit($id)
     {
-        $mercadeo = Mercadeo::find($id);
-        return view('mercadeo.edit', compact('mercadeo'));
+        $mercadeos = Mercadeo::find($id);
+        return view('mercadeo.edit')->with('mercadeos', $mercadeos);
     }
 
     public function update(Request $request, $id)
@@ -73,25 +66,24 @@ class MercadeoController extends Controller
             'lema' => 'required',
         ]);
 
-        $mercadeo = Mercadeo::find($id);
-        $mercadeo->area = $request->input('area');
-        $mercadeo->lema = $request->input('lema');
+        $mercadeos = Mercadeo::find($id);
+        $mercadeos->area = $request->input('area');
+        $mercadeos->lema = $request->input('lema');
 
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');
             $rutaImagen = $imagen->store('public/imagen');
 
-            // Eliminar la imagen anterior si existe
-            if ($mercadeo->imagen) {
-                Storage::delete($mercadeo->imagen);
+            if ($mercadeos->imagen) {
+                Storage::delete($mercadeos->imagen);
             }
 
-            $mercadeo->imagen = $rutaImagen;
+            $mercadeos->imagen = $rutaImagen;
         }
 
-        $mercadeo->save();
+        $mercadeos->save();
 
-        return redirect('/mercadeo')->with('success', 'Registro actualizado exitosamente.');
+        return redirect('/mercadeo');
     }
 
     public function destroy($id)

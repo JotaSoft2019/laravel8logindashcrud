@@ -12,6 +12,15 @@
 	width: 700px;
 	
 }
+
+.botones-comentarios {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+
+
 .compras-footer{
     display: flex;
     justify-content: center;
@@ -19,10 +28,6 @@
     margin-top: 250px;
     margin-right: 800px;
 }
-
-
-
-
 
 /* 	Product details  */
 .product-details {
@@ -125,6 +130,12 @@
 
 .product-image:hover img {transition: all 0.3s ease-out;}
 .product-image:hover img {transform: scale(1.2, 1.2);}
+
+
+
+
+
+
 @media (max-width: 720px) {
     .compras-footer button{
         margin-left: 100px;

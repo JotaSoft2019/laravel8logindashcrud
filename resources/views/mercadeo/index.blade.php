@@ -1,50 +1,39 @@
 @extends('adminlte::page')
 
-@section('title', 'Mercadeo Y comunicaciones')
+@section('title', 'Mercadeo y Comunicaciones')
 
 @section('content_header')
-    <h1>Mercadeo Y comunicaciones</h1>
+    <h1>Mercadeo y Comunicaciones</h1>
 @stop
 
 @section('content')
    <a href="{{ route('mercadeo.create') }}" class="btn btn-outline-success">CREAR</a>
    
-   <div class="row container">
+   <div id="container">
        @foreach ($mercadeos as $mercadeo) 
-           <div class="card card-principal">
-               <div class="text-center card-2">
-                   @if ($mercadeo->imagen)
-                   <div class="card imagen-area">
-                   <img src="{{ asset('storage/' . $mercadeo->imagen) }}" class="card-img-top" alt="Imagen">
-
-                   </div>
-                      
-                   @else
-                       <div class="text-center">
-                           <span class="align-middle">Sin imagen</span>
-                       </div>
-                   @endif
-                   <div class="informacion">
-                   <div class="text-center compra-area">
-                       <h5 class="title-compra">{{ $mercadeo->area }}</h5> 
-                   </div>
-                   <div class="text-center compra-area"> 
-                       <p class="card-text">{{ $mercadeo->lema }}</p> 
-                   </div>
-
-                   </div>
-                   
-                   <div class="compras-footer">
-                       <form action="{{ route('mercadeo.destroy', $mercadeo->id) }}" method="POST">
-                           <a href="{{ route('mercadeo.edit', $mercadeo->id) }}" class="btn btn-outline-warning">Editar</a>
-                           
-                           @csrf
-                           @method('DELETE')
-                           <button type="submit" class="btn btn-outline-danger">Borrar</button>
-                       </form>
-                   </div>
-               </div>
+           <div class="product-details">
+             <h5>{{ $mercadeo->area }}</h5>
+             <p class="informacion">{{ $mercadeo->lema }}</p> 
            </div>
+
+            <div class="product-image">
+                @if ($mercadeo->imagen)
+                    <img src="{{ asset('storage/' . $mercadeo->imagen) }}" class="card-img-top" alt="Imagen">
+                @else
+                    <div class="text-center">
+                        <span class="align-middle">Sin imagen</span>
+                    </div>
+                @endif
+            </div>
+
+            <div class="compras-footer">
+                <form action="{{ route('mercadeo.destroy', $mercadeo->id) }}" method="POST">
+                    <a href="{{ route('mercadeo.edit', $mercadeo->id) }}" class="btn btn-outline-warning">Editar</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger">Borrar</button>
+                </form>
+            </div>
        @endforeach
    </div>
 @stop
@@ -59,12 +48,4 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
-
-<script>
-$(document).ready(function() {
-    $('#comprasNacionales').DataTable({
-        "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "All"]]
-    });
-});
-</script>
 @stop

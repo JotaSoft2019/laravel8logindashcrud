@@ -9,34 +9,28 @@
 @section('content')
    <a href="comercials/create" class="btn btn-outline-warning">CREAR</a>
    <div class="botones-comentarios">
-   <a href="comentario/create" class="btn btn-outline-success">CREAR COMENTARIO</a>
-   <a href="comentario" class="btn btn-outline-success">VER COMENTARIOS</a>
+     <a href="comentario/create" class="btn btn-outline-success">CREAR COMENTARIO</a>
+     <a href="comentario" class="btn btn-outline-success">VER COMENTARIOS</a>
    </div>
    <br>
-   <div class="container-fluid"> {{-- Add container-fluid class --}}
-       <div class="row container">
-           @foreach ($comercials as $comercial) 
-               <div class="card card-principal">
-                   <div class="text-center card-2">
-                       @if ($comercial->imagen)
-                       <div class="card imagen-area">
+
+   <div id="container"> 
+   @foreach ($comercials as $comercial) 
+       <div class="product-details">
+         <h1>{{ $comercial->area }}</h1>
+         <p class="information">{{ $comercial->lema }}</p>
+        </div>
+          
+        <div class="product-image">
+                @if ($comercial->imagen)
                            <img src="{{ asset('storage/' . $comercial->imagen) }}"class="card-img-top" alt="Imagen">
-                       </div>
                        @else
                            <div class="text-center">
                                <span class="align-middle">Sin imagen</span>
                            </div>
                        @endif
-                       <div class="informacion">
-                       
-                       <div class="text-center compra-area">
-                       <h5 class="title-compra">{{ $comercial->area }}</h5> 
-                       </div>
-                       <div class="text-center compra-area"> 
-                           <p class="card-text">{{ $comercial->lema }}</p> 
-                       </div>
 
-                       </div>
+        </div>
                        
                        <div class="compras-footer">
                            <form action="{{ route('comercials.destroy', $comercial->id) }}" method="POST">
@@ -46,10 +40,7 @@
                                <button type="submit" class="btn btn-outline-danger">Borrar</button>
                            </form>
                        </div>
-                   </div>
-               </div>
            @endforeach
-       </div>
    </div>
 @stop
 
@@ -64,12 +55,4 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
-
-<script>
-$(document).ready(function() {
-    $('#lideres').DataTable({
-        "lengthMenu": [[5,10, 50, -1], [5, 10, 50, "All"]]
-    });
-});
-</script>
 @stop
