@@ -12,7 +12,7 @@
    <div id="container">
        @foreach ($comexs as $comex) 
            <div class="product-details">
-             <h5>{{ $comex->area }}</h5>
+             <h1>{{ $comex->area }}</h1>
              <p class="informacion">{{ $comex->lema }}</p> 
            </div>
 
@@ -29,10 +29,10 @@
 
             <div class="compras-footer">
                 <form action="{{ route('comex.destroy', $comex->id) }}" method="POST">
-                    <a href="/comex/{{ $comex->id }}/edit" class="btn btn-outline-warning">Editar</a> 
+                    <a href="/comex/{{ $comex->id }}/edit" class="btn3 btn btn-outline-warning">✍🏻</a> 
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-outline-danger">Borrar</button>
+                        <button type="submit" class="btn2 btn btn-outline-danger">🗑️</button>
             </div>
        @endforeach
    </div>

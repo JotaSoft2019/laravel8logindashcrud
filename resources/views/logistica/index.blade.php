@@ -29,10 +29,10 @@
 
             <div class="compras-footer">
                 <form action="{{ route('logistica.destroy', $logistica->id) }}" method="POST">
-                    <a href="{{ route('logistica.edit', $logistica->id) }}" class="btn btn-outline-warning">Editar</a>
+                    <a href="{{ route('logistica.edit', $logistica->id) }}" class="btn3 btn btn-outline-warning">✍🏻</a>
                         @csrf
                         @method('DELETE')
-                    <button type="submit" class="btn btn-outline-danger">Borrar</button>
+                    <button type="submit" class="btn2 btn btn-outline-danger">🗑️</button>
                 </form>
             </div>
        @endforeach

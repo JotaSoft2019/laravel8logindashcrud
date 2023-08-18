@@ -29,15 +29,14 @@
                                <span class="align-middle">Sin imagen</span>
                            </div>
                        @endif
-
         </div>
                        
                        <div class="compras-footer">
                            <form action="{{ route('comercials.destroy', $comercial->id) }}" method="POST">
-                               <a href="/comercials/{{ $comercial->id }}/edit" class="btn btn-outline-warning">Editar</a>
+                               <a href="/comercials/{{ $comercial->id }}/edit" class="btn3 btn btn-outline-warning">✍🏻</a>
                                @csrf
                                @method('DELETE')
-                               <button type="submit" class="btn btn-outline-danger">Borrar</button>
+                               <button type="submit" class="btn2 btn btn-outline-danger">🗑️</button>
                            </form>
                        </div>
            @endforeach

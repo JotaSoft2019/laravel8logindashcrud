@@ -12,7 +12,7 @@
    <div id="container">
        @foreach ($mercadeos as $mercadeo) 
            <div class="product-details">
-             <h5>{{ $mercadeo->area }}</h5>
+             <h1>{{ $mercadeo->area }}</h1>
              <p class="informacion">{{ $mercadeo->lema }}</p> 
            </div>
 
@@ -28,10 +28,10 @@
 
             <div class="compras-footer">
                 <form action="{{ route('mercadeo.destroy', $mercadeo->id) }}" method="POST">
-                    <a href="{{ route('mercadeo.edit', $mercadeo->id) }}" class="btn btn-outline-warning">Editar</a>
+                    <a href="{{ route('mercadeo.edit', $mercadeo->id) }}" class="btn3 btn btn-outline-warning">✍🏻</a>
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-outline-danger">Borrar</button>
+                    <button type="submit" class="btn2 btn btn-outline-danger">🗑️</button>
                 </form>
             </div>
        @endforeach
