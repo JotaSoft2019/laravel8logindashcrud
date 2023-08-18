@@ -18,7 +18,7 @@ class Lideres extends Migration
             $table->string('nombre',10);
             $table->string('apellido',50);
             $table->string('area',100);
-            $table->string('imagen');
+            $table->binary('imagen');
             $table->timestamps();
         });
     }

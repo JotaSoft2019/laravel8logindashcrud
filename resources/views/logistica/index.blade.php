@@ -9,42 +9,32 @@
 @section('content')
    <a href="{{ route('logistica.create') }}" class="btn btn-outline-success">CREAR</a>
    
-   <div class="row container">
+   <div id="container">
        @foreach ($logisticas as $logistica) 
-           <div class="card card-principal">
-               <div class="text-center card-2">
-                   @if ($logistica->imagen)
-                   <div class="card imagen-area">
-                   <img src="{{ asset('storage/' . $logistica->imagen) }}" class="card-img-top" alt="Imagen">
-
-                   </div>
-                      
-                   @else
-                       <div class="text-center">
-                           <span class="align-middle">Sin imagen</span>
-                       </div>
-                   @endif
-                   <div class="informacion">
-                   <div class="text-center compra-area">
-                       <h5 class="title-compra">{{ $logistica->area }}</h5> 
-                   </div>
-                   <div class="text-center compra-area">
-                       <p class="card-text">{{ $logistica->lema }}</p> 
-                   </div>
-
-                   </div>
-                  
-                   <div class="compras-footer">
-                       <form action="{{ route('logistica.destroy', $logistica->id) }}" method="POST">
-                           <a href="{{ route('logistica.edit', $logistica->id) }}" class="btn btn-outline-warning">Editar</a>
-                           
-                           @csrf
-                           @method('DELETE')
-                           <button type="submit" class="btn btn-outline-danger">Borrar</button>
-                       </form>
-                   </div>
-               </div>
+           <div class="product-details">
+             <h1>{{ $logistica->area }}</h1>
+             <p class="informacion">{{ $logistica->lema }}</p> 
            </div>
+
+            <div class="product-image">
+                @if ($logistica->imagen)
+                  <img src="{{ asset('storage/' . $logistica->imagen) }}" class="card-img-top" alt="Imagen">
+                @else
+                  <div class="text-center">
+                     <span class="align-middle">Sin imagen</span>
+                  </div>
+                @endif
+
+            </div>
+
+            <div class="compras-footer">
+                <form action="{{ route('logistica.destroy', $logistica->id) }}" method="POST">
+                    <a href="{{ route('logistica.edit', $logistica->id) }}" class="btn btn-outline-warning">Editar</a>
+                        @csrf
+                        @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger">Borrar</button>
+                </form>
+            </div>
        @endforeach
    </div>
 @stop

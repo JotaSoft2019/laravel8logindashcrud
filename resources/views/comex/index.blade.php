@@ -9,41 +9,31 @@
 @section('content')
    <a href="comex/create" class="btn btn-outline-success">CREAR</a>
    
-   <div class="row container">
+   <div id="container">
        @foreach ($comexs as $comex) 
-           <div class="card card-principal">
-               <div class="text-center card-2">
-                   @if ($comex->imagen)
-                   <div class="card imagen-area">
-                   <img src="{{ asset('storage/' . $comex->imagen) }}" class="card-img-top" alt="Imagen">
-                   </div>
-                       
+           <div class="product-details">
+             <h5>{{ $comex->area }}</h5>
+             <p class="informacion">{{ $comex->lema }}</p> 
+           </div>
+
+            <div class="product-image">
+                @if ($comex->imagen)
+                   <img src="{{ asset('storage/' . $comex->imagen) }}" class="card-img-top" alt="Imagen">  
                    @else
                        <div class="text-center">
                            <span class="align-middle">Sin imagen</span>
                        </div>
                    @endif
-                   <div class="informacion">
-                   <div class="text-center compra-area">
-                       <h5 class="title-compra">{{ $comex->area }}</h5> 
-                   </div>
-                   <div class="text-center compra-area"> 
-                       <p class="card-text">{{ $comex->lema }}</p> 
-                   </div>
 
-                   </div>
-                   
-                   <div class="compras-footer">
-                       <form action="{{ route('comex.destroy', $comex->id) }}" method="POST">
-                           <a href="/comex/{{ $comex->id }}/edit" class="btn btn-outline-warning">Editar</a>
-                           
-                           @csrf
-                           @method('DELETE')
-                           <button type="submit" class="btn btn-outline-danger">Borrar</button>
-                           
-                   </div>
-               </div>
-           </div>
+            </div>
+
+            <div class="compras-footer">
+                <form action="{{ route('comex.destroy', $comex->id) }}" method="POST">
+                    <a href="/comex/{{ $comex->id }}/edit" class="btn btn-outline-warning">Editar</a> 
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-outline-danger">Borrar</button>
+            </div>
        @endforeach
    </div>
 @stop
