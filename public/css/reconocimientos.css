@@ -83,3 +83,33 @@
     margin-top: -130px;
     margin-left: -60px;
 }
+
+
+@media (max-width: 720px) {
+    .container-reconocimiento{
+     width: 300px;
+    height: 200px;
+    margin-left: 100px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid  #17334d ;
+}
+}
+
+@media (max-width: 390px) {
+    .container-reconocimiento{
+        height: 600px;
+        width: 340px;
+        margin-left: 15px;
+    }
+    .card-principal{
+        margin-top: 20px;
+        height: 550px;
+        margin-left: -1px;
+    }
+    .reconocimiento-img img{
+        width: 13%;
+        height: 13%;
+    }
+    
+}
