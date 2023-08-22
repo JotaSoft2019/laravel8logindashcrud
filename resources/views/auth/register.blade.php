@@ -66,9 +66,19 @@
             </div>
            </div>
 
-            <div class="area">
-                <x-jet-label for="area" value="{{ __('Area') }}"/>
-                <x-jet-input id="area" class="block mt-1 w-full" type="text" name="area" :value="old('area')" required autofocus autocomplete="area" />
+           <div class="area">
+              <x-jet-label for="area" value="{{ __('Area') }}"/>
+              <select id="area" class="form-control" name="area">
+              <option value="Compras Nacionales"{{ in_array('comprasNacionales', old('area', [])) ? ' selected' : '' }}>Compras Nacionales</option>
+              <option value="Contaibilidad"{{ in_array('contaibilidad', old('area', [])) ? ' selected' : '' }}>Contabilidad</option>
+              <option value="Comercial"{{ in_array('comercial', old('area', [])) ? ' selected' : '' }}>Comercial</option>
+              <option value="Comex"{{ in_array('comex', old('area', [])) ? ' selected' : '' }}>Comex</option>
+              <option value="Gerencia"{{ in_array('gerencia', old('area', [])) ? ' selected' : '' }}>Gerencia</option>
+              <option value="Mercadeo Y Comunicaciones"{{ in_array('mercadeo', old('area', [])) ? ' selected' : '' }}>Mercadeo Y Comunicaciones</option>
+              <option value="Sistemas E Inventario"{{ in_array('sistemas', old('area', [])) ? ' selected' : '' }}>SistemaS E Inventario</option>
+              <option value="Talento Humano"{{ in_array('talentoHumano', old('area', [])) ? ' selected' : '' }}>Talento Humano</option>
+              <option value="Logistica"{{ in_array('logistica', old('area', [])) ? ' selected' : '' }}>Logistica</option>
+              </select>
             </div>
 
             <div class="registro-iniciar2">

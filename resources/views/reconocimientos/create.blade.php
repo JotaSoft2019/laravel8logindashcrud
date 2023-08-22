@@ -29,7 +29,17 @@
   </div>
   <div class="mb-3">
     <label for="area" class="form-label">Area</label>
-    <input id="area" name="area" type="text" class="form-control" tabindex="1">    
+    <select id="area" class="form-control" name="area">
+              <option value="Compras Nacionales"{{ in_array('comprasNacionales', old('area', [])) ? ' selected' : '' }}>Compras Nacionales</option>
+              <option value="Contaibilidad"{{ in_array('contaibilidad', old('area', [])) ? ' selected' : '' }}>Contabilidad</option>
+              <option value="Comercial"{{ in_array('comercial', old('area', [])) ? ' selected' : '' }}>Comercial</option>
+              <option value="Comex"{{ in_array('comex', old('area', [])) ? ' selected' : '' }}>Comex</option>
+              <option value="Gerencia"{{ in_array('gerencia', old('area', [])) ? ' selected' : '' }}>Gerencia</option>
+              <option value="Mercadeo Y Comunicaciones"{{ in_array('mercadeo', old('area', [])) ? ' selected' : '' }}>Mercadeo Y Comunicaciones</option>
+              <option value="Sistemas E Inventario"{{ in_array('sistemas', old('area', [])) ? ' selected' : '' }}>SistemaS E Inventario</option>
+              <option value="Talento Humano"{{ in_array('talentoHumano', old('area', [])) ? ' selected' : '' }}>Talento Humano</option>
+              <option value="Logistica"{{ in_array('logistica', old('area', [])) ? ' selected' : '' }}>Logistica</option>
+              </select>   
   </div>
     
   <a href="/reconocimientos" class="btn btn-secondary" tabindex="3">Cancelar</a>
