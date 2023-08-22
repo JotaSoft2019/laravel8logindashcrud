@@ -9,7 +9,7 @@ class Reconocimiento extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nombre', 'fecha', 'descripcion', 'imagen', 'area', 'estrella',
+        'nombre', 'fecha', 'descripcion', 'imagen', 'area',
     ];
 
 }

@@ -20,7 +20,6 @@ class CreateReconocimientosTable extends Migration
             $table->string('descripcion');
             $table->string('area');
             $table->string('imagen');
-            $table->string('estrella');
             $table->timestamps();
         });
     }

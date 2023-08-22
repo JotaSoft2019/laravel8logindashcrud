@@ -10,10 +10,14 @@
 
 <div class="contenedor-reco">
    <a href="reconocimientos/create" class="btn btn-outline-success">CREAR</a>
-   
-   <div class="row container">
+     <div class="row container container-reconocimiento">
        @foreach ($reconocimientos as $reconocimiento) 
-           <div class="card card-principal">
+        <div class="card card-principal">
+           <div class="contenedor-vacio">
+             <div class="reconocimiento-img">
+               <img src="{{ asset('/imagenesJotaRed/logo-removebg-preview.png') }}" alt="Logo">
+             </div>
+           </div>
                <div class="text-center card-2">
                    @if ($reconocimiento->imagen)
                    <div class="imagen-area">
@@ -25,42 +29,38 @@
                        </div>
                    @endif
                    <div class="informacion">
-                       <div class="text-center compra-area">
-                           <span class="title-compra">{{ $reconocimiento->nombre }}</span> 
+                        <div class="titulo-reconocimiento">
+                            <h3>Reconocimiento a:</h3>
                        </div>
                        <div class="text-center compra-area">
-                           <span class="title-compra">{{ $reconocimiento->fecha }}</span> 
+                           <h1 class="title-compra">{{ $reconocimiento->nombre }}</h1> 
                        </div>
                        <div class="text-center compra-area">
-                           <span class="title-compra">{{ $reconocimiento->descripcion }}</span> 
+                           <h5 class="title-compra">{{ $reconocimiento->descripcion }}</h5> 
                        </div>
                        <div class="text-center compra-area">
-                           <span class="title-compra">{{ $reconocimiento->area }}</span> 
+                           <h4>En el área de:</h4>
+                           <h5 class="title-compra">{{ $reconocimiento->area }}</h5> 
                        </div>
-                       <div class="text-center compra-area"> 
-                    <span class="card-text">
-                       @if($reconocimiento->estrella)
-                     <i class="fas fa-star fa-lg" style="color: gold;"></i>
-                     <i class="fas fa-star fa-lg" style="color: gold;"></i>
-                     <i class="fas fa-star fa-lg" style="color: gold;"></i>
-                      @endif
-                    </span> 
-                     </div>
-                  
+                       <div class="text-center compra-area">
+                           <h6 class="title-compra">{{ $reconocimiento->fecha }}</h6> 
+                       </div>
                    <div class="compras-footer">
-                       <form action="{{ route('reconocimientos.destroy', $reconocimiento->id) }}" method="POST">
+                    <form action="{{ route('reconocimientos.destroy', $reconocimiento->id) }}" method="POST">
                            <a href="/reconocimientos/{{ $reconocimiento->id }}/edit" class="btn btn-outline-warning">Editar</a>
-                           
                            @csrf
                            @method('DELETE')
-                           <button type="submit" class="btn btn-outline-danger">Borrar</button>
-                       </form>
+                        <button type="submit" class="btn btn-outline-danger">Borrar</button>
+                    </form>
                    </div>
-               </div>
 
+                   <div class="imagen-medalla">
+                          <img src="{{ asset('/imagenesJotaRed/medalla-removebg-preview.png') }}" alt="Logo">
+                    </div>
+               </div>
                <br>
            </div>
-           <br>
+        <br>
        @endforeach
    </div>
 
@@ -73,7 +73,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    
 @stop
 
 @section('js')

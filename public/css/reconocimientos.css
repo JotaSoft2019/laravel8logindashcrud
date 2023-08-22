@@ -1,18 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 @import url('https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css');
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
-
+*{
+    font-family: 'Old Standard TT', serif;
+}
 .imagen-area img{
-    width: 100px;
-    height: 100px;
-    
+    width: 100%;
+    height: 100%;
 }
 
 .imagen-area{
-    border: none;
-    height: 100px;
-    margin-top: 25px;
-    margin-left: -50px;
+    border: 1px solid  #17334d ;
+    height: 200px;
+    width: 200px;
+    margin-top: -5px;
+    margin-left: 150px;
+}
+
+.contenedor-vacio{
+    width: 100%;
+    height: 35px;
+    background-color: #1e5293; 
+    border: 1px solid  #17334d;
+}
+
+.container-reconocimiento{
+     width: 600px;
+    height: 400px;
+    margin-left: 100px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid  #17334d ;
 }
 
 .container{
@@ -21,20 +39,47 @@
 }
 
 .card-principal{
-    width: 600px;
-    height: 180px;
-    margin-top: 20px;
+    width: 550px;
+    height: 390px;
+    margin-left: 15px;
+    border: 1px solid  #17334d ;
+    display: block;
+    margin-top: 15px;
+    gap: 40px;
     padding-top: 10px;
 }
 
-
-
 .card-2{
     display:flex;
-    gap: 50px;
+    width: 100%;
+    margin-left: -90px;
+    margin-top: 60px;
     justify-content: center;
 }
+
 .informacion{
     display: block;
+    margin-top: -15px;
     gap: 30px;
+    margin-left: 20px;
+}
+
+.reconocimiento-img img{
+    width: 6%;
+    height: 6%;
+}
+
+.reconocimiento-img{
+    display: flex;
+    justify-content: center;
+    margin-top: 1px;
+}
+
+.imagen-medalla img{
+    width: 25%;
+    height: 25%;
+    display: flex;
+    justify-content: end;
+    margin-top: -130px;
+    margin-left: -60px;
 }

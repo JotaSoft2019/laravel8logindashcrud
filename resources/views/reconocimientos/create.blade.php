@@ -31,12 +31,7 @@
     <label for="area" class="form-label">Area</label>
     <input id="area" name="area" type="text" class="form-control" tabindex="1">    
   </div>
-  
-  <div class="mb-3">
-    <label for="estrella" class="form-label">Estrella</label>
-    <input id="estrella" name="estrella" type="text" class="form-control" tabindex="2">
-  </div>
-  
+    
   <a href="/reconocimientos" class="btn btn-secondary" tabindex="3">Cancelar</a>
   <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
 </form>

@@ -30,11 +30,6 @@
   </div>
   
   <div class="mb-3">
-    <label for="estrella" class="form-label">Estrellas</label>
-    <input id="estrella" name="estrella" type="text" class="form-control" value="{{ $reconocimientos->estrella }}">
-  </div>
-
-  <div class="mb-3">
     <label for="imagen" class="form-label">Imagen</label>
     @if ($reconocimientos->imagen)
         <div>

@@ -31,7 +31,6 @@ class ReconocimientoController extends Controller
             'descripcion' => 'required',
             'area' => 'required',
             'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'estrella' => 'required',
         ]);
 
         $reconocimientos = new Reconocimiento();
@@ -39,7 +38,6 @@ class ReconocimientoController extends Controller
         $reconocimientos->fecha = $request->get('fecha');
         $reconocimientos->descripcion = $request->get('descripcion');
         $reconocimientos->area = $request->get('area');
-        $reconocimientos->estrella = $request->get('estrella');
 
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');
@@ -70,7 +68,6 @@ class ReconocimientoController extends Controller
             'descripcion' => 'required',
             'area' => 'required',
             'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'estrella' => 'required',
         ]);
 
         $reconocimientos = Reconocimiento::find($id);
@@ -78,7 +75,6 @@ class ReconocimientoController extends Controller
         $reconocimientos->fecha = $request->get('fecha');
         $reconocimientos->descripcion = $request->get('descripcion');
         $reconocimientos->area = $request->get('area');
-        $reconocimientos->estrella = $request->get('estrella');
 
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');
