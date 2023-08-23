@@ -80,7 +80,6 @@
               <option value="Logistica"{{ in_array('logistica', old('area', [])) ? ' selected' : '' }}>Logistica</option>
               </select>
             </div>
-
             <div class="registro-iniciar2">
 
             <div class="flex items-center justify-end mt-4">

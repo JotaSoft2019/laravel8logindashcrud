@@ -27,7 +27,6 @@
                 <x-jet-label for="password" value="{{ __('Introduzca Contraseña') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
-
             <div class="registro-iniciar">
             <x-jet-button class="ml-4">
                     {{ __('Iniciar') }}
