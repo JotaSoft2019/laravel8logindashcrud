@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Seeder;
 
@@ -14,10 +15,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Storage::deleteDirectory('imagen');
-        Storage::makeDirectory('imagen');
+        Storage::deleteDirectory('posts');
+        Storage::makeDirectory('posts');
 
-        \App\Models\Post::factory(100)->create();
+
+        $this->call(RoleSeeder::class);
+
+        $this->call(UserSeeder::class);
+        Category::factory(4)->create();
+        Tag::factory(8)->create();
+        $this->call(PostSeeder::class);
+
         
     }
 }
