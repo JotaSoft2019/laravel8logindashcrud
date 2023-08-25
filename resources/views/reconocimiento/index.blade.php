@@ -9,7 +9,7 @@
 @section('content')
 
 <div class="contenedor-reco">
-   <a href="reconocimientos/create" class="btn btn-outline-success">CREAR</a>
+   <a href="{{ route('reconocimiento.create') }}" class="btn btn-outline-success">CREAR</a>
      <div class="row container container-reconocimiento">
        @foreach ($reconocimientos as $reconocimiento) 
         <div class="card card-principal">
@@ -47,7 +47,7 @@
                        </div>
                    <div class="compras-footer">
                     <form action="{{ route('reconocimientos.destroy', $reconocimiento->id) }}" method="POST">
-                           <a href="/reconocimientos/{{ $reconocimiento->id }}/edit" class="btn btn-outline-warning">Editar</a>
+                           <a href="{{ route('reconocimientos.edit', $reconocimiento->id) }}" class="btn btn-outline-warning">Editar</a>
                            @csrf
                            @method('DELETE')
                         <button type="submit" class="btn btn-outline-danger">Borrar</button>
@@ -82,7 +82,7 @@
 
 <script>
 $(document).ready(function() {
-    $('#comprasNacionales').DataTable({
+    $('.dataTable').DataTable({
         "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "All"]]
     });
 });

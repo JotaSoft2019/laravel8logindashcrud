@@ -15,12 +15,12 @@ class ReconocimientoController extends Controller
     public function index()
     {
         $reconocimientos = Reconocimiento::all(); 
-        return view('reconocimientos.index')->with('reconocimientos', $reconocimientos); 
+        return view('reconocimiento.index')->with('reconocimientos', $reconocimientos); 
     }
 
     public function create()
     {
-        return view('reconocimientos.create');
+        return view('reconocimiento.create');
     }
 
     public function store(Request $request)
@@ -47,7 +47,7 @@ class ReconocimientoController extends Controller
 
         $reconocimientos->save();
 
-        return redirect('/reconocimientos');
+        return redirect('/reconocimiento');
     }
     public function show($id)
     {
@@ -57,7 +57,7 @@ class ReconocimientoController extends Controller
     public function edit($id)
     {
         $reconocimientos = Reconocimiento::find($id);
-        return view('reconocimientos.edit')->with('reconocimientos', $reconocimientos);
+        return view('reconocimiento.edit')->with('reconocimientos', $reconocimientos);
     }
 
     public function update(Request $request, $id)
@@ -90,7 +90,7 @@ class ReconocimientoController extends Controller
 
         $reconocimientos->save();
 
-        return redirect('/reconocimientos');
+        return redirect('/reconocimiento');
     }
 
     public function destroy($id)
@@ -103,6 +103,6 @@ class ReconocimientoController extends Controller
         }
 
         $reconocimiento->delete();
-        return redirect('/reconocimientos');
+        return redirect('/reconocimiento');
     }
 }

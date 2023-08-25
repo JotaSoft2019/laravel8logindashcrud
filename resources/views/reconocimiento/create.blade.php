@@ -42,7 +42,7 @@
               </select>   
   </div>
     
-  <a href="/reconocimientos" class="btn btn-secondary" tabindex="3">Cancelar</a>
+  <a href="/reconocimiento" class="btn btn-secondary" tabindex="3">Cancelar</a>
   <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
 </form>
 @stop
