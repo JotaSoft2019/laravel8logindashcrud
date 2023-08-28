@@ -15,7 +15,7 @@ class ComentarioController extends Controller
     public function index()
     {
         
-        $comentarios = Comentario::all();
+        $comentarios = Comentario::orderBy('id', 'desc')->get();
         return view('comercial.comentario.index', compact('comentarios'));
     }
 

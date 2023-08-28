@@ -10,7 +10,7 @@ class TalentoController extends Controller
     public function index()
     {
 
-        $archivos = Talento::all();
+        $archivos = Talento::orderBy('id', 'desc')->get();
         return view('talentoG.index', compact('archivos'));
     }
 

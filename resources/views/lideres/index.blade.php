@@ -43,7 +43,6 @@
                 </div>
             @endforeach
         </div>
-        <!-- END: card -->
     </section>
 @stop
 

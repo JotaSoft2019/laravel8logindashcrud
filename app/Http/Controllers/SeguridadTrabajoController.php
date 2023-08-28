@@ -10,7 +10,7 @@ class SeguridadTrabajoController extends Controller
    
     public function index()
     {
-        $archivos = SeguridadTrabajo::all();
+        $archivos = SeguridadTrabajo::orderBy('id', 'desc')->get();
         return view('seguridadYSalud.index', compact('archivos'));
     }
     

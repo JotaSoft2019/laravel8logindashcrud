@@ -10,7 +10,7 @@ class AdnController extends Controller
     public function index()
     {
 
-        $archivos = Adn::all();
+        $archivos = Adn::orderBy('id', 'desc')->get();
         return view('adn.index', compact('archivos'));
     }
 
