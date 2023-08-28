@@ -9,7 +9,7 @@
 @section('content')
 
 <div class="contenedor-reco">
-   <a href="{{ route('reconocimiento.create') }}" class="btn btn-outline-success">CREAR</a>
+   <a href="{{ route('reconocimientos.create') }}" class="btn btn-outline-success">CREAR</a>
      <div class="row container container-reconocimiento">
        @foreach ($reconocimientos as $reconocimiento) 
         <div class="card card-principal">

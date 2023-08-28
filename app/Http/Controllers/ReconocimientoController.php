@@ -47,7 +47,7 @@ class ReconocimientoController extends Controller
 
         $reconocimientos->save();
 
-        return redirect('/reconocimiento');
+        return redirect('/reconocimientos');
     }
     public function show($id)
     {
@@ -90,7 +90,7 @@ class ReconocimientoController extends Controller
 
         $reconocimientos->save();
 
-        return redirect('/reconocimiento');
+        return redirect('/reconocimientos');
     }
 
     public function destroy($id)
@@ -103,6 +103,6 @@ class ReconocimientoController extends Controller
         }
 
         $reconocimiento->delete();
-        return redirect('/reconocimiento');
+        return redirect('/reconocimientos');
     }
 }
