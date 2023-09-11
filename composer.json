@@ -19,9 +19,10 @@
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "laravelcollective/html": "^6.4",
         "livewire/livewire": "^2.12",
-        "symfony/mailer": "^5.0",
-        "spatie/laravel-permission": "^5.10"
+        "spatie/laravel-permission": "^5.11",
+        "symfony/mailer": "^5.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

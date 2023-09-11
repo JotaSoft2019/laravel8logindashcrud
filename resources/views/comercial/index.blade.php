@@ -7,11 +7,18 @@
 @stop
 
 @section('content')
-   <a href="comercials/create" class="btn btn-outline-warning">CREAR</a>
+@can('comercials.create')
+   <a href="comercials/create" class="btn btn-outline-warning">CREAR</a>  
+@endcan
+   
+   <br>
+   @can('comentario.index')
    <div class="botones-comentarios">
      <a href="comentario/create" class="btn btn-outline-success">CREAR COMENTARIO</a>
      <a href="comentario" class="btn btn-outline-success">VER COMENTARIOS</a>
-   </div>
+   </div> 
+   @endcan
+  
    <br>
 
    <div id="container"> 

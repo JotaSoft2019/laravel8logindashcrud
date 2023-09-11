@@ -301,6 +301,8 @@ return [
        
 
         // Sidebar items:
+
+        
         [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
@@ -312,6 +314,23 @@ return [
             'can'  => 'manage-blog',
             'font-size' => '8px',
         ],
+       
+        [
+            'text' => 'Administrar Usuarios',
+            'url'  => 'users',
+            'icon' => 'fas fa-users-cog fa-fw',
+            'font-size' => '8px',
+            'can' => 'users'
+        ],
+
+        [
+            'text' => 'Administrar Roles',
+            'url'  => 'roles',
+            'icon' => 'fas fa-users-cog fa-fw',
+            'font-size' => '8px',
+            'can' => 'roles'
+        ],
+         
         [
             'text' => 'Inicio',
             'url'  => 'articulos',
@@ -439,7 +458,7 @@ return [
 
         [
             'text' => 'Cumpleaños',
-            'url'  => 'admin/settings',
+            'url'  => 'cumpleaños',
             'icon' => 'fas fa fa-birthday-cake',
             'font-size' => '8px',
         ],

@@ -1,0 +1,21 @@
+/* Cambiar el fondo de los botones de paginación */
+.pagination li {
+    background-color: #333;
+    margin: 2px;
+}
+
+/* Cambiar el color del texto de los botones de paginación */
+.pagination li a {
+    color: #fff;
+}
+
+/* Cambiar el color de fondo del botón de página actual */
+.pagination .page-item.active a {
+    background-color: #007bff;
+}
+
+svg {
+    overflow: hidden;
+    vertical-align: middle;
+    width: 90px !important;
+}

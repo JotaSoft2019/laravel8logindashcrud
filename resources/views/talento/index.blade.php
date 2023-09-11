@@ -7,7 +7,10 @@
 @stop
 
 @section('content')
-   <a href="{{ route('talentoHumano.create') }}" class="btn btn-outline-success">CREAR</a>
+@can('talentoHumano.create')
+    <a href="{{ route('talentoHumano.create') }}" class="btn btn-outline-success">CREAR</a>   
+@endcan
+   
    
    <div id="container">
        @foreach ($talentosHumanos as $talentoHumano) 

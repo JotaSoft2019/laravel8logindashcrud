@@ -7,7 +7,10 @@
 @stop
 
 @section('content')
-<a href="{{ route('seguridadYSalud.create') }}" class="btn btn-outline-success">CREAR</a>
+   @can('seguridadYSalud.create')
+      <a href="{{ route('seguridadYSalud.create') }}" class="btn btn-outline-success">CREAR</a>   
+   @endcan
+
 <div class="container">
     {{-- Mostrar el PDF si ya se ha creado --}}
     @if ($archivos && $archivos->count() > 0)

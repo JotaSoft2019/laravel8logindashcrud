@@ -7,7 +7,10 @@
 @stop
 
 @section('content')
-<a href="{{ route('talento.create') }}" class="btn btn-outline-success">CREAR</a>
+    @can('talento.create')
+       <a href="{{ route('talento.create') }}" class="btn btn-outline-success">CREAR</a>
+    @endcan
+
 <div class="container">
     {{-- Mostrar el PDF si ya se ha creado --}}
     @if ($archivos && $archivos->count() > 0)
@@ -37,7 +40,7 @@
                 </div>
             </div>
         @endforeach
-    </div>x
+    </div>
 @else
     <p>No hay PDF disponibles.</p>
 @endif

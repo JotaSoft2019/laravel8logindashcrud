@@ -32,7 +32,7 @@
     <input id="imagen" name="imagen" type="file" class="form-control">
   </div>
 
-  <a href="/logisticas" class="btn btn-secondary">Cancelar</a>
+  <a href="/logistica" class="btn btn-secondary">Cancelar</a>
   <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
 @stop

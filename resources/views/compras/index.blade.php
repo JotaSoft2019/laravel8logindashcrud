@@ -7,8 +7,9 @@
 @stop
 
 @section('content')
-   <a href="compras/create" class="btn btn-outline-success">CREAR</a>
-   
+   @can('compras.create')
+     <a href="compras/create" class="btn btn-outline-success">CREAR</a>
+   @endcan
    <div id="container">
     @foreach ($compras as $compra)
         <div class="product-details">
@@ -25,7 +26,7 @@
                 </div>
             @endif
         </div>
-
+        @can('compras.destroy')
         <div class="compras-footer">
             <form class="form-boton" action="{{ route('compras.destroy', $compra->id) }}" method="POST">
                 <a href="/compras/{{ $compra->id }}/edit" class="btn3 btn btn-outline-warning">✍🏻</a>
@@ -34,6 +35,7 @@
                 <button type="submit" class="btn2 btn btn-outline-danger">🗑️</button>
             </form>
         </div>
+        @endcan
     @endforeach
 </div>
 @stop

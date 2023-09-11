@@ -7,8 +7,9 @@
 @stop
 
 @section('content')
-   <a href="{{ route('contabilidads.create') }}" class="btn btn-outline-success">CREAR</a>
-   
+   @can('contabilidads.create')
+      <a href="{{ route('contabilidads.create') }}" class="btn btn-outline-success">CREAR</a>
+   @endcan
    <div id="container">
        @foreach ($contabilidads as $contabilidad) 
            <div class="product-details">

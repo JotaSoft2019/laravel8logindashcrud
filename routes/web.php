@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeguridadController;
-
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +23,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('users', 'App\Http\Controllers\UserController')->only(['index', 'edit', 'update']);
+Route::resource('roles', 'App\Http\Controllers\RoleController');
+
 Route::resource('reconocimientos', 'App\Http\Controllers\ReconocimientoController');
 Route::resource('nota', 'App\Http\Controllers\NotaController');
-Route::post('calendario', [CalendarioController::class, 'store'])->name('calendario.calendario.store');
+/*Route::post('calendario', [CalendarioController::class, 'store'])->name('calendario.calendario.store');
 Route::patch('calendario/update/{id}', [CalendarioController::class, 'update'])->name('calendario.calendario.update');
-Route::delete('calendario/destroy/{id}', [CalendarioController::class, 'destroy'])->name('calendario.calendario.destroy');
+Route::delete('calendario/destroy/{id}', [CalendarioController::class, 'destroy'])->name('calendario.calendario.destroy');*/
 Route::resource('eventos', 'App\Http\Controllers\EventController');
 Route::resource('calendario', 'App\Http\Controllers\CalendarioController');
 Route::resource('adn', 'App\Http\Controllers\AdnController');
@@ -45,6 +48,8 @@ Route::resource('comentario', 'App\Http\Controllers\ComentarioController');
 Route::resource('articulos', 'App\Http\Controllers\ArticuloController');
 Route::resource('lideres', 'App\Http\Controllers\LideresController');
 Route::resource('comercials', 'App\Http\Controllers\ComercialController');
+Route::resource('cumpleaños', 'App\Http\Controllers\CumpleanioController');
+
 
 // Ruta del dashboard (protegida con autenticación)
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

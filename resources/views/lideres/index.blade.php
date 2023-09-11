@@ -7,7 +7,10 @@
 @stop
 
 @section('content')
+@can('lideres.create')
 <a href="{{ route('lideres.create') }}" class="btn btn-outline-success">CREAR</a>
+@endcan
+
     <section class="wrapper">
         <!-- BEGIN: card -->
         <div class="row" id="lideres-container">
@@ -28,7 +31,8 @@
                             <h3 class="card__name">{{ $lider->nombre }} {{ $lider->apellido }}</h3>
                             <p class="card__job">{{ $lider->area }}</p>
                         </div>
-                      
+                        @can('lideres.destroy')
+
                         <div class="botones">
                         <form action="{{ route('lideres.destroy', $lider->id) }}" method="POST">
                            <a href="{{ route('lideres.edit', $lider->id) }}" class="btn btn-outline-warning">Editar</a>
@@ -38,6 +42,7 @@
                            <button type="submit" class="btn btn-outline-primary">Borrar</button>
                        </form>
                         </div>
+                        @endcan
                       
                     </div>
                 </div>

@@ -9,7 +9,10 @@
 @section('content')
 
 <div class="contenedor-reco">
-   <a href="{{ route('reconocimientos.create') }}" class="btn btn-outline-success">CREAR</a>
+    @can('reconocimientos.create')
+        <a href="{{ route('reconocimientos.create') }}" class="btn btn-outline-success">CREAR</a>
+    @endcan
+   
      <div class="row container container-reconocimiento">
        @foreach ($reconocimientos as $reconocimiento) 
         <div class="card card-principal">
@@ -45,14 +48,18 @@
                        <div class="text-center compra-area">
                            <h6 class="title-compra">{{ $reconocimiento->fecha }}</h6> 
                        </div>
-                   <div class="compras-footer">
-                    <form action="{{ route('reconocimientos.destroy', $reconocimiento->id) }}" method="POST">
-                           <a href="{{ route('reconocimientos.edit', $reconocimiento->id) }}" class="btn btn-outline-warning">Editar</a>
-                           @csrf
-                           @method('DELETE')
-                        <button type="submit" class="btn btn-outline-danger">Borrar</button>
-                    </form>
-                   </div>
+
+                @can('reconocimientos.destroy')
+                     <div class="compras-footer">
+                         <form action="{{ route('reconocimientos.destroy', $reconocimiento->id) }}" method="POST">
+                                <a href="{{ route('reconocimientos.edit', $reconocimiento->id) }}" class="btn btn-outline-warning">Editar</a>
+                                @csrf
+                                @method('DELETE')
+                             <button type="submit" class="btn btn-outline-danger">Borrar</button>
+                         </form>
+                    </div> 
+                @endcan
+                   
 
                    <div class="imagen-medalla">
                           <img src="{{ asset('/imagenesJotaRed/medalla-removebg-preview.png') }}" alt="Logo">

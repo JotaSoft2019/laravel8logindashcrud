@@ -7,8 +7,10 @@
 @stop
 
 @section('content')
-   <a href="comex/create" class="btn btn-outline-success">CREAR</a>
    
+   @can('comex.create')
+     <a href="comex/create" class="btn btn-outline-success">CREAR</a>
+   @endcan
    <div id="container">
        @foreach ($comexs as $comex) 
            <div class="product-details">

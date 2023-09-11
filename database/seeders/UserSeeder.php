@@ -16,10 +16,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // Crear usuarios normales
-        User::factory(10)->create();
-
-        // Llamar al método para crear el usuario administrador
         $this->runAdmin();
     }
 
@@ -38,9 +34,9 @@ class UserSeeder extends Seeder
         'cargo'=>'Practicante',
         'area'=>'Sistemas',
         'email' => 'admin@example.com',
-        'password' => Hash::make('adminpassword'),
+        'password' => Hash::make('123456789'),
     ])->assignRole('Admin');
 
-    User::factory(9)->create();
+    
 }
 }

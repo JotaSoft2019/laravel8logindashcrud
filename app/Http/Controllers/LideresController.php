@@ -8,10 +8,12 @@ use Illuminate\Support\Facades\Storage; // Importa la clase Storage
 
 class LideresController extends Controller
 {
-    public function __construct()
+
+
+    /*public function __construct()
     {
-        $this->middleware('auth');
-    }
+        $this->middleware('can:lideres.index')->only('index') ;
+    }*/
 
     public function index()
     {

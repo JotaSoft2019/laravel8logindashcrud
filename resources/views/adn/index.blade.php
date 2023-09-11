@@ -7,7 +7,9 @@
 @stop
 
 @section('content')
+@can('adn.create')
 <a href="{{ route('adn.create') }}" class="btn btn-outline-success">CREAR</a>
+@endcan
 <div class="container">
     {{-- Mostrar el PDF si ya se ha creado --}}
     @if ($archivos && $archivos->count() > 0)
@@ -26,6 +28,7 @@
                     <div class="card text-center">
                        <p class="card-text">{{ $archivo-> text}}</p>
                    </div>
+                   @can('adn.destroy')
                     <div class="card-footer">
                         <form action="{{ route('adn.destroy', $archivo->id) }}" method="post">
                             @csrf
@@ -34,6 +37,7 @@
                             <a href="{{ route('adn.edit', $archivo->id) }}" class="btn btn-outline-warning">Editar</a>
                         </form>
                     </div>
+                    @endcan
                 </div>
             </div>
         @endforeach

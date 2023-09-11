@@ -7,8 +7,9 @@
 @stop
 
 @section('content')
-   <a href="gerencia/create" class="btn btn-outline-success">CREAR</a>
-   
+   @can('gerencia.create')
+      <a href="gerencia/create" class="btn btn-outline-success">CREAR</a>
+   @endcan
    <div id="container">
        @foreach ($gerencias as $gerencia) 
            <div class="product-details">

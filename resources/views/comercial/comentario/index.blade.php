@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+
    @foreach ($comentarios as $comentario)
    <div class="cuadro-comentario">
       <p>{{ $comentario->contenido }}</p>
@@ -21,6 +22,7 @@
        <a href="{{ route('comercials.index') }}" class="btn btn-outline-success">Volver</a>
    </form>
 </div>
+
 @stop
 
 @section('css')

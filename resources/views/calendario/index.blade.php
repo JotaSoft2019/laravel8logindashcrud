@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-<!--Notas NO TOCAR ESTE CODIGO-->
+@can('calendario.create')
 <div class="modal fade" id="calendarioModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -29,6 +29,7 @@
         </div>
     </div>
 </div>
+@endcan
 <div class="container mt-5">
     <div class="row">
         <div class="col-10">

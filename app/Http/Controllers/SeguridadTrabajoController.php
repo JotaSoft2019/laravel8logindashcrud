@@ -23,7 +23,7 @@ class SeguridadTrabajoController extends Controller
         
     }
     public function store(Request $request)
-{
+    {
     
     if ($request->hasFile('urlpdf') && $request->file('urlpdf')->getClientOriginalExtension() === 'pdf') {
         $file = $request->file('urlpdf');
