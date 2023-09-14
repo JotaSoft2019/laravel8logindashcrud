@@ -75,15 +75,29 @@
 }
 
 .fc-event {
-    background-color: #e74c3c; /* Cambiar el color de fondo de los eventos */
-    color: white; /* Cambiar el color del texto de los eventos */
+    background-color: #3498db; 
+    color: white; 
 }
 
 .fc-day-grid-event {
-    background-color: #e74c3c; /* Cambiar el color de fondo de las celdas del calendario */
+    background-color: #3498db; 
 }
 
-
+.fc-day-grid-event{
+    background-color: #3498db !important;
+    border-color: #3498db !important;
+    width: 100%;
+    height: 50px;
+    
+}
+.fc-day-grid-event .fc-content {
+    font-family: 0.5 !important;
+     white-space: wrap !important;
+    overflow: hidden;
+}
+.fc-title{
+     width: 100%;
+}
 @media (max-width: 390px) {
     .fc-toolbar .fc-left {
         float: left;

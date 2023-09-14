@@ -7,14 +7,23 @@
 @stop
 
 @section('content')
-<a href="cumpleaños/create" class="btn btn-outline-success">CREAR</a>
+
+@if ($users->count() > 0)
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <ul class="lista-cumpleanio">
+        @foreach ($users as $user)
+            <li><b>{{ $user->name }} {{ $user->apellido }}</b></li>
+            <li><h6>{{ $user->date ? \Carbon\Carbon::parse($user->date)->format('d - m ') : 'Fecha de nacimiento no disponible' }}</h6></li>
+        @endforeach
+    </ul>
+    
+    <p class="card-text">Hoy es un día súper especial, cumples <b>un año mas de vida</b> y lo puedes celebrar junto a la familia Jota Mundial, por eso hoy te decimos</p>
+    <h5 class="card-title">Feliz Cumpleaños</h5>
+    <a href="#" class="btn btn-primary">Felicitar 🎂</a>
   </div>
 </div>
+@endif
 @endsection
 
 @section('css')

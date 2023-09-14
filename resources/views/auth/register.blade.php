@@ -56,8 +56,8 @@
            <div class="po1-po2 mb-2">
 
             <div class="po1">
-                <x-jet-label for="date" value="{{ __('Fecha-Nacimiento') }}" />
-                <x-jet-input id="date" class="block mt-1 w-full" type="date" name="date" :value="old('date')" required autofocus autocomplete="date" />
+            <x-jet-label for="date" value="{{ __('Fecha-Nacimiento') }}" />
+            <x-jet-input id="date" class="block mt-1 w-full" type="date" name="date" :value="old('date')" required autofocus autocomplete="date" />
             </div>
 
             <div class="po2">
@@ -96,3 +96,25 @@
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var dateInput = document.getElementById('date');
+
+        dateInput.addEventListener('change', function () {
+            var selectedDate = dateInput.value;
+            var calendar = document.querySelector('.datepicker'); // Reemplaza '.datepicker' con el selector correcto de tu calendario
+
+            // Lógica para subrayar la fecha seleccionada en el calendario
+            // Puedes usar una clase CSS para aplicar el estilo de subrayado
+            var calendarCells = calendar.querySelectorAll('.calendar-cell'); // Reemplaza '.calendar-cell' con el selector correcto de las celdas del calendario
+
+            calendarCells.forEach(function (cell) {
+                if (cell.dataset.date === selectedDate) {
+                    cell.classList.add('subrayado'); // Agrega una clase CSS 'subrayado' para aplicar el estilo
+                } else {
+                    cell.classList.remove('subrayado');
+                }
+            });
+        });
+    });
+</script>

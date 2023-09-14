@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Cumpleanio;
 use Carbon\Carbon;
@@ -9,13 +9,12 @@ class CumpleanioController extends Controller
 {
     public function index()
     {
-        // Obtener cumpleaños de hoy
-        $today = Carbon::now();
-        $birthdayEvents = Cumpleanio::whereMonth('fecha', $today->month)
-                                    ->whereDay('fecha', $today->day)
-                                    ->get();
-
-        return view('cumpleaños.index', compact('birthdayEvents'));
+        $currentDate = Carbon::now();
+        $users = User::whereMonth('date', $currentDate->month)
+                    ->whereDay('date', $currentDate->day)
+                    ->get();
+    
+        return view('cumpleaños.index', compact('users'));
     }
 
     public function create()
