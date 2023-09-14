@@ -7,7 +7,6 @@
 @stop
 
 @section('content')
-
 @if ($users->count() > 0)
 <div class="card" style="width: 18rem;">
   <div class="card-body">
@@ -18,12 +17,31 @@
         @endforeach
     </ul>
     
-    <p class="card-text">Hoy es un día súper especial, cumples <b>un año mas de vida</b> y lo puedes celebrar junto a la familia Jota Mundial, por eso hoy te decimos</p>
+    <p class="card-text">Hoy es un día súper especial, cumples <b>un año más de vida</b> y lo puedes celebrar junto a la familia Jota Mundial, por eso hoy te decimos</p>
     <h5 class="card-title">Feliz Cumpleaños</h5>
-    <a href="#" class="btn btn-primary">Felicitar 🎂</a>
+    <a href="mensaje/create" class="btn btn-primary">Felicitar 🎂</a>
   </div>
 </div>
+
+
 @endif
+
+
+<!--@foreach ($mensajes as $mensaje)
+   <div class="cuadro-comentario">
+      <p>{{ $mensaje->contenido }}</p>
+    
+@endforeach-->
+<!--<h3>Mensajes de Cumpleaños:</h3>
+@if ($mensajes->count() > 0)
+    <ul>
+        @foreach ($mensajes as $mensaje)
+            <li>{{ $mensaje->contenido }}</li>
+        @endforeach
+    </ul>
+@else
+    <p>No hay mensajes de cumpleaños.</p>
+@endif-->
 @endsection
 
 @section('css')
