@@ -38,7 +38,7 @@ img{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 115px;
+    margin-left: 15px;
     margin-top: -50px;
 }
 
@@ -80,6 +80,10 @@ img{
 .parrafo h5{
     font-family: 'Courgette', cursive;
     font-family: 'Pacifico', cursive;
+}
+
+.boton{
+    margin-left: 95px;
 }
 
 
