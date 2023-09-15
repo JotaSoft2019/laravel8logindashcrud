@@ -3,18 +3,20 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Cumpleanio;
+use App\Models\Mensaje;
 use Carbon\Carbon;
 
 class CumpleanioController extends Controller
 {
     public function index()
     {
+        $mensajes = Mensaje::orderBy('id', 'desc')->get();
         $currentDate = Carbon::now();
         $users = User::whereMonth('date', $currentDate->month)
                     ->whereDay('date', $currentDate->day)
                     ->get();
     
-        return view('cumpleaños.index', compact('users'));
+        return view('cumpleaños.index', compact('users','mensajes'));
     }
 
     public function create()

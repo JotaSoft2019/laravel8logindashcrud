@@ -14,8 +14,12 @@ class MensajeController extends Controller
 
     public function index()
     {
-        $mensajes = Mensaje::orderBy('id', 'desc')->get();
-        return view('cumpleaños.index')->with('mensajes', $mensajes);
+        // Obtén los mensajes de cumpleaños (ajusta esto según tu lógica)
+        
+        $mensajes = Mensaje::with('user')->orderBy('id', 'desc')->get();
+
+        // Pasa la variable $mensajes a la vista
+        return view('cumpleaños.index', compact('mensajes'));
     }
 
     public function create()
@@ -69,8 +73,14 @@ class MensajeController extends Controller
         return response()->json(['success' => true]);
     }
 
+
     public function obtenerMensajes($id) {
         $mensajes = Mensaje::where('user_id', $id)->get();
         return view('cumpleaños.mensaje', compact('mensajes'));
+    }
+    public function vaciar()
+    {
+        Mensaje::truncate(); // Esto eliminará todos los registros de la tabla 'mensajes'
+        return redirect()->route('cumpleaños.index')->with('success', 'Todos los mensajes de cumpleaños han sido eliminados.');
     }
 }

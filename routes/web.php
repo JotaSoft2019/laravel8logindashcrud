@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeguridadController;
 use App\Http\Controllers\UserController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,7 +51,7 @@ Route::resource('articulos', 'App\Http\Controllers\ArticuloController');
 Route::resource('lideres', 'App\Http\Controllers\LideresController');
 Route::resource('comercials', 'App\Http\Controllers\ComercialController');
 Route::resource('cumpleaños', 'App\Http\Controllers\CumpleanioController');
-
+Route::get('/cumpleaños/vaciar-mensajes', 'MensajeController@vaciarMensajes')->name('mensaje.vaciar');
 
 // Ruta del dashboard (protegida con autenticación)
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -3,7 +3,7 @@
 @section('title', 'Comentario')
 
 @section('content_header')
-   <h1>Agregar comentarios</h1>
+   <h1>Mensaje Felicitaciones</h1>
 @stop
 
 @section('content')
@@ -12,7 +12,7 @@
 
   <!-- Agregar comentarios -->
   <div class="mb-3">
-    <label for="contenido" class="form-label">Comentario</label>
+    <label for="contenido" class="form-label">Felicitaciones</label>
     <textarea id="contenido" name="contenido" class="form-control" rows="3" tabindex="3"></textarea>
   </div>
   

@@ -12,6 +12,9 @@ class Comentario extends Model
         'contenido',
     ];
 
-    
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
     
 }

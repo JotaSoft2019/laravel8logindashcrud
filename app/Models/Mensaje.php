@@ -11,4 +11,6 @@ class Mensaje extends Model
     protected $fillable = [
         'contenido',
     ];
+
+
 }

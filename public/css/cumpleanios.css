@@ -1,5 +1,85 @@
+
 .lista-cumpleanio li{
     list-style: none;
     margin-right: 10px;
-
+    font-family: 'Courgette', cursive;
+    font-family: 'Pacifico', cursive;
+    
 }
+
+/*body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}*/
+
+img{
+    width: 150px;
+}
+
+.boton-cumpleaños a{
+    margin-top: 40px;
+}
+
+.card{
+    margin-top: 40px;
+}
+
+.birthday-button {
+    font-size: 24px;
+    padding: 8px;
+    width: 100px;
+    height: 20px;
+    background-color: #ebc744;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 115px;
+    margin-top: -50px;
+}
+
+.birthday-button::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(blue, pink);
+    border-radius: 50%;
+    animation: sparkle 1s linear infinite;
+}
+
+@keyframes sparkle {
+    0% {
+        transform: translateY(0) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-200px) scale(1);
+        opacity: 0;
+    }
+}
+
+.mensaje ul li{
+    list-style: none;
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    margin-left: -40px;
+    border-radius: 10px;
+    background-color: wheat;
+}
+
+.parrafo p{
+    font-family: 'Courgette', cursive;
+    font-family: 'Pacifico', cursive;
+}
+.parrafo h5{
+    font-family: 'Courgette', cursive;
+    font-family: 'Pacifico', cursive;
+}
+
+
