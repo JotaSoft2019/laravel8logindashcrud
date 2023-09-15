@@ -28,7 +28,7 @@
                    @endif
 
             </div>
-
+            @can('comex.destroy')
             <div class="compras-footer">
                 <form action="{{ route('comex.destroy', $comex->id) }}" method="POST">
                     <a href="/comex/{{ $comex->id }}/edit" class="btn3 btn btn-outline-warning">✍🏻</a> 
@@ -36,6 +36,8 @@
                         @method('DELETE')
                         <button type="submit" class="btn2 btn btn-outline-danger">🗑️</button>
             </div>
+
+            @endcan
        @endforeach
    </div>
 @stop

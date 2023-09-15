@@ -37,7 +37,7 @@
                            </div>
                        @endif
         </div>
-                       
+                       @can('comercials.destroy')
                        <div class="compras-footer">
                            <form action="{{ route('comercials.destroy', $comercial->id) }}" method="POST">
                                <a href="/comercials/{{ $comercial->id }}/edit" class="btn3 btn btn-outline-warning">✍🏻</a>
@@ -46,6 +46,7 @@
                                <button type="submit" class="btn2 btn btn-outline-danger">🗑️</button>
                            </form>
                        </div>
+                       @endcan
            @endforeach
    </div>
 @stop

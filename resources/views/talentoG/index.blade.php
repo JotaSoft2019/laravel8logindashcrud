@@ -29,6 +29,7 @@
                     <div class="card text-center">
                        <p class="card-text">{{ $archivo-> text}}</p>
                    </div>
+                   @can('talento.destroy')
                     <div class="card-footer">
                         <form action="{{ route('talento.destroy', $archivo->id) }}" method="post">
                             @csrf
@@ -37,6 +38,7 @@
                             <a href="{{ route('talento.edit', $archivo->id) }}" class="btn btn-outline-warning">Editar</a>
                         </form>
                     </div>
+                    @endcan
                 </div>
             </div>
         @endforeach
