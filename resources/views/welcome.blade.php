@@ -27,7 +27,7 @@
 
             }
             .container-login{
-            width: 90%;
+            width: 100%;
             background-size:100%;
             height: 360px;
             background-image: url("./ImagenesJotaRed/imagen1.jpg");
@@ -53,7 +53,7 @@
             }
 
             .container-register{
-            width: 179vh;
+            width: 185vh;
             height: 360px;
             background-image: url("./ImagenesJotaRed/imagen2.jpg");
             background-size:110%;

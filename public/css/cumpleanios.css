@@ -1,20 +1,28 @@
 
 .lista-cumpleanio li{
     list-style: none;
-    margin-right: 10px;
-    font-family: 'Courgette', cursive;
-    font-family: 'Pacifico', cursive;
-    
+    font-family: 'Parisienne', cursive; 
 }
 
-/*body {
+.lista-cumpleanio li h6{
+    display: flex;
+    justify-content: end;
+}
+
+.lista-cumpleanio li h5{
+    display: flex;
+    margin-right: 40px;
+    justify-content: center;
+}
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
-}*/
+
+}
 
 img{
     width: 150px;
@@ -33,7 +41,7 @@ img{
     padding: 8px;
     width: 100px;
     height: 20px;
-    background-color: #ebc744;
+    background-color: #4b74b4;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -47,7 +55,7 @@ img{
     position: absolute;
     width: 30px;
     height: 30px;
-    background: linear-gradient(blue, pink);
+    background: linear-gradient(#4b74b4, #ebc744);
     border-radius: 50%;
     animation: sparkle 1s linear infinite;
 }
@@ -68,22 +76,29 @@ img{
     width: 100%;
     height: 50px;
     margin-top: 10px;
-    margin-left: -40px;
+    margin-left: -20px;
     border-radius: 10px;
-    background-color: wheat;
+    background-color:   #fcd44f80 ;
+}
+
+.mensaje h3{
+    font-family: 'Parisienne', cursive;
 }
 
 .parrafo p{
-    font-family: 'Courgette', cursive;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Parisienne', cursive;
 }
 .parrafo h5{
-    font-family: 'Courgette', cursive;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Parisienne', cursive;
 }
 
 .boton{
     margin-left: 95px;
+}
+
+.mensaje ul li{
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
 }
 
 

@@ -13,24 +13,23 @@
   <img src="{{ asset('/imagenesJotaRed/logoJotaMundial.png') }}" alt="Logo">
     <ul class="lista-cumpleanio">
         @foreach ($users as $user)
-            <li><b>{{ $user->name }} {{ $user->apellido }}</b></li>
+            <li><h5><b>{{ $user->name }} {{ $user->apellido }}</b></h5></li>
             <li><h6>{{ $user->date ? \Carbon\Carbon::parse($user->date)->format('d - m ') : 'Fecha de nacimiento no disponible' }}</h6></li>
         @endforeach
     </ul>
 <div class="parrafo">
-    <p class="card-text">Hoy es un día súper especial, cumples <b>un año más de vida</b> y lo puedes celebrar junto a la familia Jota Mundial, por eso hoy te decimos</p>
-    <h5 class="card-title">Feliz Cumpleaños</h5>
+    <p class="card-text">Hoy es un día súper especial, cumples <b>un año más de vida</b> y lo puedes celebrar junto a la familia Jota Mundial, por eso hoy te decimos <b>Feliz Cumpleaños</b></p>
 </div>
 <br>
 <div class="boton">
-   <a href="{{ route('mensaje.create') }}" class="birthday-button">Felicitar 🎂</a>
+   <a href="{{ route('mensaje.create') }}" class="birthday-button">Felicitar🎂</a>
 </div>
     
   </div>
 </div>
 @endif
 <div class="mensaje">
-<h3>Mensajes de Cumpleaños:</h3>
+<h3><b>Mensajes de Cumpleaños:</b></h3>
 @if ($users->count() > 0 && $mensajes->count() > 0)
     <ul>
         @foreach ($mensajes as $mensaje)
@@ -47,6 +46,12 @@
 @endsection
 
 @section('css')
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/cumpleanios.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
