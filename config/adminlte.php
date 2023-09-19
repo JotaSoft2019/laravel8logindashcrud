@@ -419,7 +419,7 @@ return [
         
         [
             'text' => 'Recomendaciones Salud',
-            'url'  => 'admin/settings',
+            'url'  => 'recomendaciones',
             'icon' => 'fas fa-thin fa-book-medical',
             'font-size' => '8px',
         ],
