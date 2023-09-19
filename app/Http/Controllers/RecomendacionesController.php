@@ -19,12 +19,13 @@ class RecomendacionesController extends Controller
             "Realiza ejercicio regularmente.",
             "Come una dieta equilibrada.",
             "Duerme al menos 7-8 horas por noche."
+
         ];
         $recomendacion = $recomendaciones[array_rand($recomendaciones)];
-        $hora_actual = now()->format('h:i:s');
-        return view('recomendaciones.index', compact('recomendacion', 'hora_actual'));
+       
+        return view('recomendaciones.index', compact('recomendacion'));
     }
-
+ 
     /**
      * Show the form for creating a new resource.
      *

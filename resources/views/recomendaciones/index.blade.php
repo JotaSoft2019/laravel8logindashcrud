@@ -9,5 +9,5 @@
 @section('content')
 
     <p>{{ $recomendacion }}</p>
-    <p>Hora actual: {{ $hora_actual }}</p>
+    
 @stop
