@@ -20,14 +20,8 @@ class RecomendacionesController extends Controller
             "Come una dieta equilibrada.",
             "Duerme al menos 7-8 horas por noche."
         ];
-
-        // Muestra una recomendación aleatoria
         $recomendacion = $recomendaciones[array_rand($recomendaciones)];
-
-        // Obtiene la hora actual
-        $hora_actual = now()->format('H:i:s');
-
-        // Envía la recomendación y la hora a la vista
+        $hora_actual = now()->format('h:i:s');
         return view('recomendaciones.index', compact('recomendacion', 'hora_actual'));
     }
 

@@ -8,9 +8,6 @@
 
 @section('content')
 
-    <h1>Recomendaciones de Salud</h1>
-    
-    <h2>Recomendación del momento:</h2>
     <p>{{ $recomendacion }}</p>
     <p>Hora actual: {{ $hora_actual }}</p>
 @stop
