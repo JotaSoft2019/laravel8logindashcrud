@@ -122,7 +122,7 @@ public function update(Request $request, $id)
 
         $archivo->save();
 
-        return redirect()->route('talento.index');
+        return redirect()->route('adn.index');
     } else {
         return redirect()->back()->with('error', 'Por favor, sube un archivo PDF válido.');
     }
