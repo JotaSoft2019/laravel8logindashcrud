@@ -14,7 +14,7 @@
                 {{ $recomendacionAleatoria->texto }}
             </div>
         </div>
-        <button id="nextButton" class="btn">Mostrar otra recomendación</button>
+        <a href="{{ route('recomendaciones.index') }}" id="nextButton" class="btn">Mostrar otra recomendación</a>
     </div>
 </body>
     
