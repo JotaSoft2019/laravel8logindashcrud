@@ -13,16 +13,7 @@ class AgregarRecomendacionController extends Controller
      */
     public function index()
     {
-        // Aquí puedes obtener las recomendaciones de salud desde tu base de datos
-        $recomendaciones = [
-            "Bebe suficiente agua durante el día.",
-            "Realiza ejercicio regularmente.",
-            "Come una dieta equilibrada.",
-            "Duerme al menos 7-8 horas por noche."
-        ];
-        $recomendacion = $recomendaciones[array_rand($recomendaciones)];
-
-        return view('agregaRecomendaciones.index', compact('recomendacion'));
+        return view('agregaRecomendaciones.index');
     }
 
     /**
@@ -32,23 +23,22 @@ class AgregarRecomendacionController extends Controller
      */
     public function create()
     {
-        // Aquí puedes mostrar un formulario para crear una nueva recomendación si lo necesitas
-        return view('agregaRecomendaciones.create');
+       
     }
 
     public function store(Request $request)
     {
         // Valida el formulario
         $request->validate([
-            'text' => 'required', // Asegúrate de que 'text' coincida con el nombre del campo de entrada en tu formulario
+            'texto' => 'required', // Asegúrate de que 'text' coincida con el nombre del campo de entrada en tu formulario
         ]);
 
         // Crea una nueva recomendación en la base de datos
         $recomendaciones = new AgregarRecomendacion();
-        $recomendaciones->text = $request->input('text');
+        $recomendaciones->texto = $request->input('texto');
         $recomendaciones->save();
 
-        return redirect('/')->with('success', 'Recomendación agregada correctamente.');
+        return redirect('recomendaciones')->with('success', 'Recomendación agregada correctamente.');
     }
 
     /**

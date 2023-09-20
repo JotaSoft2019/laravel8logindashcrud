@@ -14,7 +14,7 @@ class CreateRecomendacionsTable extends Migration
     {
         Schema::create('recomendacions', function (Blueprint $table) {
             $table->id();
-            $table->string('text'); // Change 'text' to 'texto'
+            $table->string('texto'); // Change 'text' to 'texto'
             $table->timestamps();
         });
     }

@@ -33,27 +33,22 @@ class RecomendacionController extends Controller
      */
     public function create()
     {
-        return view('recomendaciones.agregarRecomendaciones');
+        return view('agregaRecomendaciones.index');
     }
 
     public function store(Request $request)
     {
         // Valida el formulario
         $request->validate([
-            'text' => 'required',
+            'texto' => 'required', // Asegúrate de que 'text' coincida con el nombre del campo de entrada en tu formulario
         ]);
-    
+
         // Crea una nueva recomendación en la base de datos
-        $nuevaRecomendacion = new Recomendacion();
-        $nuevaRecomendacion->text = $request->input('text');
-        $nuevaRecomendacion->save();
-    
-        // También puedes guardar la recomendación dinámica en la base de datos si lo deseas
-        $recomendacionDinamica = new Recomendacion();
-        $recomendacionDinamica->texto = $request->input('recomendacion_dinamica');
-        $recomendacionDinamica->save();
-    
-        return redirect('/')->with('success', 'Recomendación agregada correctamente.');
+        $recomendaciones = new Recomendacion();
+        $recomendaciones->texto = $request->input('texto');
+        $recomendaciones->save();
+
+        return redirect('recomendaciones')->with('success', 'Recomendación agregada correctamente.');
     }
 
 
