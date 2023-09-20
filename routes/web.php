@@ -48,7 +48,7 @@ Route::resource('compras', 'App\Http\Controllers\ComprasNacionalesController');
 Route::resource('comentario', 'App\Http\Controllers\ComentarioController');
 Route::resource('mensaje', 'App\Http\Controllers\MensajeController');
 Route::resource('recomendaciones', 'App\Http\Controllers\RecomendacionController');
-Route::resource('agregar', 'App\Http\Controllers\AgregarRecomendacionController');
+Route::resource('agregar recomendaciones', 'App\Http\Controllers\AgregarRecomendacionController');
 Route::resource('articulos', 'App\Http\Controllers\ArticuloController');
 Route::resource('lideres', 'App\Http\Controllers\LideresController');
 Route::resource('comercials', 'App\Http\Controllers\ComercialController');
