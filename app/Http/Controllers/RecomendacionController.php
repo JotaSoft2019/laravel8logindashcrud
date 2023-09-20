@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Recomendacion;
 use Illuminate\Http\Request;
 
-class RecomendacionesController extends Controller
+class RecomendacionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,19 +33,29 @@ class RecomendacionesController extends Controller
      */
     public function create()
     {
-        //
+        return view('recomendaciones.agregarRecomendaciones');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        // Valida el formulario
+        $request->validate([
+            'text' => 'required',
+        ]);
+    
+        // Crea una nueva recomendación en la base de datos
+        $nuevaRecomendacion = new Recomendacion();
+        $nuevaRecomendacion->text = $request->input('text');
+        $nuevaRecomendacion->save();
+    
+        // También puedes guardar la recomendación dinámica en la base de datos si lo deseas
+        $recomendacionDinamica = new Recomendacion();
+        $recomendacionDinamica->texto = $request->input('recomendacion_dinamica');
+        $recomendacionDinamica->save();
+    
+        return redirect('/')->with('success', 'Recomendación agregada correctamente.');
     }
+
 
     /**
      * Display the specified resource.

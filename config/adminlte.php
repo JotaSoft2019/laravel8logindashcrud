@@ -423,6 +423,13 @@ return [
             'icon' => 'fas fa-thin fa-book-medical',
             'font-size' => '8px',
         ],
+
+        [
+            'text' => 'Agregar recomendaciones de salud',
+            'url'  => 'agregar recomendaciones',
+            'icon' => 'fas fa-thin fa-book-medical',
+            'font-size' => '8px',
+        ],
         [
             'text'    => 'Politicas Y Reglamentos',
             'icon'    => 'fas fa-thin fa-ruler',
@@ -462,6 +469,8 @@ return [
             'icon' => 'fas fa fa-birthday-cake',
             'font-size' => '8px',
         ],
+
+        
 
         [
             'text' => 'Reconocimientos',
