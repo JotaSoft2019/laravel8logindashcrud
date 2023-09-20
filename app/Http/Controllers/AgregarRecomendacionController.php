@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\AgregarRecomendacion;
+use App\Models\Recomendacion;
 use Illuminate\Http\Request;
 
 class AgregarRecomendacionController extends Controller
@@ -13,7 +14,14 @@ class AgregarRecomendacionController extends Controller
      */
     public function index()
     {
-        return view('agregaRecomendaciones.index');
+         // Recupera todas las recomendaciones de la base de datos
+         $recomendaciones = Recomendacion::all();
+
+         // Obtén una recomendación aleatoria
+         $recomendacionAleatoria = $recomendaciones->random();
+ 
+         return view('agregaRecomendaciones.index', compact('recomendacionAleatoria'));
+        
     }
 
     /**

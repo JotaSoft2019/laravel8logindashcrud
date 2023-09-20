@@ -13,17 +13,13 @@ class RecomendacionController extends Controller
      */
     public function index()
     {
-        // Aquí obtén las recomendaciones de salud desde tu base de datos
-        $recomendaciones = [
-            "Bebe suficiente agua durante el día.",
-            "Realiza ejercicio regularmente.",
-            "Come una dieta equilibrada.",
-            "Duerme al menos 7-8 horas por noche."
+        // Recupera todas las recomendaciones de la base de datos
+        $recomendaciones = Recomendacion::all();
 
-        ];
-        $recomendacion = $recomendaciones[array_rand($recomendaciones)];
-       
-        return view('recomendaciones.index', compact('recomendacion'));
+        // Obtén una recomendación aleatoria
+        $recomendacionAleatoria = $recomendaciones->random();
+
+        return view('recomendaciones.index', compact('recomendacionAleatoria'));
     }
  
     /**
@@ -96,4 +92,10 @@ class RecomendacionController extends Controller
     {
         //
     }
+    public function getRandomRecommendation()
+{
+    $recomendacionAleatoria = Recomendacion::inRandomOrder()->first();
+
+    return response()->json($recomendacionAleatoria);
+}
 }

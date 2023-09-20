@@ -11,7 +11,7 @@
     <div class="container">
         <div class="recommendation-container">
             <div id="recommendation" class="recommendation">
-                Cargando recomendación...
+                {{ $recomendacionAleatoria->texto }}
             </div>
         </div>
         <button id="nextButton" class="btn">Mostrar otra recomendación</button>
@@ -26,33 +26,22 @@
 @section('js')
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-    const recommendations = [
-        "Bebe suficiente agua durante el día.",
-        "Realiza ejercicio regularmente.",
-        "Come una dieta equilibrada.",
-        "Duerme al menos 7-8 horas por noche.",
-        "La postura correcta es importante.",
-        "Identificar bien tu puesto de trabajo.",
-        "Realiza descansos regulares.",
-        "Usa el equipo de seguridad.",
-        "Utiliza herramientas y máquinas de forma adecuada.",
-        "Informa las condiciones inseguras al supervisor.",
-        "Reduce el estrés."
-    ];
+            const nextButton = document.getElementById("nextButton");
 
-    const recommendationContainer = document.getElementById("recommendation");
-    const nextButton = document.getElementById("nextButton");
-
-    function displayRandomRecommendation() {
-        const randomIndex = Math.floor(Math.random() * recommendations.length);
-        const randomRecommendation = recommendations[randomIndex];
-        recommendationContainer.textContent = randomRecommendation;
-    }
-
-    displayRandomRecommendation(); // Muestra una recomendación aleatoria al cargar la página
-
-    nextButton.addEventListener("click", displayRandomRecommendation); // Cambia la recomendación al hacer clic en el botón
-});
+            nextButton.addEventListener("click", function () {
+                // Hacer una solicitud AJAX para obtener una recomendación aleatoria de tu controlador
+                fetch("{{ route('recomendaciones.random') }}")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        // Actualiza el contenido con la recomendación aleatoria
+                        const recommendationContainer = document.getElementById("recommendation");
+                        recommendationContainer.textContent = data.texto;
+                    })
+                    .catch((error) => {
+                        console.error("Error al obtener una recomendación aleatoria:", error);
+                    });
+            });
+        });
     </script>
     
 @stop

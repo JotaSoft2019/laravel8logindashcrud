@@ -54,7 +54,7 @@ Route::resource('lideres', 'App\Http\Controllers\LideresController');
 Route::resource('comercials', 'App\Http\Controllers\ComercialController');
 Route::resource('cumpleaños', 'App\Http\Controllers\CumpleanioController');
 Route::get('/cumpleaños/vaciar-mensajes', 'MensajeController@vaciarMensajes')->name('mensaje.vaciar');
-
+Route::get('/recomendaciones/random', 'RecomendacionController@getRandomRecommendation')->name('recomendaciones.random');
 // Ruta del dashboard (protegida con autenticación)
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
