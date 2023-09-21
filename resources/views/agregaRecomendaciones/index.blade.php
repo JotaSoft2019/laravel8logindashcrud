@@ -8,7 +8,6 @@
 
 @section('content')
 <div class="container">
-    <h1>Agregar Recomendación de Salud</h1>
     <form action="{{ route('recomendaciones.store') }}" method="POST"> 
         @csrf
         <label for="recomendacion">Recomendación:</label>
@@ -16,6 +15,7 @@
         <button type="submit" class="btn btn-primary">Agregar Recomendación</button> 
     </form>
 </div>
+
 @stop
 
 @section('css')
