@@ -416,7 +416,13 @@ return [
                 
             ],
         ],
-        
+        [
+            'text' => 'Agregar recomendaciones de salud',
+            'url'  => 'agregar recomendaciones',
+            'icon' => 'fas fa-thin fa-book-medical',
+            'font-size' => '8px',
+            'can' => 'agregar recomendaciones'
+        ],
         [
             'text' => 'Recomendaciones Salud',
             'url'  => 'recomendaciones',
@@ -425,11 +431,10 @@ return [
         ],
 
         [
-            'text' => 'Agregar recomendaciones de salud',
-            'url'  => 'agregar recomendaciones',
-            'icon' => 'fas fa-thin fa-book-medical',
+            'text' => 'Imagenes pausa activa',
+            'url'  => 'documentacion',
+            'icon' => 'fas fa-solid fa-film',
             'font-size' => '8px',
-            'can' => 'agregar recomendaciones'
         ],
         [
             'text'    => 'Politicas Y Reglamentos',
