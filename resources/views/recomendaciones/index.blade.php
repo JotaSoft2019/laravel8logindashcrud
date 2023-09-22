@@ -9,23 +9,25 @@
 @section('content')
 <body>
     <div class="container">
+
+    <a href="{{ route('recomendaciones.index') }}" id="nextButton" class="btn">Mostrar otra recomendación</a>
         <div class="recommendation-container">
             <div id="recommendation" class="recommendation">
-                {{ $recomendacionAleatoria->texto }}
+                {!! $recomendacionAleatoria->texto !!}
             </div>
         </div>
-        <a href="{{ route('recomendaciones.index') }}" id="nextButton" class="btn">Mostrar otra recomendación</a>
     </div>
-</body>
-    
+</body> 
 @stop
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/recomendacion.css') }}">
 @stop
 @section('js')
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+       /* document.addEventListener("DOMContentLoaded", function () {
             const nextButton = document.getElementById("nextButton");
 
             nextButton.addEventListener("click", function () {
@@ -41,7 +43,7 @@
                         console.error("Error al obtener una recomendación aleatoria:", error);
                     });
             });
-        });
+        });*/
     </script>
     
 @stop

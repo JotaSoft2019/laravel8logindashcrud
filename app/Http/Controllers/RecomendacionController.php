@@ -36,10 +36,10 @@ class RecomendacionController extends Controller
     {
         // Valida el formulario
         $request->validate([
-            'texto' => 'required', // Asegúrate de que 'texto' coincida con el nombre del campo de entrada en tu formulario
+            'texto' => 'required', 
         ]);
 
-        // Crea una nueva recomendación en la base de datos
+        
         $recomendacion = new Recomendacion();
         $recomendacion->texto = $request->input('texto');
         $recomendacion->save();
@@ -102,16 +102,11 @@ class RecomendacionController extends Controller
     public function showRandomRecommendation()
     {
         try {
-            // Lógica para obtener una recomendación aleatoria aquí
+            
             $recomendacionAleatoria = obtenerRecomendacionAleatoria();
-
-            // Asegúrate de que $recomendacionAleatoria sea una cadena JSON válida
             $jsonRecomendacion = json_encode(['texto' => $recomendacionAleatoria]);
-
-            // Devuelve la recomendación como respuesta JSON
             return response()->json($jsonRecomendacion);
         } catch (Exception $e) {
-            // Maneja cualquier excepción y devuelve una respuesta de error
             return response()->json(['error' => 'Error al obtener la recomendación'], 500);
         }
     }
